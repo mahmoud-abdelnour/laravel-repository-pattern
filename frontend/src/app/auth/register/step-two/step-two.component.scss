@@ -1,0 +1,72 @@
+mat-card {
+    padding: 40px 24px;
+    box-shadow: none !important;
+
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    mat-card-content {
+        flex: 1;
+    }
+    
+    mat-card-title {
+        color: var(--text-color);
+        font-weight: bold;
+        font-size: 24px;
+        margin-left: -16px;
+        margin-right: -16px;
+        margin-bottom: 0;
+    }
+    mat-card-subtitle {
+        font-size: 16px;
+        color: var(--main-color);
+        font-weight: bold;
+        margin-top: 1.5rem !important;
+    }
+
+    mat-card-actions {
+        border-top: 1px solid #EEEEEE;
+        padding-top: 20px;
+        button {
+            padding: 4px 32px;
+            border: 1px solid var(--main-color);
+            font-size: 16px;
+            color: var(--main-color);
+            width: 150px;
+            border-radius: 100px;
+            &.primary {
+                color: #fff;
+                background: var(--main-color);
+            }
+        }
+
+    }
+}
+
+#iban_input_group{
+    position: relative;
+    span{
+        padding: 9px 15px;
+        background-color: var(--light-blue);
+        border-radius: 30px;
+        position: relative;
+        right: -50px;
+    }
+    input{
+        padding-left: 46px;
+    }
+    
+
+  
+}
+
+
+:host {
+    #iban_input_group ::ng-deep{
+        app-error{
+            position: absolute;
+            bottom: -30px;
+            right: 0;
+        }
+    }
+}

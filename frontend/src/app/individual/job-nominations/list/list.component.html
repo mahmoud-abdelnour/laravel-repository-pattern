@@ -1,0 +1,19 @@
+<section class="card-cont">
+    <h2>
+        ترشيحات الوظائف
+    </h2>
+    <mat-card>
+        <mat-card-content>
+            <app-table #table [settings]="settings" [apiFunc]="apiFunc"></app-table>
+        </mat-card-content>
+    </mat-card>
+</section>
+
+
+<ng-template #dialog let-ref="dialogRef" let-data>
+    <app-job-preview [ref]="ref" [data]="data.data"></app-job-preview>
+</ng-template>
+
+<ng-template #dialog2 let-ref="dialogRef" let-data>
+    <app-apply-insurance [ref]="ref" [data]="data.data"></app-apply-insurance>
+</ng-template>

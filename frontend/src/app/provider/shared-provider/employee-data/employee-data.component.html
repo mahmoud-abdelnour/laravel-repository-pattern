@@ -1,0 +1,122 @@
+<form [formGroup]="form">
+    <h2 mat-dialog-title>
+        {{ title | translate }}
+    </h2>
+    <mat-dialog-content class="mat-typography">
+        <mat-tab-group mat-stretch-tabs="false" mat-align-tabs="center" [selectedIndex]="selectedIndex">
+            <mat-tab label="البيانات الشخصية">
+                <section>
+                    <div class="row">
+                        <div class="col-md-4">
+                            <h3>
+                                الاسم باللغة العربية 
+                            </h3>
+                            <p>
+                                {{data.name_ar}}
+                            </p>
+                        </div>
+                        <div class="col-md-4">
+                            <h3>
+                                الاسم باللغة الإنجليزية 
+                            </h3>
+                            <p>
+                                {{data.name_en}}
+                            </p>
+                        </div>
+                        <div class="col-md-4">
+                            <h3>
+                                البريد الإلكتروني
+                            </h3>
+                            <p>
+                                {{data.email}}
+                            </p>
+                        </div>
+                        <div class="col-md-4">
+                            <h3>
+                                رقم الهوية
+                            </h3>
+                            <p>
+                                {{data.national_id}}
+                            </p>
+                        </div>
+                        <div class="col-md-4">
+                            <h3>
+                                رقم الهاتف
+                            </h3>
+                            <p>
+                                {{data.mobile}}
+                            </p>
+                        </div>
+                        <div class="col-md-4">
+                            <h3>
+                                المؤهل العلمى
+                            </h3>
+                            <p>
+                                {{ themeService.settings.QUALIFICATIONS.enum[data.qualification] | translate }}
+                            </p>
+                        </div>
+                        <div class="col-md-4">
+                            <h3>
+                                الجنس
+                            </h3>
+                            <p>
+                                {{ themeService.settings.GENDER.enum[data.gender] | translate }}
+                            </p>
+                        </div>
+                        <div class="col-md-4">
+                            <h3>
+                                الحالة الاجماعية
+                            </h3>
+                            <p>
+                                {{ themeService.settings.MARTIAL_STATUS.enum[data.martial_status] | translate }}
+                            </p>
+                        </div>
+                        <div class="col-md-4">
+                            <h3>
+                                حالة الموظف
+                            </h3>
+                            <p>
+                                <app-table-status [value]="themeService.settings.EMPLOYEE_STATUS.enum[data.status]"></app-table-status>
+                            </p>
+                        </div>
+                    </div>
+                </section>
+            </mat-tab>
+            <mat-tab label="المرفقات">
+                <div *ngFor="let item of form.controls | keyvalue; index as i" class="mt-4 mb-4 file-item">
+                    <h4>
+                        {{ item.key | translate }}
+                    </h4>
+                    <app-file-input [control]="item.value"></app-file-input>
+                </div>
+            </mat-tab>
+            <!-- <mat-tab label="الدورات">
+                الدورات
+            </mat-tab> -->
+
+            <mat-tab label="الدفعات" *ngIf="data.is_working == 1 ">
+                <div class="mt-2 mb-2">
+                    <mat-tab-group mat-align-tabs="center">
+                        <mat-tab label="الدفعات الشهرية">
+                            <app-payment-list [employeeData]="data" [subscription_type]="themeService.settings.SUBSCRIPTION_TYPE.enum.membership"></app-payment-list>
+                        </mat-tab>
+                        <mat-tab label="دفعات الدورات">
+                            <app-payment-list [employeeData]="data" [subscription_type]="themeService.settings.SUBSCRIPTION_TYPE.enum.courses"></app-payment-list>
+                        </mat-tab>
+                    </mat-tab-group>
+                    
+                </div>
+            </mat-tab>
+            
+        </mat-tab-group>
+    </mat-dialog-content>
+    <mat-dialog-actions align="end" class="actions">
+        <button type="button" mat-button mat-dialog-close class="cancel">
+            {{ 'Back' | translate }}
+        </button>
+        <!-- <button [disabled]="isSaving" mat-button cdkFocusInitial class="save" *ngIf="!form.disabled" >
+            حفظ
+        </button> -->
+    </mat-dialog-actions>
+    
+</form>

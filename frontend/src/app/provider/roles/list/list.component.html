@@ -1,0 +1,29 @@
+<section class="card-cont">
+    <h2>
+        {{ 'Roles' | translate }}
+    </h2>
+    <mat-card>
+        <mat-card-header *appPerm=" 'create_role' ">
+            <div class="d-flex align-items-center justify-content-between">
+                <div></div>
+                <button class="add-btn" mat-raised-button (click)="openDialog()">
+                    <mat-icon>add</mat-icon>
+                    {{ 'Create' | translate }}
+                    {{ 'Role' | translate }}
+                </button>
+            </div>
+        </mat-card-header>
+        <mat-card-content>
+            <app-table #table [settings]="settings" [apiFunc]="apiFunc"></app-table>
+        </mat-card-content>
+    </mat-card>
+</section>
+
+<ng-template #dialog let-ref="dialogRef" let-data>
+    <app-create [ref]="ref" [data]="data.data" [mode]="data.mode"></app-create>
+</ng-template>
+
+
+<ng-template #permissionDialog let-ref="dialogRef" let-data>
+    <app-permissions [ref]="ref" [data]="data.data" [type]="PermissionsType.role"></app-permissions>
+</ng-template>

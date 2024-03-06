@@ -1,0 +1,12 @@
+:host {
+    .form-group mat-radio-group ::ng-deep {
+        label {
+            color: #000;
+        }
+    }
+}
+
+textarea {
+    min-height: 80px;
+    border-radius: 12px;
+}

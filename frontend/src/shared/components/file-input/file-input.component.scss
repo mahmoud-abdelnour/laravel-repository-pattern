@@ -1,0 +1,27 @@
+.invalid-feedback { 
+    margin-top: -10px;
+}
+
+:host ::ng-deep app-error {
+    position: absolute;
+    left: 0;
+    right: -7px;
+    width: 140px;
+    bottom: -36px;
+}
+
+.file-name {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    min-width: 160px;
+}
+.file-size {
+    margin-left: 1rem;
+    margin-right: 1rem;
+    min-width: 160px;
+
+}
+
+.file-info {
+    flex-wrap: wrap;
+}

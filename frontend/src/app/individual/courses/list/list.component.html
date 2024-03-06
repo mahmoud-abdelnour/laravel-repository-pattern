@@ -1,0 +1,14 @@
+<section class="card-cont">
+    <h2>
+        الدورات المرشحة لي
+    </h2>
+    <mat-card>
+        <mat-card-content>
+            <app-table #table [settings]="settings" [apiFunc]="apiFunc"></app-table>
+        </mat-card-content>
+    </mat-card>
+</section>
+
+<ng-template #dialog let-ref="dialogRef" let-data>
+    <app-course [ref]="ref" [data]="data.data"></app-course>
+</ng-template>

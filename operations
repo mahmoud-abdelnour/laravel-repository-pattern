@@ -1,0 +1,368 @@
+--register as emp
+    -emp_status => initial
+    -get rejected
+        -set reason
+    -get approved
+        -pay
+        -subscribe 
+        -course contract
+    
+ 
+
+
+
+
+--register as company 
+    -status => initial
+    -pay
+    -subscribe
+    -request emps
+        request_status => initial , revising , waiting_approve_from_remote_work ,approved
+
+
+
+
+
+
+
+--nominate emps for specfic company
+    -get all emps with this job title (id) and elevate it to this company
+    -emp status to be 
+        -initial
+        -
+
+
+
+
+
+
+main Swager API routes
+    -EMPLOYEES - الموظفين
+    -CANDIDATES - المرشحين
+    -COMPANIES - الشركات
+    -USERS -  المستخدمين و الصلاحيات
+    -COURSES - الدورات
+    -TASKS - المهام
+    -JOBS - الوظائف
+    -JOB REQUESTS - طلبات التوظيف
+    -REPORTS - التقارير
+    -EMPLOYEES
+    -COMPANIES
+    -USERS
+    -COURSES
+    -TASKS
+    -JOBS
+    -JOB REQUESTS
+
+    https://shekhargulati.com/2017/07/06/angular-4-use-of-base-href-and-deploy-url-build-options/
+    https://github.com/angular/angular-cli/issues/4607
+    https://angular.io/guide/deployment#server-configuration
+    https://stackoverflow.com/questions/71094093/angular-routing-not-working-after-running-ng-build-at-deployment
+    https://julianpoemp.github.io/ngx-htaccess-generator/#/generator
+
+ oneOf={
+     *                 @OA\Schema(ref="#/components/schemas/Result"),
+     *                 @OA\Schema(type="boolean")
+     *             },
+
+ /**
+     * @OA\Get(
+     *     path="/products",
+     *     tags={"Products"},
+     *     summary="Updates a pet in the store with form data",
+     *     operationId="updatePetWithForm",
+     *    
+     *     @OA\Response(
+     *         response=405,
+     *         description="Invalid input"
+     *     ),
+     *   
+     *     
+     * )
+     */
+
+
+ALTER TABLE emp_courses DROP FOREIGN KEY emp_courses_course_id_foreign;
+
+//Storage::disk('public')->put($file_name,$file);
+  public function  getNationalAddressFileAttribute($key){
+        return \Storage::disk('public')->url("app/public/".$key);
+    }
+
+
+
+
+
+
+
+######STATUS######
+
+job_requests 
+    -request_status
+        0-pending
+        1-approved
+        2-rejected
+
+
+job_request_candidates
+    -company_response_status
+        -accepted
+        -rejected
+
+    -emp_response_status
+        -accepted
+        -rejected
+
+
+employees
+    -status
+        -pending
+        -active
+        -banned
+
+    -isworking
+        0
+        1
+
+companies
+    -status
+        -pending
+        -active
+        -banned
+    
+
+
+subscriptions
+    -subscription_type
+        -membership
+        -courses
+
+
+emp_subscriptions
+    -is_approved
+        -1
+        -0
+
+
+    
+company_subscriptions
+    -is_approved
+        approved-1
+        pending-0
+
+
+insurance
+    -status
+        1
+        0
+
+
+jobs
+    -status
+        -1
+        -0
+
+
+
+
+martial_status
+    -married
+    -single
+
+
+gender
+    -male
+    -female
+
+
+
+https://app.agm-sa.net/storage/app/public/files/6408aef405411_1678290676_mail.png
+/storage/app/public/files/
+
+
+
+28909021205099
+misc endpoint
+    -
+
+
+123456
+$2a$12$4V/XNNmEh1QpCto0gqA/kuQYdaiVcZYGHSxrl9YFhYcTfv1b.Gavq
+
+
+
+السلام عليكم 
+دا رقم الهوية :
+987654321
+
+كلمة المرور:
+123456789
+
+رابط الدخول
+https://ladun.agm-sa.net/
+
+
+---فتح حساب 
+---سداد
+---تحت المراجعة
+---قبول السداد
+---تفعيل الحساب
+
+
+
+سم المستخدم:   m-devrmg
+كلمة المرور:        Aa24QeEq3
+
+تمام 
+https://renadalmajedgroup-my.sharepoint.com/:f:/g/personal/m_abdelnour_rmg-sa_com/EmAjq2bdvYBEhQWOCelqtx8BEqHUqqGMlpp7guF0k5w_hw?e=LQvzsm
+
+
+rmg.agm-sa.org
+voting@rmg-sa.com
+Rmg@3321
+
+
+
+
+
+
+--notifications
+    -provider
+        -new emp register => NewEmpRegister
+        -new company register => NewCompanyRegister
+        -emp pay membership => EmpPaymentMembership
+        -company pay membership => CompanyPaymentMembership
+        -company request emp => CompanyRequestEmp
+        -nominate emp for company  => ProviderNominateEmp
+        -emp approve nomination => EmpApproveNomination
+        -company approve nomination => CompanyApproveNomination
+
+    -company
+        -membership approved => MembershipApproved
+        -payment approved => PaymentApproved (type = company)
+        -company request emp =>  CompanyRequestEmp
+        -company accepted Emp nomination => CompanyAcceptedNomination
+        -employee accepted nomination => EmployeeAcceptedNomination
+        -insurances has been approved =>InsuranceApproved (type = company)
+        
+    -employee
+        -membership approved
+        -payment approved  => PaymentApproved (type = company)
+        -emp has been nominated  => CompanyAcceptedNomination
+        -emp accepted nomination => EmployeeAcceptedNomination
+        -emp has been suggest COURSES => EmpSuggestCourses
+       111 -emp has been assigned TASK => EmpAssignedTask
+        -insurances has been approved => InsuranceApproved (type = emp)
+
+
+-permissions
+    --Users 						
+        ---create
+        ---update
+        ---delete
+        ---delete
+        ---assign_permissions
+
+    --Roles
+        ---create
+        ---update
+        ---delete
+    
+    --Permissions
+        ---create
+        ---update
+        ---delete
+
+    --Candidates
+        ---admit
+        
+    --Employees
+        ---create
+        ---update
+        ---delete						
+        ---ban						
+						
+    --Companies						
+        ---create
+        ---update
+        ---delete	
+        ---ban
+        ---admit		
+
+    --Courses		
+        ---create
+        ---update
+        ---delete
+        ---suggest_courses
+
+    --Tasks						
+        ---create
+        ---update
+        ---delete	
+
+    --Jobs						
+        ---create
+        ---update
+        ---delete
+
+    --Job Requests
+        ---admit
+        ---nominate_candidate
+
+						
+
+
+-attendance
+    --id
+    --emp_id
+    --check_in                 
+	--check_out
+    --create_at			
+						
+
+ 						
+						
+-emp_tasks
+    --start_at
+    --finish_at
+    --due_date ==> insert automaitcally
+    --
+
+
+
+
+
+
+TRUNCATE TABLE `company_emp`;
+#TRUNCATE TABLE `emp_courses` ;
+TRUNCATE TABLE `company_subscriptions` ;
+TRUNCATE TABLE `emp_subscriptions` ;
+TRUNCATE TABLE `insurance` ;
+TRUNCATE TABLE `job_requests` ;
+TRUNCATE TABLE `job_request_candidates` ;
+TRUNCATE TABLE `log_counts` ;
+TRUNCATE TABLE `messages` ;
+TRUNCATE TABLE `notifications` ;
+TRUNCATE TABLE `resigns` ;
+TRUNCATE TABLE `task_attachments` ;
+
+
+SELECT * FROM `emp_tasks` WHERE  DATE_FORMAT(updated_at, '%Y-%m-%d') = '2023-08-20' 
+
+
+1078293998
+$2y$10$r/hovist3OW7iRRfsDEH.u8vIlsJdnMiDx8RW.vXwjJG7OB/BVG1i
+
+
+1010233574
+$2y$10$s4RDf1QGrvl/GEjOrt1ElesEEX2grWz9NaCYOUhYKbIrhQZ7UAJvK
+
+
+emp
+1114294935
+$2y$10$jHCL3WGhVvCxFUvAOqYthOKSKU7pkvNJwqu8MGqwAR49XJV.Egium
+
+
+
+123456
+$2y$10$5o3Euy/LoN3R2gtH/8XGue5WUI3Eo7tGgoMIydGptscPyyZeZbc46

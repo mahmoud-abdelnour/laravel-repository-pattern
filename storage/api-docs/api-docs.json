@@ -1,0 +1,4528 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "L5 OpenApi",
+        "description": "L5 Swagger OpenApi description",
+        "contact": {
+            "email": "darius@matulionis.lt"
+        },
+        "license": {
+            "name": "Apache 2.0",
+            "url": "https://www.apache.org/licenses/LICENSE-2.0.html"
+        },
+        "version": "1.0.0",
+        "x-logo": {
+            "url": "https://via.placeholder.com/190x90.png?text=L5-Swagger"
+        }
+    },
+    "servers": [
+        {
+            "url": "https://app.agm-sa.net/api"
+        }
+    ],
+    "paths": {
+        "provider/companies": {
+            "get": {
+                "tags": [
+                    "Provider Companies"
+                ],
+                "summary": "Get all companies ",
+                "operationId": "d9533a34609a19e1d7a721a1870fd34f",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {},
+                                "examples": {
+                                    "result": {
+                                        "summary": "An result object.",
+                                        "value": {
+                                            "data": [],
+                                            "success": true
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/provider/companies/{id}": {
+            "get": {
+                "tags": [
+                    "Provider Companies"
+                ],
+                "summary": "Get company ",
+                "operationId": "0183af0d166e9361b24aacd53b6af3bd",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {},
+                                "examples": {
+                                    "result": {
+                                        "summary": "An result object.",
+                                        "value": {
+                                            "company": [],
+                                            "success": true
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "Provider Companies"
+                ],
+                "summary": "Delete company ",
+                "operationId": "7153d3f0117930ed808cb094153de9fa",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {},
+                                "examples": {
+                                    "result": {
+                                        "summary": "An result object.",
+                                        "value": {
+                                            "response": "deleted_successfully",
+                                            "success": true
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/provider/companies/{id}/payments": {
+            "get": {
+                "tags": [
+                    "Provider Companies"
+                ],
+                "summary": "Get company payment",
+                "operationId": "3c6650ca4e8cdec864694528004617d9",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Parameter with mutliple examples",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        },
+                        "examples": {
+                            "int": {
+                                "summary": "An int value.",
+                                "value": "1"
+                            }
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {},
+                                "examples": {
+                                    "result": {
+                                        "summary": "An result object.",
+                                        "value": {
+                                            "job": [],
+                                            "success": true
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/provider/companies/{id}/admit": {
+            "put": {
+                "tags": [
+                    "Provider Companies"
+                ],
+                "summary": "Admit Company ",
+                "operationId": "c238dc216d5f53de1ef39b1413fb92a1",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {},
+                                "examples": {
+                                    "result": {
+                                        "summary": "An result object.",
+                                        "value": {
+                                            "job": [],
+                                            "success": true
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/provider/companies/{id}/ban": {
+            "put": {
+                "tags": [
+                    "Provider Companies"
+                ],
+                "summary": "Ban company ",
+                "operationId": "54bd701208b544e20a2cb4c9d8378dfb",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {},
+                                "examples": {
+                                    "result": {
+                                        "summary": "An result object.",
+                                        "value": {
+                                            "job": [],
+                                            "success": true
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/provider/companies/payments/{id}": {
+            "put": {
+                "tags": [
+                    "Provider Companies"
+                ],
+                "summary": "Approve company payment",
+                "operationId": "b04d32450e21a7585b454157b0c1e564",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "payment id",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        },
+                        "examples": {
+                            "int": {
+                                "summary": "An int value.",
+                                "value": "1"
+                            }
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "status": {
+                                        "type": "string"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {},
+                                "examples": {
+                                    "result": {
+                                        "summary": "An result object.",
+                                        "value": {
+                                            "job": [],
+                                            "success": true
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "provider/pending_companies": {
+            "get": {
+                "tags": [
+                    "Provider Companies"
+                ],
+                "summary": "Get all pending companies ",
+                "operationId": "58d3eab5dc1c0e3c36cb4cdc1b5bdf08",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {},
+                                "examples": {
+                                    "result": {
+                                        "summary": "An result object.",
+                                        "value": {
+                                            "data": [],
+                                            "success": true
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "provider/banned_companies": {
+            "get": {
+                "tags": [
+                    "Provider Companies"
+                ],
+                "summary": "Get all banned companies ",
+                "operationId": "c1bc39c91cfa2cf7ffc0c35022af0d7d",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {},
+                                "examples": {
+                                    "result": {
+                                        "summary": "An result object.",
+                                        "value": {
+                                            "data": [],
+                                            "success": true
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "provider/courses": {
+            "get": {
+                "tags": [
+                    "ProviderCourses"
+                ],
+                "summary": "Get all courses ",
+                "operationId": "50075b2eccb21a6a01a1a5508e285fec",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {},
+                                "examples": {
+                                    "result": {
+                                        "summary": "An result object.",
+                                        "value": {
+                                            "permissions": [],
+                                            "success": true
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/provider/courses": {
+            "post": {
+                "tags": [
+                    "ProviderCourses"
+                ],
+                "summary": "Create new course ",
+                "operationId": "a984b833eaabfade02c05c36e409f88d",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "course_title": {
+                                        "type": "string"
+                                    },
+                                    "course_description": {
+                                        "type": "string"
+                                    },
+                                    "period": {
+                                        "type": "string"
+                                    },
+                                    "price": {
+                                        "type": "string"
+                                    },
+                                    "course_contract": {
+                                        "type": "string"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {},
+                                "examples": {
+                                    "result": {
+                                        "summary": "An result object.",
+                                        "value": {
+                                            "response": "created_successfully",
+                                            "success": true
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/provider/courses/{id}": {
+            "get": {
+                "tags": [
+                    "ProviderCourses"
+                ],
+                "summary": "Get Course ",
+                "operationId": "d212c75e58c2100fc9bdd153252e3443",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {},
+                                "examples": {
+                                    "result": {
+                                        "summary": "An result object.",
+                                        "value": {
+                                            "task": [],
+                                            "success": true
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "put": {
+                "tags": [
+                    "ProviderCourses"
+                ],
+                "summary": "Update course ",
+                "operationId": "96f4d9007bd4f87a5fda3822ea38483c",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "course_title": {
+                                        "type": "string"
+                                    },
+                                    "course_description": {
+                                        "type": "string"
+                                    },
+                                    "period": {
+                                        "type": "string"
+                                    },
+                                    "price": {
+                                        "type": "string"
+                                    },
+                                    "course_contract": {
+                                        "type": "string"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {},
+                                "examples": {
+                                    "result": {
+                                        "summary": "An result object.",
+                                        "value": {
+                                            "task": [],
+                                            "success": true
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/provider/course/{id}": {
+            "delete": {
+                "tags": [
+                    "ProviderCourses"
+                ],
+                "summary": "Delete course ",
+                "operationId": "a02b23437feda6a5aef6f21566f40af6",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {},
+                                "examples": {
+                                    "result": {
+                                        "summary": "An result object.",
+                                        "value": {
+                                            "response": "deleted_successfully",
+                                            "success": true
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "provider/employees": {
+            "get": {
+                "tags": [
+                    "Provider Employees"
+                ],
+                "summary": "Get all employees ",
+                "operationId": "d88199c3bb978acd9cd941877176acb4",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {},
+                                "examples": {
+                                    "result": {
+                                        "summary": "An result object.",
+                                        "value": {
+                                            "data": [],
+                                            "success": true
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/provider/employees/{id}": {
+            "get": {
+                "tags": [
+                    "Provider Employees"
+                ],
+                "summary": "Get employee ",
+                "operationId": "f370d972e3194ccc56d35174226d841b",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {},
+                                "examples": {
+                                    "result": {
+                                        "summary": "An result object.",
+                                        "value": {
+                                            "job": [],
+                                            "success": true
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "Provider Employees"
+                ],
+                "summary": "Delete employee ",
+                "operationId": "33831c27af9b0082094ca93ebadef0dd",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {},
+                                "examples": {
+                                    "result": {
+                                        "summary": "An result object.",
+                                        "value": {
+                                            "response": "deleted_successfully",
+                                            "success": true
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/provider/employees/{id}/payments": {
+            "get": {
+                "tags": [
+                    "Provider Employees"
+                ],
+                "summary": "Get employee payment",
+                "operationId": "0e77c9b39dff8acc953f9b87c032ac8b",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Parameter with mutliple examples",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        },
+                        "examples": {
+                            "int": {
+                                "summary": "An int value.",
+                                "value": "1"
+                            }
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {},
+                                "examples": {
+                                    "result": {
+                                        "summary": "An result object.",
+                                        "value": {
+                                            "job": [],
+                                            "success": true
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/provider/employees/payments/{id}": {
+            "put": {
+                "tags": [
+                    "Provider Employees"
+                ],
+                "summary": "Approve employee payment",
+                "operationId": "bdf75e007e48192f193843678507402d",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "payment id",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        },
+                        "examples": {
+                            "int": {
+                                "summary": "An int value.",
+                                "value": "1"
+                            }
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "status": {
+                                        "type": "string"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {},
+                                "examples": {
+                                    "result": {
+                                        "summary": "An result object.",
+                                        "value": {
+                                            "job": [],
+                                            "success": true
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/provider/employees/{id}/admit": {
+            "put": {
+                "tags": [
+                    "Provider Employees"
+                ],
+                "summary": "Admit employee ",
+                "operationId": "d5fad36d10b2140ab5252fc22bb68fc3",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {},
+                                "examples": {
+                                    "result": {
+                                        "summary": "An result object.",
+                                        "value": {
+                                            "job": [],
+                                            "success": true
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/provider/employees/{id}/ban": {
+            "put": {
+                "tags": [
+                    "Provider Employees"
+                ],
+                "summary": "Ban employee ",
+                "operationId": "26e4194fdc4cf4221d6fb97578c96588",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {},
+                                "examples": {
+                                    "result": {
+                                        "summary": "An result object.",
+                                        "value": {
+                                            "job": [],
+                                            "success": true
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/provider/employees/{id}/suggestCourses": {
+            "put": {
+                "tags": [
+                    "Provider Employees"
+                ],
+                "summary": "Suggest Courses for employee ",
+                "operationId": "7744e96c2cb2e1017a8b9a9ccb0f861b",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "course_id": {
+                                        "type": "string"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {},
+                                "examples": {
+                                    "result": {
+                                        "summary": "An result object.",
+                                        "value": {
+                                            "response": [],
+                                            "success": true
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "provider/candidates": {
+            "get": {
+                "tags": [
+                    "Provider Employees"
+                ],
+                "summary": "Get all Candidates ",
+                "operationId": "d01dfd1610fd765ea42a20205f0a3919",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {},
+                                "examples": {
+                                    "result": {
+                                        "summary": "An result object.",
+                                        "value": {
+                                            "data": [],
+                                            "success": true
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "provider/pending_candidates": {
+            "get": {
+                "tags": [
+                    "Provider Employees"
+                ],
+                "summary": "Get all pending candidates ",
+                "operationId": "f7e49af00a76644d55cbff927027bb43",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {},
+                                "examples": {
+                                    "result": {
+                                        "summary": "An result object.",
+                                        "value": {
+                                            "data": [],
+                                            "success": true
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "provider/banned_employees": {
+            "get": {
+                "tags": [
+                    "Provider Employees"
+                ],
+                "summary": "Get all banned employees ",
+                "operationId": "ad552d6eae6829c2233d5e0c9be03dc7",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {},
+                                "examples": {
+                                    "result": {
+                                        "summary": "An result object.",
+                                        "value": {
+                                            "data": [],
+                                            "success": true
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "provider/banned_candidates": {
+            "get": {
+                "tags": [
+                    "Provider Employees"
+                ],
+                "summary": "Get all banned candidates ",
+                "operationId": "f9692e27c24d5e7037584702611f55fd",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {},
+                                "examples": {
+                                    "result": {
+                                        "summary": "An result object.",
+                                        "value": {
+                                            "data": [],
+                                            "success": true
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/provider/approve_resign/{id}": {
+            "put": {
+                "tags": [
+                    "Provider Employees"
+                ],
+                "summary": "Approve resign",
+                "operationId": "cac98d28693dd94cfa5c045ecf895729",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "resign id",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        },
+                        "examples": {
+                            "int": {
+                                "summary": "An int value.",
+                                "value": "1"
+                            }
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {},
+                                "examples": {
+                                    "result": {
+                                        "summary": "An result object.",
+                                        "value": {
+                                            "job": [],
+                                            "success": true
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "provider/resigns": {
+            "get": {
+                "tags": [
+                    "Provider Employees"
+                ],
+                "summary": "Get all resigns ",
+                "operationId": "ccc028cad248d4edabf9f34ff63ed13a",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {},
+                                "examples": {
+                                    "result": {
+                                        "summary": "An result object.",
+                                        "value": {
+                                            "data": [],
+                                            "success": true
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "provider/JobRequests": {
+            "get": {
+                "tags": [
+                    "Provider Job Requests"
+                ],
+                "summary": "Get all JobRequests ",
+                "operationId": "fe1a8cbcfff0c280d340f3bf8ea9ac3b",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {},
+                                "examples": {
+                                    "result": {
+                                        "summary": "An result object.",
+                                        "value": {
+                                            "data": [],
+                                            "success": true
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/provider/JobRequests/{id}": {
+            "get": {
+                "tags": [
+                    "Provider Job Requests"
+                ],
+                "summary": "Get message ",
+                "operationId": "cd5149eb10608f27f58ae7a4d19dd4bb",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {},
+                                "examples": {
+                                    "result": {
+                                        "summary": "An result object.",
+                                        "value": {
+                                            "JobRequest": [],
+                                            "success": true
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "Provider Job Requests"
+                ],
+                "summary": "Delete message ",
+                "operationId": "d5aa42c31bfe24dbd666c1b85924bae5",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {},
+                                "examples": {
+                                    "result": {
+                                        "summary": "An result object.",
+                                        "value": {
+                                            "response": "deleted_successfully",
+                                            "success": true
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/provider/JobRequests/{id}/nominate": {
+            "put": {
+                "tags": [
+                    "Provider Job Requests"
+                ],
+                "summary": "Nominate Employee for job request ",
+                "operationId": "c72fa9c817ec12973799bdfac3fb035e",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "emp_id": {
+                                        "type": "string"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {},
+                                "examples": {
+                                    "result": {
+                                        "summary": "An result object.",
+                                        "value": {
+                                            "task": [],
+                                            "success": true
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/provider/JobRequests/{id}/approve": {
+            "put": {
+                "tags": [
+                    "Provider Job Requests"
+                ],
+                "summary": "approve Job Requests  ",
+                "operationId": "225bbe4020f79e2248bf24cd9e065939",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Parameter with mutliple examples",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        },
+                        "examples": {
+                            "int": {
+                                "summary": "An int value.",
+                                "value": "1"
+                            }
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {},
+                                "examples": {
+                                    "result": {
+                                        "summary": "An result object.",
+                                        "value": {
+                                            "task": [],
+                                            "success": true
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/provider/JobRequests/search_nominants": {
+            "post": {
+                "tags": [
+                    "Provider Job Requests"
+                ],
+                "summary": "Search Nominants",
+                "operationId": "644668f4f3cb5bed9ccfc6d57cbda7c4",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "job_request_id": {
+                                        "type": "string"
+                                    },
+                                    "name": {
+                                        "type": "string"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {},
+                                "examples": {
+                                    "result": {
+                                        "summary": "An result object.",
+                                        "value": {
+                                            "response": "created_successfully",
+                                            "success": true
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/provider/JobRequests/{id}/jobNominants": {
+            "get": {
+                "tags": [
+                    "Provider Job Requests"
+                ],
+                "summary": "Job Nominants ",
+                "operationId": "393636c3cc152297a6dab39d06fa51b6",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {},
+                                "examples": {
+                                    "result": {
+                                        "summary": "An result object.",
+                                        "value": {
+                                            "JobRequest": [],
+                                            "success": true
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/provider/insurances/{id}/approve": {
+            "put": {
+                "tags": [
+                    "Provider Job Requests"
+                ],
+                "summary": "approve_insurance  ",
+                "operationId": "8e0fb4d1ca05831b9dfe90613b7cf83d",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "insurance id",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        },
+                        "examples": {
+                            "int": {
+                                "summary": "An int value.",
+                                "value": "1"
+                            }
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {},
+                                "examples": {
+                                    "result": {
+                                        "summary": "An result object.",
+                                        "value": {
+                                            "task": [],
+                                            "success": true
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "provider/jobs": {
+            "get": {
+                "tags": [
+                    "ProviderJobs"
+                ],
+                "summary": "Get all jobs ",
+                "operationId": "9ce094dfc245d20d962c4c84f25cc557",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {},
+                                "examples": {
+                                    "result": {
+                                        "summary": "An result object.",
+                                        "value": {
+                                            "data": [],
+                                            "success": true
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/provider/jobs": {
+            "post": {
+                "tags": [
+                    "ProviderJobs"
+                ],
+                "summary": "Create new job ",
+                "operationId": "dbb7daebfb656c7d777010b304c489b3",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "job_title": {
+                                        "type": "string"
+                                    },
+                                    "job_description": {
+                                        "type": "string"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {},
+                                "examples": {
+                                    "result": {
+                                        "summary": "An result object.",
+                                        "value": {
+                                            "response": "created_successfully",
+                                            "success": true
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/provider/jobs/{id}": {
+            "get": {
+                "tags": [
+                    "ProviderJobs"
+                ],
+                "summary": "Get Job ",
+                "operationId": "f6947b7845e8130cbeaed604135de3ec",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {},
+                                "examples": {
+                                    "result": {
+                                        "summary": "An result object.",
+                                        "value": {
+                                            "job": [],
+                                            "success": true
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "put": {
+                "tags": [
+                    "ProviderJobs"
+                ],
+                "summary": "Update job ",
+                "operationId": "46f7cf66302ace533d4b7833d56d243b",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "job_title": {
+                                        "type": "string"
+                                    },
+                                    "job_description": {
+                                        "type": "string"
+                                    },
+                                    "status": {
+                                        "type": "string"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {},
+                                "examples": {
+                                    "result": {
+                                        "summary": "An result object.",
+                                        "value": {
+                                            "task": [],
+                                            "success": true
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "ProviderJobs"
+                ],
+                "summary": "Delete job ",
+                "operationId": "8edafe482d4b2f85bea22295c52666dc",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {},
+                                "examples": {
+                                    "result": {
+                                        "summary": "An result object.",
+                                        "value": {
+                                            "response": "deleted_successfully",
+                                            "success": true
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/provider/jobs/assign_tasks": {
+            "post": {
+                "tags": [
+                    "ProviderJobs"
+                ],
+                "summary": "assign tasks to job ",
+                "operationId": "4cb9df371550cc46495685bf1a9340e2",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "tasks": {
+                                        "type": "string"
+                                    },
+                                    "job_id": {
+                                        "type": "string"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {},
+                                "examples": {
+                                    "result": {
+                                        "summary": "An result object.",
+                                        "value": {
+                                            "response": "created_successfully",
+                                            "success": true
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/provider/emp_payments": {
+            "get": {
+                "tags": [
+                    "Provider Payments"
+                ],
+                "summary": "Get Employee Payments ",
+                "operationId": "d91edcab0979860da9c924579d4b2023",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {},
+                                "examples": {
+                                    "result": {
+                                        "summary": "An result object.",
+                                        "value": {
+                                            "success": true,
+                                            "code": 200,
+                                            "payments": []
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/provider/company_payments": {
+            "get": {
+                "tags": [
+                    "Provider Payments"
+                ],
+                "summary": "Get Company Payments ",
+                "operationId": "e691e4c50c4e9684a10f97b246e2a566",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {},
+                                "examples": {
+                                    "result": {
+                                        "summary": "An result object.",
+                                        "value": {
+                                            "success": true,
+                                            "code": 200,
+                                            "payments": []
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "provider/tasks": {
+            "get": {
+                "tags": [
+                    "ProviderTasks"
+                ],
+                "summary": "Get all tasks ",
+                "operationId": "fc0ab99879ea2fee2bc856269e6dfcc9",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {},
+                                "examples": {
+                                    "result": {
+                                        "summary": "An result object.",
+                                        "value": {
+                                            "permissions": [],
+                                            "success": true
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/provider/tasks": {
+            "post": {
+                "tags": [
+                    "ProviderTasks"
+                ],
+                "summary": "Create new task ",
+                "operationId": "bdab6667e43ebfef68100429c0821ab6",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "task_title": {
+                                        "type": "string"
+                                    },
+                                    "task_description": {
+                                        "type": "string"
+                                    },
+                                    "task_period": {
+                                        "type": "string"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {},
+                                "examples": {
+                                    "result": {
+                                        "summary": "An result object.",
+                                        "value": {
+                                            "response": "created_successfully",
+                                            "success": true
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/provider/tasks/{id}": {
+            "get": {
+                "tags": [
+                    "ProviderTasks"
+                ],
+                "summary": "Get Task ",
+                "operationId": "0d0fa8096d32888456881160baa29d6d",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {},
+                                "examples": {
+                                    "result": {
+                                        "summary": "An result object.",
+                                        "value": {
+                                            "task": [],
+                                            "success": true
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "put": {
+                "tags": [
+                    "ProviderTasks"
+                ],
+                "summary": "Update Task ",
+                "operationId": "079332f322f07a922335498a955c0ae7",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "task_title": {
+                                        "type": "string"
+                                    },
+                                    "task_description": {
+                                        "type": "string"
+                                    },
+                                    "task_period": {
+                                        "type": "string"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {},
+                                "examples": {
+                                    "result": {
+                                        "summary": "An result object.",
+                                        "value": {
+                                            "task": [],
+                                            "success": true
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "ProviderTasks"
+                ],
+                "summary": "Delete task ",
+                "operationId": "0a1c21521dfe69930d66cb6651347f11",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {},
+                                "examples": {
+                                    "result": {
+                                        "summary": "An result object.",
+                                        "value": {
+                                            "response": "deleted_successfully",
+                                            "success": true
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/registerEmployee": {
+            "post": {
+                "tags": [
+                    "Register"
+                ],
+                "summary": "Register as Employee ",
+                "operationId": "95cccda78e2115178a1aaf0eff34a2b9",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "name_ar": {
+                                        "type": "string"
+                                    },
+                                    "name_en": {
+                                        "type": "string"
+                                    },
+                                    "user_name": {
+                                        "type": "string"
+                                    },
+                                    "password": {
+                                        "type": "string"
+                                    },
+                                    "password_confirmation": {
+                                        "type": "string"
+                                    },
+                                    "email": {
+                                        "type": "string"
+                                    },
+                                    "mobile": {
+                                        "type": "string"
+                                    },
+                                    "national_id": {
+                                        "type": "string"
+                                    },
+                                    "qualification": {
+                                        "type": "string"
+                                    },
+                                    "gender": {
+                                        "description": "[male, female]",
+                                        "type": "string"
+                                    },
+                                    "martial_status": {
+                                        "description": "[married,single,devorced,widow]",
+                                        "type": "string"
+                                    },
+                                    "bank_name": {
+                                        "type": "string"
+                                    },
+                                    "bank_ipan": {
+                                        "type": "string"
+                                    },
+                                    "job_id": {
+                                        "type": "string"
+                                    },
+                                    "qualification_file": {
+                                        "type": "string"
+                                    },
+                                    "national_address_file": {
+                                        "type": "string"
+                                    },
+                                    "bank_ipan_file": {
+                                        "type": "string"
+                                    },
+                                    "national_id_file": {
+                                        "type": "string"
+                                    },
+                                    "secret_approvement_file": {
+                                        "type": "string"
+                                    },
+                                    "registered_in_remote_work_platform": {
+                                        "type": "boolean"
+                                    },
+                                    "user_type": {
+                                        "description": "[employee,company]",
+                                        "type": "string"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {},
+                                "examples": {
+                                    "result": {
+                                        "summary": "An result object.",
+                                        "value": {
+                                            "response": "created_successfully",
+                                            "employee": [],
+                                            "success": true
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/registerCompany": {
+            "post": {
+                "tags": [
+                    "Register"
+                ],
+                "summary": "Register as Company ",
+                "operationId": "4077868b62e78cd76e268d676936f1d1",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "name_ar": {
+                                        "type": "string"
+                                    },
+                                    "name_en": {
+                                        "type": "string"
+                                    },
+                                    "user_name": {
+                                        "type": "string"
+                                    },
+                                    "password": {
+                                        "type": "string"
+                                    },
+                                    "password_confirmation": {
+                                        "type": "string"
+                                    },
+                                    "email": {
+                                        "type": "string"
+                                    },
+                                    "mobile": {
+                                        "type": "string"
+                                    },
+                                    "commercial_record": {
+                                        "type": "string"
+                                    },
+                                    "national_address_building_no": {
+                                        "type": "string"
+                                    },
+                                    "national_address_postal": {
+                                        "type": "string"
+                                    },
+                                    "national_address_extra": {
+                                        "type": "string"
+                                    },
+                                    "labor_office_company_id": {
+                                        "type": "string"
+                                    },
+                                    "insurance_office_company_id": {
+                                        "type": "string"
+                                    },
+                                    "commercial_record_file": {
+                                        "type": "string"
+                                    },
+                                    "tax_registration_certificate_file": {
+                                        "type": "string"
+                                    },
+                                    "national_address_file": {
+                                        "type": "string"
+                                    },
+                                    "user_type": {
+                                        "description": "[employee,company]",
+                                        "type": "string"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {},
+                                "examples": {
+                                    "result": {
+                                        "summary": "An result object.",
+                                        "value": {
+                                            "response": "created_successfully",
+                                            "success": true
+                                        }
+                                    },
+                                    "bool": {
+                                        "summary": "A boolean value.",
+                                        "value": false
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/login": {
+            "post": {
+                "tags": [
+                    "Login"
+                ],
+                "summary": "Login",
+                "operationId": "67d6d0fdd54fba132e1b6f55ca254183",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "national_id": {
+                                        "type": "string"
+                                    },
+                                    "password": {
+                                        "type": "string"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {},
+                                "examples": {
+                                    "result": {
+                                        "summary": "An result object.",
+                                        "value": {
+                                            "result": "success",
+                                            "data": []
+                                        }
+                                    },
+                                    "bool": {
+                                        "summary": "A boolean value.",
+                                        "value": false
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/provider/profile": {
+            "get": {
+                "tags": [
+                    "Provider"
+                ],
+                "summary": "Get Provider Profile ",
+                "operationId": "1b238ad518a572c7631c0cbc2d85b970",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {},
+                                "examples": {
+                                    "result": {
+                                        "summary": "An result object.",
+                                        "value": {
+                                            "success": true,
+                                            "code": 200,
+                                            "user": []
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "provider/updateProfile": {
+            "post": {
+                "tags": [
+                    "Misc"
+                ],
+                "summary": "",
+                "operationId": "f516620a7e4da08994d9b959852280f7",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "name": {
+                                        "type": "string"
+                                    },
+                                    "email": {
+                                        "type": "string"
+                                    },
+                                    "password": {
+                                        "type": "string"
+                                    },
+                                    "mobile": {
+                                        "type": "string"
+                                    },
+                                    "national_id": {
+                                        "type": "string"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {},
+                                "examples": {
+                                    "result": {
+                                        "summary": "An result object.",
+                                        "value": {
+                                            "response": "created_successfully",
+                                            "success": true,
+                                            "code": 200,
+                                            "subscription": {
+                                                "subscription_type": "membership",
+                                                "is_approved": 0,
+                                                "payment_file": "files\\/63ee16d9e2e79_1676547801_ektsab_wireframe-(1).pdf",
+                                                "payment_amount": "500",
+                                                "year": "2023",
+                                                "month": "02",
+                                                "emp_id": 10,
+                                                "updated_at": "2023-02-16T11:43:21.000000Z",
+                                                "created_at": "2023-02-16T11:43:21.000000Z",
+                                                "id": 6
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/companies/profile": {
+            "get": {
+                "tags": [
+                    "Companies"
+                ],
+                "summary": "Get Company Profile ",
+                "operationId": "bdbd7bb520a89f33b9e37f005564dc8e",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {},
+                                "examples": {
+                                    "result": {
+                                        "summary": "An result object.",
+                                        "value": {
+                                            "success": true,
+                                            "code": 200,
+                                            "user": []
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "companies/updateProfile": {
+            "post": {
+                "tags": [
+                    "Companies"
+                ],
+                "summary": "Save company Profile data",
+                "operationId": "7fb7bb09f018d3fbf7ce1e58a9a5a67b",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "name_ar": {
+                                        "type": "string"
+                                    },
+                                    "name_en": {
+                                        "type": "string"
+                                    },
+                                    "email": {
+                                        "type": "string"
+                                    },
+                                    "password": {
+                                        "type": "string"
+                                    },
+                                    "mobile": {
+                                        "type": "string"
+                                    },
+                                    "commercial_record": {
+                                        "type": "string"
+                                    },
+                                    "national_address_building_no": {
+                                        "type": "string"
+                                    },
+                                    "national_address_postal": {
+                                        "type": "string"
+                                    },
+                                    "national_address_extra": {
+                                        "type": "string"
+                                    },
+                                    "labor_office_company_id": {
+                                        "type": "string"
+                                    },
+                                    "insurance_office_company_id": {
+                                        "type": "string"
+                                    },
+                                    "commercial_record_file": {
+                                        "type": "string"
+                                    },
+                                    "tax_registration_certificate_file": {
+                                        "type": "string"
+                                    },
+                                    "national_address_file": {
+                                        "type": "string"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {},
+                                "examples": {
+                                    "result": {
+                                        "summary": "An result object.",
+                                        "value": {
+                                            "response": "updated_successfully",
+                                            "success": true,
+                                            "code": 200,
+                                            "subscription": {
+                                                "subscription_type": "membership",
+                                                "is_approved": 0,
+                                                "payment_file": "files\\/63ee16d9e2e79_1676547801_ektsab_wireframe-(1).pdf",
+                                                "payment_amount": "500",
+                                                "year": "2023",
+                                                "month": "02",
+                                                "emp_id": 10,
+                                                "updated_at": "2023-02-16T11:43:21.000000Z",
+                                                "created_at": "2023-02-16T11:43:21.000000Z",
+                                                "id": 6
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "companies/emp_requests": {
+            "get": {
+                "tags": [
+                    "Companies"
+                ],
+                "summary": "List Emp Requests",
+                "operationId": "8118de6513caf0625c1f2a2b2715a544",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {},
+                                "examples": {
+                                    "result": {
+                                        "summary": "An result object.",
+                                        "value": {
+                                            "response": "",
+                                            "success": true,
+                                            "code": 200,
+                                            "data": []
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "Companies"
+                ],
+                "summary": "Request Employees ",
+                "operationId": "f41f658dec3838fa99c88256eaddb887",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "job_id": {
+                                        "required": true,
+                                        "type": "integer"
+                                    },
+                                    "count": {
+                                        "type": "integer"
+                                    },
+                                    "notes": {
+                                        "type": "string"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {},
+                                "examples": {
+                                    "result": {
+                                        "summary": "An result object.",
+                                        "value": {
+                                            "response": "created_successfully",
+                                            "success": true,
+                                            "code": 200,
+                                            "JobRequest": []
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "companies/emp_requests/{id}": {
+            "get": {
+                "tags": [
+                    "Companies"
+                ],
+                "summary": "Get Employee Request ",
+                "operationId": "56c9164ffe0463c1aae000a96e5d8ba7",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {},
+                                "examples": {
+                                    "result": {
+                                        "summary": "An result object.",
+                                        "value": {
+                                            "response": "",
+                                            "success": true,
+                                            "code": 200,
+                                            "JobRequest": []
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "put": {
+                "tags": [
+                    "Companies"
+                ],
+                "summary": "Update Emp Request",
+                "operationId": "b6aacce83b8cb74a0713161e9802e763",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "job_id": {
+                                        "required": true,
+                                        "type": "integer"
+                                    },
+                                    "count": {
+                                        "type": "integer"
+                                    },
+                                    "notes": {
+                                        "type": "string"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {},
+                                "examples": {
+                                    "result": {
+                                        "summary": "An result object.",
+                                        "value": {
+                                            "response": "updated_successfully",
+                                            "success": true,
+                                            "code": 200,
+                                            "JobRequest": []
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "Companies"
+                ],
+                "summary": "Delete emp request ",
+                "operationId": "a8ecfb63c69bb1bf18d0c521d8ff1385",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {},
+                                "examples": {
+                                    "result": {
+                                        "summary": "An result object.",
+                                        "value": {
+                                            "response": "deleted_successfully",
+                                            "success": true
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "companies/list_emp_request_nominations/{id}": {
+            "get": {
+                "tags": [
+                    "Companies"
+                ],
+                "summary": "List Emp Request Nomintaions",
+                "operationId": "4cf2ba058161059025985f117a20bdf2",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {},
+                                "examples": {
+                                    "result": {
+                                        "summary": "An result object.",
+                                        "value": {
+                                            "response": "",
+                                            "success": true,
+                                            "code": 200,
+                                            "data": []
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "companies/admit_emp_request_candidate/{id}": {
+            "put": {
+                "tags": [
+                    "Companies"
+                ],
+                "summary": "Admit Emp Request candidate",
+                "operationId": "28f26ee68a9b51e8b394a2158b7cdd25",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Parameter with mutliple examples",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        },
+                        "examples": {
+                            "int": {
+                                "summary": "An int value.",
+                                "value": "1"
+                            }
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "response": {
+                                        "description": "[accepted,rejected]",
+                                        "type": "string"
+                                    },
+                                    "rejection_reason": {
+                                        "type": "string"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {},
+                                "examples": {
+                                    "result": {
+                                        "summary": "An result object.",
+                                        "value": {
+                                            "response": "updated_successfully",
+                                            "success": true,
+                                            "code": 200,
+                                            "JobRequest": []
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/companies/attach_insurance_file": {
+            "post": {
+                "tags": [
+                    "Companies"
+                ],
+                "summary": "Attach Insurance File",
+                "operationId": "84b923eb146fd4454a8a66d6c6e388fd",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "job_request_id": {
+                                        "type": "string"
+                                    },
+                                    "company_file": {
+                                        "type": "string"
+                                    },
+                                    "emp_id": {
+                                        "type": "string"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {},
+                                "examples": {
+                                    "result": {
+                                        "summary": "An result object.",
+                                        "value": {
+                                            "success": true,
+                                            "code": 200,
+                                            "nomination": []
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/companies/list_employees": {
+            "get": {
+                "tags": [
+                    "Companies"
+                ],
+                "summary": "Get Company Employees",
+                "operationId": "276a3747902819172aafc821c68c9bd8",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {},
+                                "examples": {
+                                    "result": {
+                                        "summary": "An result object.",
+                                        "value": {
+                                            "success": true,
+                                            "code": 200,
+                                            "employees": []
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/companies/assign_emp_task": {
+            "post": {
+                "tags": [
+                    "Companies"
+                ],
+                "summary": "Assign Emp task",
+                "operationId": "b4e937bbd912cf4332ff80bf9eceb1d6",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "emp_id": {
+                                        "type": "string"
+                                    },
+                                    "task_id": {
+                                        "type": "string"
+                                    },
+                                    "due_date": {
+                                        "type": "string"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {},
+                                "examples": {
+                                    "result": {
+                                        "summary": "An result object.",
+                                        "value": {
+                                            "success": true,
+                                            "code": 200,
+                                            "task": []
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/companies/emp_tasks/{id}": {
+            "get": {
+                "tags": [
+                    "Companies"
+                ],
+                "summary": "Preview Employee Task ",
+                "operationId": "0a7faeee4c26231046904b6dcf151faf",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Parameter with mutliple examples",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        },
+                        "examples": {
+                            "int": {
+                                "summary": "An int value.",
+                                "value": "1"
+                            }
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {},
+                                "examples": {
+                                    "result": {
+                                        "summary": "An result object.",
+                                        "value": {
+                                            "success": true,
+                                            "code": 200,
+                                            "nomination": []
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "companies/emp_task/{id}": {
+            "put": {
+                "tags": [
+                    "Companies"
+                ],
+                "summary": "Update Emp Task",
+                "operationId": "b7b1cc896bef9543a627cb979472415e",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Parameter with mutliple examples",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        },
+                        "examples": {
+                            "int": {
+                                "summary": "An int value.",
+                                "value": "1"
+                            }
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "due_date": {
+                                        "type": "string"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {},
+                                "examples": {
+                                    "result": {
+                                        "summary": "An result object.",
+                                        "value": {
+                                            "response": "updated_successfully",
+                                            "success": true,
+                                            "code": 200,
+                                            "task": []
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "Companies"
+                ],
+                "summary": "Delete emp task ",
+                "operationId": "5c638304dcf3219ff03e83ac3ef8e3b5",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {},
+                                "examples": {
+                                    "result": {
+                                        "summary": "An result object.",
+                                        "value": {
+                                            "response": "deleted_successfully",
+                                            "success": true
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/companies/emp_task": {
+            "get": {
+                "tags": [
+                    "Companies"
+                ],
+                "summary": "List All Emp Tasks ",
+                "operationId": "420d42b9e77054f634e4cd74cb2ef3a2",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {},
+                                "examples": {
+                                    "result": {
+                                        "summary": "An result object.",
+                                        "value": {
+                                            "success": true,
+                                            "code": 200,
+                                            "data": []
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "companies/makePayment": {
+            "post": {
+                "tags": [
+                    "Companies"
+                ],
+                "summary": "Pay memberships subscriptions ",
+                "operationId": "7e11695929ad06ae6e791861b2fcf17e",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "payment_file": {
+                                        "type": "string"
+                                    },
+                                    "payment_amount": {
+                                        "type": "string"
+                                    },
+                                    "notes": {
+                                        "type": "string"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {},
+                                "examples": {
+                                    "result": {
+                                        "summary": "An result object.",
+                                        "value": {
+                                            "response": "created_successfully",
+                                            "success": true,
+                                            "code": 200,
+                                            "subscription": {
+                                                "is_approved": 0,
+                                                "payment_file": "files\\/63ee16d9e2e79_1676547801_ektsab_wireframe-(1).pdf",
+                                                "payment_amount": "500",
+                                                "year": "2023",
+                                                "month": "02",
+                                                "emp_id": 10,
+                                                "updated_at": "2023-02-16T11:43:21.000000Z",
+                                                "created_at": "2023-02-16T11:43:21.000000Z",
+                                                "id": 6
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/companies/payments": {
+            "get": {
+                "tags": [
+                    "Companies"
+                ],
+                "summary": "Get Company Payments",
+                "operationId": "e82b5f6bdda2d22e48840c5564a7dae2",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {},
+                                "examples": {
+                                    "result": {
+                                        "summary": "An result object.",
+                                        "value": {
+                                            "response": "",
+                                            "success": true,
+                                            "code": 200,
+                                            "data": []
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/employees/profile": {
+            "get": {
+                "tags": [
+                    "Employees"
+                ],
+                "summary": "Get Profile ",
+                "operationId": "a6e9c21c4b3b8ac6d4c6d79d572aea7e",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {},
+                                "examples": {
+                                    "result": {
+                                        "summary": "An result object.",
+                                        "value": {
+                                            "success": true,
+                                            "code": 200,
+                                            "user": []
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "employees/updateProfile": {
+            "post": {
+                "tags": [
+                    "Employees"
+                ],
+                "summary": "Save Employee Profile data",
+                "operationId": "4c0ee45781de0e7fc4dfd274391703e2",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "name_ar": {
+                                        "type": "string"
+                                    },
+                                    "name_en": {
+                                        "type": "string"
+                                    },
+                                    "email": {
+                                        "type": "string"
+                                    },
+                                    "password": {
+                                        "type": "string"
+                                    },
+                                    "mobile": {
+                                        "type": "string"
+                                    },
+                                    "national_id": {
+                                        "type": "string"
+                                    },
+                                    "qualification": {
+                                        "type": "string"
+                                    },
+                                    "martial_status": {
+                                        "type": "string"
+                                    },
+                                    "bank_name": {
+                                        "type": "string"
+                                    },
+                                    "bank_ipan": {
+                                        "type": "string"
+                                    },
+                                    "job_id": {
+                                        "type": "string"
+                                    },
+                                    "qualification_file": {
+                                        "type": "string"
+                                    },
+                                    "national_address_file": {
+                                        "type": "string"
+                                    },
+                                    "bank_ipan_file": {
+                                        "type": "string"
+                                    },
+                                    "national_id_file": {
+                                        "type": "string"
+                                    },
+                                    "secret_approvement_file": {
+                                        "type": "string"
+                                    },
+                                    "electronic_signature_file": {
+                                        "type": "string"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {},
+                                "examples": {
+                                    "result": {
+                                        "summary": "An result object.",
+                                        "value": {
+                                            "response": "created_successfully",
+                                            "success": true,
+                                            "code": 200,
+                                            "subscription": {
+                                                "subscription_type": "membership",
+                                                "is_approved": 0,
+                                                "payment_file": "files\\/63ee16d9e2e79_1676547801_ektsab_wireframe-(1).pdf",
+                                                "payment_amount": "500",
+                                                "year": "2023",
+                                                "month": "02",
+                                                "emp_id": 10,
+                                                "updated_at": "2023-02-16T11:43:21.000000Z",
+                                                "created_at": "2023-02-16T11:43:21.000000Z",
+                                                "id": 6
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "employees/makePayment": {
+            "post": {
+                "tags": [
+                    "Employees"
+                ],
+                "summary": "Pay memberships and monthly subscriptions ",
+                "operationId": "5210f3a2d70f5892ecbe0975192183ef",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "subscription_type": {
+                                        "description": "[membership,courses]",
+                                        "type": "string"
+                                    },
+                                    "payment_file": {
+                                        "type": "string"
+                                    },
+                                    "payment_amount": {
+                                        "type": "string"
+                                    },
+                                    "month": {
+                                        "type": "string"
+                                    },
+                                    "notes": {
+                                        "type": "string"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {},
+                                "examples": {
+                                    "result": {
+                                        "summary": "An result object.",
+                                        "value": {
+                                            "response": "created_successfully",
+                                            "success": true,
+                                            "code": 200,
+                                            "subscription": {
+                                                "subscription_type": "membership",
+                                                "is_approved": 0,
+                                                "payment_file": "files\\/63ee16d9e2e79_1676547801_ektsab_wireframe-(1).pdf",
+                                                "payment_amount": "500",
+                                                "year": "2023",
+                                                "month": "02",
+                                                "emp_id": 10,
+                                                "updated_at": "2023-02-16T11:43:21.000000Z",
+                                                "created_at": "2023-02-16T11:43:21.000000Z",
+                                                "id": 6
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/employees/payments": {
+            "get": {
+                "tags": [
+                    "Employees"
+                ],
+                "summary": "Get Employee Payments",
+                "operationId": "be329ccad6189d379c33b59d790117ea",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {},
+                                "examples": {
+                                    "result": {
+                                        "summary": "An result object.",
+                                        "value": {
+                                            "response": "created_successfully",
+                                            "success": true,
+                                            "code": 200,
+                                            "subscription": {
+                                                "subscription_type": "membership",
+                                                "is_approved": 0,
+                                                "payment_file": "files\\/63ee16d9e2e79_1676547801_ektsab_wireframe-(1).pdf",
+                                                "payment_amount": "500",
+                                                "year": "2023",
+                                                "month": "02",
+                                                "emp_id": 10,
+                                                "updated_at": "2023-02-16T11:43:21.000000Z",
+                                                "created_at": "2023-02-16T11:43:21.000000Z",
+                                                "id": 6
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "employees/payments/{id}": {
+            "post": {
+                "tags": [
+                    "Employees"
+                ],
+                "summary": "Update Pay memberships and monthly subscriptions ",
+                "operationId": "df5d5473cb1d3f7c2855542c69aac4f7",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "subscription_type": {
+                                        "description": "[membership,courses]",
+                                        "type": "string"
+                                    },
+                                    "payment_file": {
+                                        "type": "string"
+                                    },
+                                    "payment_amount": {
+                                        "type": "string"
+                                    },
+                                    "month": {
+                                        "type": "string"
+                                    },
+                                    "notes": {
+                                        "type": "string"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {},
+                                "examples": {
+                                    "result": {
+                                        "summary": "An result object.",
+                                        "value": {
+                                            "response": "created_successfully",
+                                            "success": true,
+                                            "code": 200,
+                                            "subscription": {
+                                                "subscription_type": "membership",
+                                                "is_approved": 0,
+                                                "payment_file": "files\\/63ee16d9e2e79_1676547801_ektsab_wireframe-(1).pdf",
+                                                "payment_amount": "500",
+                                                "year": "2023",
+                                                "month": "02",
+                                                "emp_id": 10,
+                                                "updated_at": "2023-02-16T11:43:21.000000Z",
+                                                "created_at": "2023-02-16T11:43:21.000000Z",
+                                                "id": 6
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "Employees"
+                ],
+                "summary": "Delete payment",
+                "operationId": "bdf8998b4300df2a7dcb7113707e76c6",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {},
+                                "examples": {
+                                    "result": {
+                                        "summary": "An result object.",
+                                        "value": {
+                                            "response": "deleted_successfully",
+                                            "success": true
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/employees/suggested_courses": {
+            "get": {
+                "tags": [
+                    "Employees"
+                ],
+                "summary": "Get Employee Suggested Courses",
+                "operationId": "ab71bc819e87d1c38c91250277a21866",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {},
+                                "examples": {
+                                    "result": {
+                                        "summary": "An result object.",
+                                        "value": {
+                                            "success": true,
+                                            "code": 200,
+                                            "suggestedCourses": []
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/employees/nominations": {
+            "get": {
+                "tags": [
+                    "Employees"
+                ],
+                "summary": "Get Employee Suggested Jobs",
+                "operationId": "5dca264cb4bb7c3ccfff2174b2bde436",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {},
+                                "examples": {
+                                    "result": {
+                                        "summary": "An result object.",
+                                        "value": {
+                                            "success": true,
+                                            "code": 200,
+                                            "employee": []
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/employees/preview_nomination/{id}": {
+            "get": {
+                "tags": [
+                    "Employees"
+                ],
+                "summary": "Preview Employee Suggested Job",
+                "operationId": "0e696e934415e7aec6d029b0c9b36d28",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Parameter with mutliple examples",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        },
+                        "examples": {
+                            "int": {
+                                "summary": "An int value.",
+                                "value": "1"
+                            }
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {},
+                                "examples": {
+                                    "result": {
+                                        "summary": "An result object.",
+                                        "value": {
+                                            "success": true,
+                                            "code": 200,
+                                            "nomination": []
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/employees/accept_nomination": {
+            "post": {
+                "tags": [
+                    "Employees"
+                ],
+                "summary": "Preview Employee Suggested Job",
+                "operationId": "072f87434b7db9da00c89729d31b4a6b",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "nomination_id": {
+                                        "type": "string"
+                                    },
+                                    "response": {
+                                        "type": "string"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {},
+                                "examples": {
+                                    "result": {
+                                        "summary": "An result object.",
+                                        "value": {
+                                            "success": true,
+                                            "code": 200,
+                                            "nomination": []
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/employees/tasks": {
+            "post": {
+                "tags": [
+                    "Employees"
+                ],
+                "summary": "Get Employee Tasks",
+                "operationId": "0228a839ed2050fd3dbd2b98f260f3eb",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {},
+                                "examples": {
+                                    "result": {
+                                        "summary": "An result object.",
+                                        "value": {
+                                            "success": true,
+                                            "code": 200,
+                                            "tasks": []
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/employees/view_course/{id}": {
+            "get": {
+                "tags": [
+                    "Employees"
+                ],
+                "summary": "Preview Employee Course",
+                "operationId": "b2fb2c6a65b31523d8a0e24f571c4032",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Parameter with mutliple examples",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        },
+                        "examples": {
+                            "int": {
+                                "summary": "An int value.",
+                                "value": "1"
+                            }
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {},
+                                "examples": {
+                                    "result": {
+                                        "summary": "An result object.",
+                                        "value": {
+                                            "success": true,
+                                            "code": 200,
+                                            "nomination": []
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/employees/accept_course_contract": {
+            "post": {
+                "tags": [
+                    "Employees"
+                ],
+                "summary": "Acccept Course Contract",
+                "operationId": "38ed3caee6dab185aba2933bea5f2bdd",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "course_id": {
+                                        "type": "string"
+                                    },
+                                    "contract_content": {
+                                        "type": "string"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {},
+                                "examples": {
+                                    "result": {
+                                        "summary": "An result object.",
+                                        "value": {
+                                            "success": true,
+                                            "code": 200,
+                                            "nomination": []
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/employees/attach_insurance_file": {
+            "post": {
+                "tags": [
+                    "Employees"
+                ],
+                "summary": "Attach Insurance File",
+                "operationId": "dc02dfb20816411b6338ee332a9aea82",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "job_request_id": {
+                                        "type": "string"
+                                    },
+                                    "emp_file": {
+                                        "type": "string"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {},
+                                "examples": {
+                                    "result": {
+                                        "summary": "An result object.",
+                                        "value": {
+                                            "success": true,
+                                            "code": 200,
+                                            "nomination": []
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/employees/view_task/{id}": {
+            "get": {
+                "tags": [
+                    "Employees"
+                ],
+                "summary": "Preview Employee Task ",
+                "operationId": "b51e2f2010647f88c1cfc6777a21026a",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Parameter with mutliple examples",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        },
+                        "examples": {
+                            "int": {
+                                "summary": "An int value.",
+                                "value": "1"
+                            }
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {},
+                                "examples": {
+                                    "result": {
+                                        "summary": "An result object.",
+                                        "value": {
+                                            "success": true,
+                                            "code": 200,
+                                            "nomination": []
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/employees/jobs": {
+            "get": {
+                "tags": [
+                    "Employees"
+                ],
+                "summary": "Get Jobs ",
+                "operationId": "9ef0f59c69a3a00f806665eafaf86e86",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {},
+                                "examples": {
+                                    "result": {
+                                        "summary": "An result object.",
+                                        "value": {
+                                            "success": true,
+                                            "code": 200,
+                                            "jobs": []
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/banks": {
+            "get": {
+                "tags": [
+                    "Misc"
+                ],
+                "summary": "Get Banks ",
+                "operationId": "e1a7a587290cd485704c6f1f298e0652",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {},
+                                "examples": {
+                                    "result": {
+                                        "summary": "An result object.",
+                                        "value": {
+                                            "success": true,
+                                            "code": 200,
+                                            "jobs": []
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/tasks": {
+            "get": {
+                "tags": [
+                    "Employees"
+                ],
+                "summary": "Get Task List ",
+                "operationId": "6658ff2a4b83cc7303b2d86bcd4734a4",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {},
+                                "examples": {
+                                    "result": {
+                                        "summary": "An result object.",
+                                        "value": {
+                                            "success": true,
+                                            "code": 200,
+                                            "jobs": []
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/employees/resign": {
+            "post": {
+                "tags": [
+                    "Employees"
+                ],
+                "summary": "Resign from current company",
+                "operationId": "304c76fd80ed5c2c9e3b00dcd8535929",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {},
+                                "examples": {
+                                    "result": {
+                                        "summary": "An result object.",
+                                        "value": {
+                                            "success": true,
+                                            "code": 200,
+                                            "nomination": []
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/employees/resigns": {
+            "get": {
+                "tags": [
+                    "Employees"
+                ],
+                "summary": "Get Employee Resigns",
+                "operationId": "8bd11b66d563c6c4af4911120f3c9485",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {},
+                                "examples": {
+                                    "result": {
+                                        "summary": "An result object.",
+                                        "value": {
+                                            "response": "created_successfully",
+                                            "success": true,
+                                            "code": 200,
+                                            "subscription": {
+                                                "subscription_type": "membership",
+                                                "is_approved": 0,
+                                                "payment_file": "files\\/63ee16d9e2e79_1676547801_ektsab_wireframe-(1).pdf",
+                                                "payment_amount": "500",
+                                                "year": "2023",
+                                                "month": "02",
+                                                "emp_id": 10,
+                                                "updated_at": "2023-02-16T11:43:21.000000Z",
+                                                "created_at": "2023-02-16T11:43:21.000000Z",
+                                                "id": 6
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/messages/inbox": {
+            "get": {
+                "tags": [
+                    "Messages"
+                ],
+                "summary": "Get inbox messages ",
+                "operationId": "51a7975ccd4401b3d06d6722f38d0252",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {},
+                                "examples": {
+                                    "result": {
+                                        "summary": "An result object.",
+                                        "value": {
+                                            "messages": [],
+                                            "success": true
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/messages/sent": {
+            "get": {
+                "tags": [
+                    "Messages"
+                ],
+                "summary": "Get sent messages ",
+                "operationId": "5fc3373e2f9ffd27d7922b24df35f673",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {},
+                                "examples": {
+                                    "result": {
+                                        "summary": "An result object.",
+                                        "value": {
+                                            "messages": [],
+                                            "success": true
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/messages": {
+            "post": {
+                "tags": [
+                    "Messages"
+                ],
+                "summary": "Send new message ",
+                "operationId": "8bee875215869c07f4f30b4a68359128",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "message_title": {
+                                        "type": "string"
+                                    },
+                                    "message_content": {
+                                        "type": "string"
+                                    },
+                                    "message_to": {
+                                        "type": "string"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {},
+                                "examples": {
+                                    "result": {
+                                        "summary": "An result object.",
+                                        "value": {
+                                            "response": "created_successfully",
+                                            "success": true
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/messages/{id}": {
+            "get": {
+                "tags": [
+                    "Messages"
+                ],
+                "summary": "Get message ",
+                "operationId": "284e04c469fea97f3926be2eb438af95",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {},
+                                "examples": {
+                                    "result": {
+                                        "summary": "An result object.",
+                                        "value": {
+                                            "message": [],
+                                            "success": true
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "Messages"
+                ],
+                "summary": "Delete message ",
+                "operationId": "fd1381d87b7f22382b85baf8b1125ee5",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {},
+                                "examples": {
+                                    "result": {
+                                        "summary": "An result object.",
+                                        "value": {
+                                            "response": "deleted_successfully",
+                                            "success": true
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "misc/emp_tasks/{id}": {
+            "get": {
+                "tags": [
+                    "Misc"
+                ],
+                "summary": "Get Tasks Related to emp job",
+                "operationId": "e363897aafb7633d8523580230bd43c5",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Parameter with mutliple examples",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        },
+                        "examples": {
+                            "int": {
+                                "summary": "An int value.",
+                                "value": "1"
+                            }
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {},
+                                "examples": {
+                                    "result": {
+                                        "summary": "An result object.",
+                                        "value": {
+                                            "response": "",
+                                            "success": true,
+                                            "code": 200,
+                                            "data": []
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "misc/notifications": {
+            "get": {
+                "tags": [
+                    "Misc"
+                ],
+                "summary": "Get current user notifications",
+                "operationId": "aff6e0399af824e58d4a70b0827671e2",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {},
+                                "examples": {
+                                    "result": {
+                                        "summary": "An result object.",
+                                        "value": {
+                                            "response": "",
+                                            "success": true,
+                                            "code": 200,
+                                            "data": []
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "misc/cards": {
+            "get": {
+                "tags": [
+                    "Misc"
+                ],
+                "summary": "Get dashboard cards",
+                "operationId": "a2995a6fc885b280c37a58e5b6c7868e",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {},
+                                "examples": {
+                                    "result": {
+                                        "summary": "An result object.",
+                                        "value": {
+                                            "response": "",
+                                            "success": true,
+                                            "code": 200,
+                                            "data": []
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/permissions": {
+            "get": {
+                "tags": [
+                    "Permissions"
+                ],
+                "summary": "Get all permissions ",
+                "operationId": "a451143babcc59cdd7d5af6edcffda59",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {},
+                                "examples": {
+                                    "result": {
+                                        "summary": "An result object.",
+                                        "value": {
+                                            "permissions": [],
+                                            "success": true
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "Permissions"
+                ],
+                "summary": "Create new permission ",
+                "operationId": "dab10f0a6d29979c0076c78069f5392c",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "name": {
+                                        "type": "string"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {},
+                                "examples": {
+                                    "result": {
+                                        "summary": "An result object.",
+                                        "value": {
+                                            "response": "created_successfully",
+                                            "success": true
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/permissions/{id}": {
+            "get": {
+                "tags": [
+                    "Permissions"
+                ],
+                "summary": "Get permission ",
+                "operationId": "1856892a93732a8be05bdfb2bad14753",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {},
+                                "examples": {
+                                    "result": {
+                                        "summary": "An result object.",
+                                        "value": {
+                                            "permission": [],
+                                            "success": true
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "put": {
+                "tags": [
+                    "Permissions"
+                ],
+                "summary": "Update permission ",
+                "operationId": "cf67cd7723a992b9301ed29066f885d6",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {},
+                                "examples": {
+                                    "result": {
+                                        "summary": "An result object.",
+                                        "value": {
+                                            "permission": [],
+                                            "success": true
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "Permissions"
+                ],
+                "summary": "Delete permission ",
+                "operationId": "733dd179b159104d2f9d1b6bd9f122de",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {},
+                                "examples": {
+                                    "result": {
+                                        "summary": "An result object.",
+                                        "value": {
+                                            "response": "deleted_successfully",
+                                            "success": true
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/PermissionByKey": {
+            "get": {
+                "tags": [
+                    "Permissions"
+                ],
+                "summary": "Get permission by key",
+                "operationId": "8c8cf5776dad95c99f82364f80ddf198",
+                "parameters": [
+                    {
+                        "name": "type",
+                        "in": "query",
+                        "description": "The type",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "id",
+                        "in": "query",
+                        "description": "The  ID ",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {},
+                                "examples": {
+                                    "result": {
+                                        "summary": "An result object.",
+                                        "value": {
+                                            "permission": [],
+                                            "success": true
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/roles": {
+            "get": {
+                "tags": [
+                    "Roles"
+                ],
+                "summary": "Get all roles ",
+                "operationId": "03111ce55f80abef39d25d4ee2ae9025",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {},
+                                "examples": {
+                                    "result": {
+                                        "summary": "An result object.",
+                                        "value": {
+                                            "roles": [],
+                                            "success": true
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "Roles"
+                ],
+                "summary": "Create new role ",
+                "operationId": "21877003db50e391ac409bbc819d34fa",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "name": {
+                                        "type": "string"
+                                    },
+                                    "permissions": {
+                                        "type": "array",
+                                        "items": {}
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {},
+                                "examples": {
+                                    "result": {
+                                        "summary": "An result object.",
+                                        "value": {
+                                            "response": "created_successfully",
+                                            "success": true
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/roles/{id}": {
+            "get": {
+                "tags": [
+                    "Roles"
+                ],
+                "summary": "Get role ",
+                "operationId": "ef93381f441f1f9afc48dc85e2dc3a02",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {},
+                                "examples": {
+                                    "result": {
+                                        "summary": "An result object.",
+                                        "value": {
+                                            "role": [],
+                                            "success": true
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "Roles"
+                ],
+                "summary": "Delete role ",
+                "operationId": "bffbcb7f9ed032476a623d727810a161",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {},
+                                "examples": {
+                                    "result": {
+                                        "summary": "An result object.",
+                                        "value": {
+                                            "response": "deleted_successfully",
+                                            "success": true
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/role/{id}": {
+            "put": {
+                "tags": [
+                    "Roles"
+                ],
+                "summary": "Update role ",
+                "operationId": "72f059de262ba5362a99a53cc1729e01",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {},
+                                "examples": {
+                                    "result": {
+                                        "summary": "An result object.",
+                                        "value": {
+                                            "role": [],
+                                            "response": "updated_successfully",
+                                            "success": true
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/users": {
+            "get": {
+                "tags": [
+                    "Users"
+                ],
+                "summary": "Get all users ",
+                "operationId": "3eaa377974f2c319f1ef58839336bfae",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {},
+                                "examples": {
+                                    "result": {
+                                        "summary": "An result object.",
+                                        "value": {
+                                            "users": [],
+                                            "success": true
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "Users"
+                ],
+                "summary": "Create new user ",
+                "operationId": "7fc9100196c5dcb6fa1707582dc94f3b",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "name": {
+                                        "type": "string"
+                                    },
+                                    "email": {
+                                        "type": "string"
+                                    },
+                                    "password": {
+                                        "type": "string"
+                                    },
+                                    "password_confirmation": {
+                                        "type": "string"
+                                    },
+                                    "mobile": {
+                                        "type": "string"
+                                    },
+                                    "national_id": {
+                                        "type": "string"
+                                    },
+                                    "permissions": {
+                                        "type": "array",
+                                        "items": {}
+                                    },
+                                    "roles": {
+                                        "type": "array",
+                                        "items": {}
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {},
+                                "examples": {
+                                    "result": {
+                                        "summary": "An result object.",
+                                        "value": {
+                                            "response": "created_successfully",
+                                            "user": [],
+                                            "success": true
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/users/{id}": {
+            "get": {
+                "tags": [
+                    "Users"
+                ],
+                "summary": "Get user ",
+                "operationId": "842fe314d6ccdd70cc4590a93db2c4bb",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {},
+                                "examples": {
+                                    "result": {
+                                        "summary": "An result object.",
+                                        "value": {
+                                            "permission": [],
+                                            "success": true
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "put": {
+                "tags": [
+                    "Users"
+                ],
+                "summary": "Update user",
+                "operationId": "0a126b7058c84eed97fdf7a06dbaf53c",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "name": {
+                                        "type": "string"
+                                    },
+                                    "email": {
+                                        "type": "string"
+                                    },
+                                    "password": {
+                                        "type": "string"
+                                    },
+                                    "password_confirmation": {
+                                        "type": "string"
+                                    },
+                                    "mobile": {
+                                        "type": "string"
+                                    },
+                                    "national_id": {
+                                        "type": "string"
+                                    },
+                                    "permissions": {
+                                        "type": "array",
+                                        "items": {}
+                                    },
+                                    "roles": {
+                                        "type": "array",
+                                        "items": {}
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {},
+                                "examples": {
+                                    "result": {
+                                        "summary": "An result object.",
+                                        "value": {
+                                            "user": [],
+                                            "success": true
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "Users"
+                ],
+                "summary": "Delete user ",
+                "operationId": "9ab561518403d23652bec46d8e8be556",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {},
+                                "examples": {
+                                    "result": {
+                                        "summary": "An result object.",
+                                        "value": {
+                                            "response": "deleted_successfully",
+                                            "success": true
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

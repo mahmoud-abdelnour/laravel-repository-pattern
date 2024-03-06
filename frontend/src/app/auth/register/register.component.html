@@ -1,0 +1,138 @@
+<nav>
+  <div class="container">
+    <div class="d-flex align-items-center justify-content-between">
+      <img src="" alt="" />
+      <div class="d-flex align-items-center justify-content-between">
+        <!-- <button class="lang" mat-button (click)="changeLang(defaultLang.value)">
+          {{ defaultLang.title }}
+        </button>
+        <span class="pipe"></span> -->
+        <button mat-button [routerLink]="['/auth/login', activatedRoute.snapshot.data['userType']]">
+          {{ "Login" | translate }}
+          <mat-icon> person </mat-icon>
+        </button>
+      </div>
+    </div>
+  </div>
+</nav>
+
+<section class="main">
+  <div class="container">
+    <mat-card>
+      <mat-card-header>
+        <div class="navs d-flex align-items-center">
+          <button
+            mat-button
+            (click)="tabs.activeTab = 1"
+            [class]="stepOneForm.status"
+            [ngClass]="{
+              active: tabs.activeTab === 1,
+              invalid: stepOneForm.touched && stepOneForm.invalid
+            }"
+          >
+            <div class="icon-cont">
+              <mat-icon svgIcon="account"></mat-icon>
+              <mat-icon class="done">done</mat-icon>
+            </div>
+            <h4>
+              {{ "AccountInfo" | translate }}
+            </h4>
+          </button>
+          <span class="line">
+            <span class="prog"></span>
+          </span>
+          <button
+            mat-button
+            (click)="tabs.activeTab = 2"
+            [class]="stepTwoForm.status"
+            [ngClass]="{
+              active: tabs.activeTab === 2,
+              invalid: stepTwoForm.touched && stepTwoForm.invalid
+            }"
+          >
+            <div class="icon-cont">
+              <mat-icon svgIcon="personal"></mat-icon>
+              <mat-icon class="done">done</mat-icon>
+            </div>
+            <h4>
+              {{ "PersonalInfo" | translate }}
+            </h4>
+          </button>
+          <span class="line">
+            <span class="prog"></span>
+          </span>
+          <button
+            mat-button
+            (click)="tabs.activeTab = 3"
+            [class.VALID]="filesform.valid"
+            [ngClass]="{
+              active: tabs.activeTab === 3,
+              invalid: filesform.touched && filesform.invalid
+            }"
+          >
+            <div class="icon-cont">
+              <mat-icon svgIcon="attach"></mat-icon>
+              <mat-icon class="done">done</mat-icon>
+            </div>
+            <h4>
+              {{ "Attachments" | translate }}
+            </h4>
+          </button>
+        </div>
+      </mat-card-header>
+      <mat-card-content>
+        <div [ngSwitch]="tabs.activeTab">
+          <div *ngSwitchCase="1">
+            <app-step-one
+              [tabs]="tabs"
+              [form]="stepOneForm"
+              [subscription]="subscription"
+            ></app-step-one>
+          </div>
+          <div *ngSwitchCase="2">
+            <app-step-two
+              [tabs]="tabs"
+              [form]="stepTwoForm"
+              [jobs]="jobs"
+              [banks]="banks"
+              [user_type]="stepOneForm.value.user_type"
+            ></app-step-two>
+          </div>
+          <div *ngSwitchCase="3">
+            <app-step-three
+              [tabs]="tabs"
+              [files]="filesform"
+              (submit)="submit()"
+              [registered_in_remote_work_platform]="
+              stepOneForm.value.user_type == UserType.employee ?  registered_in_remote_work_platform : null
+              "
+              [isSending]="isSending"
+              [progress]="progress"
+            ></app-step-three>
+          </div>
+          <div *ngSwitchDefault>
+            <app-step-one [tabs]="tabs"></app-step-one>
+          </div>
+        </div>
+      </mat-card-content>
+    </mat-card>
+  </div>
+</section>
+
+<footer>
+  <div class="container d-flex align-items-center justify-content-between">
+    <p>
+      {{ "FooterText" | translate }}
+    </p>
+    <div class="links">
+      <a href="/"> {{ "ContactUs" | translate }} </a>
+      <a href="/pages/privacy"> {{ "PrivacyPolicies" | translate }} </a>
+      <a href="/pages/terms">
+        {{ "TermsAndConditions" | translate }}
+      </a>
+    </div>
+
+
+    
+  </div>
+</footer>

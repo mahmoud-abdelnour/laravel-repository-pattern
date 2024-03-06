@@ -1,0 +1,13 @@
+<ng-container *ngIf="rowData.is_approved == themeService.settings.EMP_SUBSCRIPTION_APPROVE.enum.pending">
+    <button mat-button (click)="parent.takeAction(rowData, themeService.settings.EMP_SUBSCRIPTION_APPROVE.enum.approved)">
+        <mat-icon class="primary">
+            done
+        </mat-icon>
+    </button>
+    
+    <button mat-button (click)="parent.takeAction(rowData, themeService.settings.EMP_SUBSCRIPTION_APPROVE.enum.rejected)">
+        <mat-icon color="warn">
+            close
+        </mat-icon>
+    </button>
+</ng-container>

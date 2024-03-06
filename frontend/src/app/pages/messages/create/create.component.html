@@ -1,0 +1,63 @@
+<form [formGroup]="form" (ngSubmit)="save()">
+    <h2 mat-dialog-title>
+        إرسال رسالة
+    </h2>
+    <mat-dialog-content class="mat-typography">
+        <div class="row">
+            <ng-container *ngIf="userService.userData.user_type == UserType.provider">
+                <div class="col-md-12 form-group  mb-4" >
+                    <label for="user_type">
+                        المرسل اليه
+                    </label>
+                   <mat-radio-group color="primary" formControlName="user_type" (change)="changeFilter(input.value = null)">
+                        <mat-radio-button [value]="UserType.employee">
+                            موظف
+                        </mat-radio-button>
+                        <span class="ms-3 me-3"></span>
+                        <mat-radio-button [value]="UserType.company">
+                            شركة
+                        </mat-radio-button>
+                   </mat-radio-group>
+                </div>
+                <div class="form-group mb-4">
+                    <label for="search">
+                        ابحث
+                        عن
+                        {{ form.controls['user_type'].value == UserType.employee ? 'موظف' : 'شركة' }}
+                    </label>
+                    <input #input id="search" type="text" (keyup)="onSearch($event.target['value'])" [matAutocomplete]="auto">
+                </div>
+                <mat-autocomplete [displayWith]="displayFn" #auto="matAutocomplete" (optionSelected)="optionSelected($event.option.value)">
+                    <mat-option *ngFor="let item of items" [value]="item">
+                        {{item.name_ar}}
+                    </mat-option>
+                </mat-autocomplete>
+            </ng-container>
+            
+            <div class="col-md-12 form-group mb-4">
+                <label for="message_title">
+                    عنوان الرسالة
+                </label>
+               <input type="text" id="message_title" formControlName="message_title">
+            </div>
+    
+            <div class="col-md-12 form-group mb-4">
+                <label for="message_content">
+                    الرسالة
+                </label>
+              <textarea formControlName="message_content" id="message_content" cols="20" rows="3"></textarea>
+            </div>
+        </div>
+    </mat-dialog-content>
+    <mat-dialog-actions align="end" class="actions">
+
+        <button mat-button mat-dialog-close class="cancel" >
+            إغلاق
+        </button>
+
+        <button mat-button class="save" cdkFocusInitial [disabled]="isSaving">
+            إرسال
+        </button>
+
+    </mat-dialog-actions>
+</form>

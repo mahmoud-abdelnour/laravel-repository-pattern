@@ -1,0 +1,52 @@
+<form [formGroup]="form" (ngSubmit)="save()">
+    <h2 mat-dialog-title>
+      ترشيح موظفين
+    </h2>
+    <mat-dialog-content class="mat-typography">
+        <!-- <ng-select #select (search)="OnSearch($event)" (blur)="select.close()"  >
+            <ng-option *ngFor="let employee of employees" [value]="employee.id">
+                {{employee.name_ar}}
+            </ng-option>
+        </ng-select> -->
+
+        <div class="form-group">
+            <label for="search">ابحث عن مرشح</label>
+            <input #input id="search" type="text" (keyup)="OnSearch($event)" [matAutocomplete]="auto">
+        </div>
+        <mat-autocomplete [displayWith]="displayFn" #auto="matAutocomplete" (optionSelected)="optionSelected($event.option.value)">
+            <mat-option *ngFor="let employee of employees" [value]="employee">
+                {{employee.name_ar}}
+            </mat-option>
+        </mat-autocomplete>
+
+
+        <mat-list>
+            <h3 mat-subheader>
+                المرشحون
+            </h3>
+            <ng-container *ngFor="let item of activeItems | keyvalue">
+                <mat-list-item >
+                    <div matListItemTitle style="flex:1">
+                        <h4>{{item.value['name_ar']}}</h4>
+                        <!-- <span matListItemLine>dsdsds</span> -->
+                    </div>
+                  <button mat-button matListItemMeta (click)="deleteItem(item.value)" *ngIf="itemsLength > 1">
+                    <mat-icon color="warn">delete</mat-icon>
+                  </button>
+                </mat-list-item>
+                <mat-divider></mat-divider>
+            </ng-container>
+
+        </mat-list>
+
+        
+    </mat-dialog-content>
+    <mat-dialog-actions align="end" class="actions">
+        <button type="button" mat-button mat-dialog-close class="cancel">
+            {{ 'Back' | translate }}
+        </button>
+        <button [disabled]="isSaving" mat-button cdkFocusInitial class="save" *ngIf="!form.disabled" >
+           حفظ
+        </button>
+    </mat-dialog-actions>
+</form>

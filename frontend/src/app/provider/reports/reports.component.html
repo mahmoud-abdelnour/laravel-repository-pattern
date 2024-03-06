@@ -1,0 +1,289 @@
+
+
+<h2 class="page_title">
+    التقارير - لوحة التحكم 
+</h2>
+<div style="margin-top:60px">
+
+    <form [formGroup]="form" (ngSubmit)="filter()">
+        <div class="row">
+           <!--  <div class="col-md-4 form-group mb-4">
+                <label for="job_description">
+                الشركة 
+                </label>
+                <ng-select    formControlName="company"  appendTo="body">
+                    <ng-option *ngFor="let company of filter_data?.companies" [value]="company.id">
+                        {{ company.name_ar }}
+                    </ng-option>
+                </ng-select>
+            </div>  
+
+            <div class="col-md-4 form-group mb-4">
+                <label for="job_description">
+                الموظف 
+                </label>
+                <ng-select    formControlName="company"  appendTo="body">
+                    <ng-option *ngFor="let employee of filter_data?.employees" [value]="employee.id">
+                        {{ employee.name_ar }}
+                    </ng-option>
+                </ng-select>
+            </div>   -->
+
+
+
+         <div class="col-md-6 form-group mb-4">
+                <label for="job_description">
+                الفترة 
+                </label>
+                <ng-select  formControlName="interval"  appendTo="body">
+                    <ng-option [value]="'month'">خلال شهر</ng-option>
+                    <ng-option [value]="'year'">خلال سنة</ng-option>
+                </ng-select>
+            </div>   
+
+            <div class="col-md-6 form-group mb-4">
+                <label for="job_description">
+                الشهر 
+                </label>
+                <ng-select  formControlName="month"  appendTo="body">
+                    <ng-option *ngFor="let m of [01,02,03,04,05,06,07,08,09,10,11,12]" [value]="m">{{m}}</ng-option>
+                </ng-select>
+            </div> 
+
+            <div class="col-md-6 form-group mb-4">
+                <label for="job_description">
+                السنة 
+                </label>
+                <ng-select  formControlName="year"  appendTo="body">
+                    <ng-option *ngFor="let y of [2023]" [value]="y">{{y}}</ng-option>
+                </ng-select>
+            </div>  
+
+            <div class="col-md-6 mb-3 form-group">
+                <label for="date_from">
+                  من تاريخ
+                </label>
+                <div class="date-input-cont">
+                    <input matInput [matDatepicker]="startDatepicker" formControlName="date_from" id="date_from">
+                    <mat-datepicker-toggle matIconSuffix [for]="startDatepicker"></mat-datepicker-toggle>
+                    <mat-datepicker #startDatepicker></mat-datepicker>
+                </div>
+            </div>
+
+            <div class="col-md-6 mb-3 form-group">
+                <label for="date_to">
+                  الى تاريخ
+                </label>
+                <div class="date-input-cont">
+                    <input matInput [matDatepicker]="startDatepicker2" formControlName="date_to" id="date_to">
+                    <mat-datepicker-toggle matIconSuffix [for]="startDatepicker2"></mat-datepicker-toggle>
+                    <mat-datepicker #startDatepicker2></mat-datepicker>
+                </div>
+            </div>
+             
+        </div>
+        <button mat-raised-button type="submit" class="save" [disabled]="isSending">
+           فرز
+        </button>
+    </form>
+
+</div>
+
+
+
+<mat-card class="mt-5">
+    <mat-card-content>
+        <div class="row">
+            <ng-container  >
+
+                <div class="col-md-3" *ngIf="show('employee')">
+                    <div class="d-card">
+                        <div class="icon-cont ">
+                            <mat-icon>
+                                auto_stories
+                            </mat-icon>
+                        </div>
+                        <h3>
+                            {{filters?.employees_count}}
+                        </h3>
+                        <p>
+                             الموظفين
+                        </p>
+                    </div>
+                </div>
+
+                 <div class="col-md-3"  *ngIf="show('candidate')">
+                    <div class="d-card">
+                        <div class="icon-cont">
+                            <mat-icon>
+                                apartment
+                            </mat-icon>
+                        </div>
+                        <h3>
+                            {{filters?.candidates_count}}
+                        </h3>
+                        <p>
+                           المرشحين 
+                        </p>
+                    </div>
+                </div>
+
+                <div class="col-md-3   "  *ngIf="show('companies')">
+                    <div class="d-card">
+                        <div class="icon-cont">
+                            <mat-icon>
+                                apartment
+                            </mat-icon>
+                        </div>
+                        <h3>
+                            {{filters?.companies_count}}
+                        </h3>
+                        <p>
+                           الشركات
+                        </p>
+                    </div>
+                </div>
+
+                <div class="col-md-3   "  *ngIf="show('jobs')">
+                    <div class="d-card">
+                        <div class="icon-cont">
+                            <mat-icon>
+                                apartment
+                            </mat-icon>
+                        </div>
+                        <h3>
+                            {{filters?.jobs_count}}
+                        </h3>
+                        <p>
+                            الوظائف 
+                        </p>
+                    </div>
+                </div>
+
+
+                <div class="col-md-3  "  *ngIf="show('courses')">
+                    <div class="d-card">
+                        <div class="icon-cont">
+                            <mat-icon>
+                                person_pin
+                            </mat-icon>
+                        </div>
+                        <h3>
+                            {{filters?.courses_count}}
+                        </h3>
+                        <p>
+                            الدورات التدريبية
+                        </p>
+                    </div>
+                </div>
+
+
+                <div class="col-md-3 " *ngIf="show('resigns')">
+                    <div class="d-card">
+                        <div class="icon-cont">
+                            <mat-icon>
+                                card_travel
+                            </mat-icon>
+                        </div>
+                        <h3>
+                            {{filters?.resigns_count}}
+                        </h3>
+                        <p>
+                            طلبات انهاء التعاقد
+                        </p>
+                    </div>
+                </div>
+
+ 
+
+            </ng-container>
+        </div>  
+    </mat-card-content>
+</mat-card>
+
+
+
+
+
+<div class="row">
+    <div class="col-md-6 form-group mb-4">
+        <div style="margin-top: 80px;">
+            <h3>معدل التوظيف</h3>
+            <div  echarts [options]="options_1" [merge]="options_1" class="demo-chart"></div>
+        </div>
+    </div>
+
+
+    <div class="col-md-6 form-group mb-4">
+        <div style="margin-top: 80px;">
+            <h3>معدل المهام</h3>
+            <div  echarts [options]="options_2" [merge]="options_2" class="demo-chart"></div>
+        </div>
+    </div>
+
+    <div class="col-md-6 form-group mb-4">
+        <div style="margin-top: 80px;">
+            <h3>معدل تسجيل الشركات</h3>
+            <div  echarts [options]="options_8" [merge]="options_8" class="demo-chart"></div>
+        </div>
+    </div>
+
+    <div class="col-md-6 form-group mb-4">
+        <div style="margin-top: 80px;">
+            <h3>معدل تسجيل المرشحين</h3>
+            <div  echarts [options]="options_9" [merge]="options_9" class="demo-chart"></div>
+        </div>
+    </div>
+</div>
+
+
+<div class="row">
+
+    <div class="col-md-4 form-group mb-4">
+        <div style="margin-top: 80px;">
+            <h3>الوظائف الأكثر ترشيحا </h3>
+            <div echarts [options]="options_3" [merge]="options_3" class="demo-chart" style="height:440px"></div>
+        </div>
+    </div>
+
+    <div class="col-md-4 form-group mb-4">
+        <div style="margin-top: 80px;">
+            <h3> الموظفين </h3>
+            <div echarts [options]="options_10" [merge]="options_10" class="demo-chart" style="height:440px"></div>
+        </div>
+    </div>
+
+    
+    <div class="col-md-4 form-group mb-4">
+        <div style="margin-top: 80px;">
+            <h3> المرشحين </h3>
+            <div echarts [options]="options_4" [merge]="options_4" class="demo-chart" style="height:440px"></div>
+        </div>
+    </div>
+
+
+    <div class="col-md-4 form-group mb-4">
+        <div style="margin-top: 80px;">
+            <h3> الشركات الأكثر توظيفا </h3>
+            <div echarts [options]="options_5" [merge]="options_5" class="demo-chart" style="height:440px"></div>
+        </div>
+    </div>
+
+    
+
+    <div class="col-md-4 form-group mb-4">
+        <div style="margin-top: 80px;">
+            <h3> الموظفون الأكثر اسنادا للمهام</h3>
+            <div echarts [options]="options_6" [merge]="options_6" class="demo-chart" style="height:440px"></div>
+        </div>
+    </div>
+    
+
+    <div class="col-md-4 form-group mb-4">
+        <div style="margin-top: 80px;">
+            <h3> الموظفون الأكثر  ترشيحا للدورات</h3>
+            <div echarts [options]="options_7" [merge]="options_7" class="demo-chart" style="height:440px"></div>
+        </div>
+    </div>
+
+</div>

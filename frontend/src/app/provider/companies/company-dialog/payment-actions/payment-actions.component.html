@@ -1,0 +1,15 @@
+<ng-container *appPerm="'admit_company'">
+    <ng-container *ngIf="rowData.is_approved == themeService.settings.COMPANY_SUBSCRIPTION_APPROVE.enum.pending">
+        <button mat-button (click)="parent.takeAction(rowData, themeService.settings.COMPANY_SUBSCRIPTION_APPROVE.enum.approved)">
+            <mat-icon class="primary">
+                done
+            </mat-icon>
+        </button>
+        
+        <button mat-button (click)="parent.takeAction(rowData, themeService.settings.COMPANY_SUBSCRIPTION_APPROVE.enum.rejected)">
+            <mat-icon color="warn">
+                close
+            </mat-icon>
+        </button>
+    </ng-container>
+</ng-container>

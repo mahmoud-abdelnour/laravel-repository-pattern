@@ -1,0 +1,84 @@
+<section class="card-cont">
+    <h2>
+       الإعدادات
+    </h2>
+    <mat-card>
+<form [formGroup]="form" (ngSubmit)="save()">
+      
+        <div class="col-md-12 mb-4 form-group" >
+            <label for="">
+                تعيين المهام
+            </label>
+            <mat-radio-group color="primary" class="d-flex" formControlName="task_assign_method"  [value]="settings?.task_assign_method">
+                <mat-radio-button  class="me-4" value="automatic">
+                    أوتوماتيك
+                </mat-radio-button>
+                <mat-radio-button value="manual" >
+                    يدوي
+                </mat-radio-button>
+            </mat-radio-group>
+        </div>
+
+
+        <div class="col-md-6 mb-4 form-group" >
+            <label for="">
+                عدد ساعات العمل
+            </label>
+            <mat-radio-group color="primary" class="d-flex" (change)="changeType($event)" formControlName="task_period_method"  [value]="settings?.task_period_method">
+                <mat-radio-button  class="me-4" value="automatic">
+                    توليد تلقائي
+                </mat-radio-button>
+                <mat-radio-button value="manual" >
+                    محددة
+                </mat-radio-button>
+            </mat-radio-group>
+          
+        </div>
+
+       
+
+        <div class="col-md-6 mb-4 form-group" *ngIf="task_period_method == 'manual' ">
+            <input validate-onblur type="number" [placeholder]=" 'ادخل عدد ساعات العمل' " formControlName="task_period" [value]="settings?.task_period">
+        </div>
+
+        <div class="col-md-12 mb-4 form-group" >
+            <label>
+                تفعيل ارسال التقارير ل منصة العمل عن بعد
+            <ng-select formControlName="send_telework_report" >
+                <ng-option  [value]="'on'">تفعيل </ng-option>
+                <ng-option  [value]="'off'">ايقاف</ng-option>
+            </ng-select>
+        </label>
+
+        </div>
+
+        <hr>
+            <br>
+            <h2>
+              الصفحات
+            </h2>
+                <mat-tab-group mat-align-tabs="start">
+                    <mat-tab label="الموافقة والاقرار">
+                        <textarea  formControlName="conditions_page" rows="7" matInput ></textarea>
+
+                    </mat-tab>
+
+                    <mat-tab label="سياسية الخصوصية">
+                        <textarea  formControlName="privacy_page" rows="7"></textarea>
+                    </mat-tab>
+
+                    <mat-tab label="الشروط والاحكام">
+                        <textarea  formControlName="terms_page" rows="7"></textarea>
+                    </mat-tab>
+                </mat-tab-group>
+
+
+            <br><br>
+        <button [disabled]="isSaving" mat-button  color="primary" class="save">
+            حفظ
+        </button>
+
+</form>
+
+    </mat-card>
+</section>

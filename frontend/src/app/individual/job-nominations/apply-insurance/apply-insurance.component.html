@@ -1,0 +1,30 @@
+<form [formGroup]="attachForm" (ngSubmit)="saveFile()">
+    <h2 matDialogTitle>
+        شهادة التأمينات
+    </h2>
+    <mat-dialog-content>
+        <div class="mb-4 file-item">
+            <div>
+                <h3>
+                    ملف التأمينات
+                    *
+                </h3>
+                <app-file-input [control]="attachForm.controls['emp_file']"></app-file-input>
+            </div>
+        </div>
+    </mat-dialog-content>
+    <mat-dialog-actions align="end" class="actions">
+        <button mat-button matDialogClose type="button" (click)="attachForm.reset()">
+            {{ 'Back' | translate }}
+        </button>
+        <ng-container *ngIf="!attachForm.controls['emp_file'].disabled">
+            <span style="width: 40px;"></span>
+            <div class="d-flex align-items-center ">
+                <mat-spinner *ngIf="isSaving" diameter="36" strokeWidth="3"></mat-spinner>
+                <button mat-button type="submit" class="primary" [disabled]="isSaving">
+                    {{ isSaving ? (progress + '%') : ('Save' | translate) }}
+                </button>
+            </div>
+        </ng-container>
+    </mat-dialog-actions>
+</form>

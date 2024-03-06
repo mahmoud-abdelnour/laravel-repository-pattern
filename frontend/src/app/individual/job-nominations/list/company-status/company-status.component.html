@@ -1,0 +1,5 @@
+<mat-chip-list *ngIf="value">
+    <mat-chip [class]="statusEnum[value]">
+        {{ statusEnum[value] | translate }}
+    </mat-chip>
+</mat-chip-list>

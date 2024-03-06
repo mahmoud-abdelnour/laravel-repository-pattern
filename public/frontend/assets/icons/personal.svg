@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="23.8" height="23.727" viewBox="0 0 23.8 23.727">
+  <g id="login-" transform="translate(-6.997 -7.1)">
+    <g id="Group_20615" data-name="Group 20615" transform="translate(7.397 7.5)">
+      <path id="Path_69350" data-name="Path 69350" d="M7.5,22.858V8.884A1.384,1.384,0,0,1,8.884,7.5H29.043a1.384,1.384,0,0,1,1.384,1.384V29.043a1.384,1.384,0,0,1-1.384,1.384H8.884A1.384,1.384,0,0,1,7.5,29.043v-4.57" transform="translate(-7.427 -7.5)" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" stroke-width="0.8"/>
+      <line id="Line_23" data-name="Line 23" x2="23" transform="translate(0 4.157)" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" stroke-width="0.8"/>
+      <circle id="Ellipse_84" data-name="Ellipse 84" cx="1" cy="1" r="1" transform="translate(1 1.157)" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" stroke-width="0.8"/>
+      <circle id="Ellipse_85" data-name="Ellipse 85" cx="1" cy="1" r="1" transform="translate(4 1.157)" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" stroke-width="0.8"/>
+      <circle id="Ellipse_86" data-name="Ellipse 86" cx="1" cy="1" r="1" transform="translate(7 1.157)" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" stroke-width="0.8"/>
+    </g>
+    <g id="Group_20619" data-name="Group 20619" transform="translate(10.277 14.186)">
+      <g id="Group_20618" data-name="Group 20618" transform="translate(0)">
+        <g id="Group_20616" data-name="Group 20616" transform="translate(9.999)">
+          <path id="Path_69351" data-name="Path 69351" d="M288.082,154.887H285.4a.323.323,0,0,1-.323-.323v-1.8a.323.323,0,0,1,.323-.323h6.67a.323.323,0,0,1,.323.323v1.8a.323.323,0,0,1-.323.323H289.7" transform="translate(-285.079 -152.437)" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" stroke-width="0.8"/>
+          <path id="Path_69352" data-name="Path 69352" d="M292.072,243.891H285.4a.323.323,0,0,1-.323-.323v-1.8a.323.323,0,0,1,.323-.323h6.67a.323.323,0,0,1,.323.323v1.8A.323.323,0,0,1,292.072,243.891Z" transform="translate(-285.079 -237.335)" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" stroke-width="0.8"/>
+        </g>
+        <g id="Group_20617" data-name="Group 20617">
+          <ellipse id="Ellipse_87" data-name="Ellipse 87" cx="4.12" cy="4.106" rx="4.12" ry="4.106" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" stroke-width="0.8"/>
+          <path id="Path_69353" data-name="Path 69353" d="M97.09,258.661a2.8,2.8,0,0,1,1.753-2.331" transform="translate(-95.763 -251.537)" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" stroke-width="0.8"/>
+          <path id="Path_69354" data-name="Path 69354" d="M180.19,256.33a2.8,2.8,0,0,1,1.753,2.33" transform="translate(-175.03 -251.537)" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" stroke-width="0.8"/>
+          <path id="Path_69355" data-name="Path 69355" d="M126.24,192.109h0a1.519,1.519,0,0,1-1.519-1.519v-.5a1.519,1.519,0,0,1,1.519-1.519h0a1.519,1.519,0,0,1,1.519,1.519v.5A1.519,1.519,0,0,1,126.24,192.109Z" transform="translate(-122.12 -186.904)" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" stroke-width="0.8"/>
+        </g>
+        <line id="Line_24" data-name="Line 24" x2="7.316" transform="translate(9.999 8.212)" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" stroke-width="0.8"/>
+      </g>
+      <line id="Line_25" data-name="Line 25" x2="16.804" transform="translate(0.255 11.571)" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" stroke-width="0.8"/>
+      <line id="Line_26" data-name="Line 26" x2="14.036" transform="translate(0.255 13.647)" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" stroke-width="0.8"/>
+    </g>
+  </g>
+</svg>

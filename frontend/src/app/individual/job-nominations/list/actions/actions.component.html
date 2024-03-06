@@ -1,0 +1,9 @@
+<button mat-button (click)="parent.openDialog(rowData, parent.dialog)">
+    <mat-icon class="eye">visibility</mat-icon>
+</button>
+
+<button *ngIf="showAttach" mat-button (click)="parent.openDialog(rowData, parent.dialog2)">
+    <mat-icon color="primary">
+        file_present
+    </mat-icon>
+</button>

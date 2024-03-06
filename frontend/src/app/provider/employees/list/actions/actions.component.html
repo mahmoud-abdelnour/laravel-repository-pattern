@@ -1,0 +1,41 @@
+
+<button mat-button (click)="parent.openEmployeeDialog(rowData)">
+    <mat-icon color="primary">
+        visibility
+    </mat-icon>
+</button>
+
+<button mat-button (click)="parent.takeAction('Admit', rowData)" *ngIf="rowData.status !== themeService.settings.EMPLOYEE_STATUS.enum.active">
+    <mat-icon color="primary">
+        verified
+    </mat-icon>
+</button>
+
+<button mat-button (click)="parent.openEmployeeDialog(rowData, 2)">
+    <mat-icon class="payments">
+        payments
+    </mat-icon>
+</button>
+
+
+<button mat-button (click)="parent.suggestCourses(rowData)" *appPerm="'suggest_course'">
+    <mat-icon color="primary">
+        auto_stories
+    </mat-icon>
+</button>
+
+<ng-container *appPerm="'ban_employee'">
+    <button mat-button (click)="parent.takeAction('Ban', rowData)" *ngIf="rowData.status !== themeService.settings.EMPLOYEE_STATUS.enum.banned">
+        <mat-icon class="ban" svgIcon="account_circle_off"> </mat-icon>
+    </button>
+</ng-container>
+
+
+
+<ng-container *appPerm="'delete_employee'">
+    <button mat-button (click)="parent.popDelete(rowData)">
+        <mat-icon color="warn">
+            delete
+        </mat-icon>
+    </button>
+</ng-container>

@@ -1,0 +1,111 @@
+<h2 mat-dialog-title>
+    بيانات المهمة
+</h2>
+<mat-dialog-content class="mat-typography">
+    <div class="row">
+       <div class="col-md-4">
+            <h4>
+                اسم المهمة
+            </h4>
+            <p>
+               {{ data.task.task_title }}
+            </p>
+        </div>
+        <div class="col-md-4">
+            <h4>
+                مدة المهمة
+            </h4>
+            <p>
+                {{ data.task.task_period }}
+            </p>
+        </div>
+        <div class="col-md-4">
+            <h4>
+                الشركة
+            </h4>
+            <p>
+                {{ data.company.name_ar }}
+            </p>
+        </div>
+
+        <div class="col-md-4">
+            <h4>
+                تاريخ الاسناد
+            </h4>
+            <p>
+                {{ data.created_at | date:'yyyy/MM/dd hh:mm a' }}
+            </p>
+        </div>
+        <div class="col-md-4">
+            <h4>
+                تاريخ الاستحقاق
+            </h4>
+            <p>
+                {{ data.due_date | date:'yyyy/MM/dd hh:mm a' }}
+            </p>
+        </div>
+
+        <div class="col-md-12">
+            <h4>
+                تفاصيل المهمة
+            </h4>
+            <p>
+                {{ data.task.task_description }}
+            </p>
+        </div>
+
+
+        <div class="col-md-12">
+            <form [formGroup]="form">
+                <h4 class="bold mt-2">المرفقات</h4>
+                <div class="mb-4 file-item ">
+                    <div *ngFor="let item of files.controls | keyvalue; let i = index; " class="mb-4">
+                      <!--   <h4>
+                            {{i+1}} - {{ 'Attachment' | translate }} 
+                        </h4> -->
+                        <app-file-input  [control]="$any(item.value)" (deleteEvent)="deleteAttachment(item)"></app-file-input>
+                    </div>
+                </div>
+
+                <button mat-button class="addAttachBtn mr-2" color="success"  (click)="addAttach()" >
+                  اضافة مرفق
+                </button>
+
+                <button mat-button class="saveAttachBtn mr-2" color="success"  (click)="add_task_attachments(data.id)" >
+                   حفظ المرفقات
+                </button>
+
+                <div class="col-md-12">
+                    <h4 class="bold mt-5">مرفقات المهمة</h4>
+                    <div class="mb-4 file-item ">
+                        <div *ngFor="let item of company_files.controls | keyvalue; let i = index; " class="mb-4">
+                            <app-file-input  [control]="$any(item.value)" (deleteEvent)="deleteAttachment(item)"></app-file-input>
+                        </div>
+                    </div>
+                </div>
+
+            </form>
+        </div>
+
+      
+
+
+    </div>
+</mat-dialog-content>
+<mat-dialog-actions align="end" class="actions">
+   
+   
+    <button mat-button [disabled]="isSaving" (click)="process_task('start_task')"  color="success" class="start_task" *ngIf="data.started_at == null && data.managable">
+        بدء المهمة
+    </button>
+
+    <button mat-button [disabled]="isSaving"  (click)="process_task('finish_task')"  color="success" class="finish_task" *ngIf="data.finished_at == null && data.started_at != null && data.managable">
+        انهاء المهمة
+    </button>
+
+
+
+    <button mat-button mat-dialog-close class="cancel" cdkFocusInitial>
+        إغلاق
+    </button>
+</mat-dialog-actions>

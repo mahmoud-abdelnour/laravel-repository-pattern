@@ -1,0 +1,45 @@
+<form [formGroup]="form" (ngSubmit)="save()">
+    <h2 mat-dialog-title >
+        طلب انهاء تعاقد
+    </h2>
+ 
+    
+    <mat-dialog-content class="mat-typography">
+        <div class="row">
+           
+            <div class="col-md-6 mb-4 form-group">
+                <label for="amount">
+                    {{ 'الوظيفة الحالية ' | translate }} 
+                </label>
+                
+                <div class="form-control">{{userService?.userData?.entity?.job?.job_title}}</div>
+            </div>
+
+            <div class="col-md-6 mb-4 form-group">
+                <label for="amount">
+                    {{ ' الشركة ' | translate }} 
+                </label>
+                
+                <div class="form-control">{{userService?.userData?.entity?.company?.name_ar}}</div>
+            </div>
+          
+           
+            <div class="col-md-12 mb-4 form-group">
+                <label for="notes">
+                    {{ 'Notes' | translate }} 
+                </label>
+               <textarea name="notes" id="notes" cols="15" formControlName="notes" [placeholder]=" 'Notes' | translate "></textarea>
+            </div>
+
+
+        </div>        
+    </mat-dialog-content>
+    <mat-dialog-actions align="end" class="actions">
+        <button type="button" mat-button mat-dialog-close class="cancel">
+            رجوع
+        </button>
+        <button  [disabled]="isSaving" mat-button cdkFocusInitial class="save">
+         طلب انهاء تعاقد
+        </button>
+    </mat-dialog-actions>
+</form>

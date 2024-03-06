@@ -1,0 +1,10 @@
+<app-table-status [value]="value.value || 'pending'" [statusEnum]="value.enum"></app-table-status>
+<a *ngIf="value.insurance; else noValue" mat-button download [href]="value.insurance">
+    ملف التأمينات
+</a>
+
+<ng-template #noValue>
+    <p class="m-0">
+        لم يتم إضافة ملف التأمينات
+    </p>
+</ng-template>

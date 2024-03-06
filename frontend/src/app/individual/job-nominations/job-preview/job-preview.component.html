@@ -1,0 +1,55 @@
+<h2 mat-dialog-title>
+    بيانات الوظيفة
+</h2>
+<mat-dialog-content class="mat-typography">
+    <div class="row">
+        <div class="col-md-4 mb-4">
+            <label for="">
+                عنوان الوظيفة
+            </label>
+            <p>
+                {{data.job.job_title}}
+            </p>
+        </div>
+        <div class="col-md-4 mb-4">
+            <label for="">
+                اسم الشركة
+            </label>
+            <p>
+                {{data.company.name_ar}}
+            </p>
+        </div>
+        <div class="col-md-4 mb-4">
+            <label for="">
+                تاريخ الترشيح
+            </label>
+            <p>
+                {{data.job.created_at | date:'yyyy/MM/dd'}}
+            </p>
+        </div>
+        <div class="col-md-12 mb-4">
+            <label for="">
+                التفاصيل
+            </label>
+            <p>
+                {{data.job.job_description}}
+            </p>
+        </div>
+       
+    </div>        
+</mat-dialog-content>
+<mat-dialog-actions align="end" class="actions">
+    <button type="button" mat-button mat-dialog-close >
+        {{ 'Back' | translate }}
+    </button>
+
+    <ng-container *ngIf="data.pivot.emp_response_status == null || data.pivot.emp_response_status == themeService.settings?.EMPLOYEE_REPONSE_STATUS?.enum?.pending">
+        <button [disabled]="isSaving" type="button" mat-button  class="cancel" (click)="takeAction(themeService.settings?.EMPLOYEE_REPONSE_STATUS?.enum?.rejected)">
+            رفض العرض
+        </button>
+        <button [disabled]="isSaving" mat-button cdkFocusInitial class="save" (click)="takeAction(themeService.settings?.EMPLOYEE_REPONSE_STATUS?.enum?.accepted)">
+            قبول العرض
+        </button>
+    </ng-container>
+    
+</mat-dialog-actions>

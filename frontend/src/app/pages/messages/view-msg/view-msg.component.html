@@ -1,0 +1,61 @@
+<h2 mat-dialog-title>
+    تفاصيل الرسالة
+</h2>
+<mat-dialog-content class="mat-typography">
+    <div class="row">
+       <div class="col-md-6">
+            <div *ngIf=" view_type == 'inbox' ">
+                <h4>
+                    المرسل
+                </h4>
+                <p *ngIf=" data.sender.user_type == 'provider' else normal ">
+                    مدير
+                </p>
+                <ng-template  #normal >
+                    <p>
+                        {{ data?.sender.name }}
+                    </p>
+                </ng-template>
+
+                
+            </div>
+
+            <div *ngIf=" view_type == 'sent' ">
+                <h4>
+                    الى
+                </h4>
+                <p *ngIf=" data.to_type == 'provider' else normal ">
+                    مدير
+                </p>
+                <ng-template  #normal >
+                    <p>
+                        {{ data?.receiver.name }}
+                    </p>
+                </ng-template>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <h4>
+                عنوان الرسالة
+            </h4>
+            <p>
+                {{ data?.message_title }}
+            </p>
+        </div>
+        
+
+        <div class="col-md-12">
+            <h4>
+                الرسالة
+            </h4>
+            <p>
+                {{ data?.message_content }}
+            </p>
+        </div>
+    </div>
+</mat-dialog-content>
+<mat-dialog-actions align="end" class="actions">
+    <button mat-button mat-dialog-close class="cancel" cdkFocusInitial>
+        إغلاق
+    </button>
+</mat-dialog-actions>

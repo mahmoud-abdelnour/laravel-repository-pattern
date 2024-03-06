@@ -1,0 +1,14 @@
+<section class="card-cont">
+    <h2>
+        المهام
+    </h2>
+    <mat-card>
+        <mat-card-content>
+            <app-table #table [settings]="settings" [apiFunc]="apiFunc"></app-table>
+        </mat-card-content>
+    </mat-card>
+</section>
+
+<ng-template #dialog let-ref="dialogRef" let-data >
+    <app-create [ref]="ref" [data]="data.data" [table]="table"></app-create>
+</ng-template>

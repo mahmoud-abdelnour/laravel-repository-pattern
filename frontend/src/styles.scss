@@ -1,0 +1,56 @@
+/* You can add global styles to this file, and also import other style files */
+@use '@angular/material' as mat;
+@import "./themes/theme.scss";
+@import "../node_modules/@ng-select/ng-select/themes/default.theme.css";
+
+@font-face {
+    font-family: 'Jannat';
+    src: url('./assets/fonts/Yanson-Bold.ttf');
+    font-weight: bold;
+    font-style: bold;
+}
+
+@font-face {
+    font-family: 'Jannat';
+    src: url('./assets/fonts/Yanson-Regular.ttf');
+    font-weight: normal;
+    font-style: normal;
+}
+* {
+    box-sizing: border-box;
+}
+
+$custom-typography: mat.define-typography-config(
+  $font-family: "Jannat"
+);
+@include mat.core($custom-typography);
+
+html, body {
+    height: 100%;
+    background-color: var(--light-blue);
+}
+body {
+    margin: 0;
+    font-family: "Jannat", Roboto, "Helvetica Neue", sans-serif;
+}
+
+.row {
+    margin-left: 0;
+    margin-right: 0;
+}
+
+
+.anchor{
+    cursor: pointer;
+}
+
+
+mat-dialog-container{
+ /*    max-width: 50%; */
+    margin: auto;
+  }
+  @media (max-width: 500px){
+    mat-dialog-container{
+      max-width: 80vw;
+    }
+  }

@@ -1,0 +1,56 @@
+<form [formGroup]="form" (ngSubmit)="save()">
+    <h2 mat-dialog-title>
+        {{ mode | translate }}
+        {{ 'Task' | translate }}
+    </h2>
+    <mat-dialog-content class="mat-typography">
+        <div class="row">
+            <div class="col-md-12 form-group mb-4">
+                <label for="task_title">
+                    اسم المهمة
+                </label>
+                <input id="task_title" type="text" formControlName="task_title">
+            </div>
+
+            <div class="col-md-12 form-group mb-4">
+                <label for="task_period">
+                    مدة المهمة 
+                    <span>(بالساعات)</span>
+                </label>
+                <input id="task_period" type="number" formControlName="task_period">
+            </div>
+
+            <div class="col-md-12 form-group">
+                <label for="task_description">
+                    وصف المهمة
+                </label>
+                <textarea name="task_description" formControlName="task_description"></textarea>
+            </div>  
+            
+            <div class="col-md-12">
+                  
+                <h4 class="bold mt-5">المرفقات</h4>
+                <div class="mb-4 file-item ">
+                    <div *ngFor="let item of files.controls | keyvalue; let i = index; " class="mb-4">
+                        <h4>
+                            {{i+1}} - {{ 'Attachment' | translate }} 
+                        </h4>
+                        <app-file-input  [control]="$any(item.value)" (deleteEvent)="deleteAttachment(item)"></app-file-input>
+                    </div>
+                </div>
+
+                <a mat-button class="addAttachBtn mr-2" color="success"  (click)="addAttach()" >
+                  اضافة مرفق
+                </a>
+            </div> 
+        </div>
+    </mat-dialog-content>
+    <mat-dialog-actions align="end" class="actions">
+        <button type="button" mat-button mat-dialog-close class="cancel">
+            {{ 'Back' | translate }}
+        </button>
+        <button [disabled]="isSaving" mat-button cdkFocusInitial class="save" *ngIf="!form.disabled" >
+           حفظ
+        </button>
+    </mat-dialog-actions>
+</form>

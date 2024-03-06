@@ -1,0 +1,21 @@
+<section class="card-cont">
+    <h2>
+        الرسائل
+    </h2>
+    <mat-card>
+        <mat-card-header>
+            <div class="d-flex align-items-center justify-content-between">
+                <div></div>
+                <button class="add-btn" mat-raised-button (click)="openDialog()">
+                    إرسال رسالة
+                </button>
+            </div>
+        </mat-card-header>
+        <mat-card-content>
+            <app-table [settings]="settings"></app-table>
+        </mat-card-content>
+    </mat-card>
+</section>
+<ng-template #dialog let-ref="dialogRef" let-data>
+    <app-create [ref]="ref" [data]="data.data" [mode]="data.mode"></app-create>
+</ng-template>

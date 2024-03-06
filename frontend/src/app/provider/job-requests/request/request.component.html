@@ -1,0 +1,106 @@
+<ng-container *ngIf="jobRequest">
+    <section class="card-cont">
+        <mat-card >
+            <mat-card-content>
+                <h2>
+                    {{ 'JobRequestDetails' | translate }}
+                </h2>
+                <section>
+                    <div class="row">
+                        <div class="col-md-4">
+                            <h3>
+                                اسم الشركة
+                            </h3>
+                            <p>
+                                {{ jobRequest.company.name_ar }}
+                            </p>
+                        </div>
+                        <div class="col-md-4">
+                            <h3>
+                                الوظيفة
+                            </h3>
+                            <p>
+                                {{ jobRequest.job.job_title }}
+                            </p>
+                        </div>
+                        <div class="col-md-4">
+                            <h3>
+                                العدد المطلوب
+                            </h3>
+                            <p>
+                                {{ jobRequest.count }}
+                            </p>
+                        </div>
+                        <div class="col-md-4">
+                            <h3>
+                                تاريخ الطلب
+                            </h3>
+                            <p>
+                                {{ jobRequest.created_at | date:'yyyy/MM/dd' }}
+                            </p>
+                        </div>
+                        <div class="col-md-4">
+                            <h3>
+                                حالة الطلب
+                            </h3>
+                            <app-table-status [value]="jobRequest.request_status" [statusEnum]="themeService.settings.JOB_REQEUST_STATUS.enum"></app-table-status>
+                        </div>
+                        <div class="col-md-12">
+                            <h3>
+                                ملاحظات الطلب
+                            </h3>
+                            <p>
+                                {{jobRequest.notes}}
+                            </p>
+                        </div>
+                    </div>
+                </section>
+                <!-- <app-table #table [settings]="settings" [apiFunc]="apiFunc"></app-table> -->
+            </mat-card-content>
+        </mat-card>
+    </section>
+    <section class="card-cont">
+        <mat-card >
+            <mat-card-content>
+                <div class="d-flex align-items-center justify-content-between mb-4">
+                    <h2>
+                        {{ 'المرشحون' | translate }}
+                    </h2>
+                    <ng-container *appPerm="'approve_job_request'">
+                        <button
+                        (click)="nominateEmplloyees(nominate)"
+                        *ngIf="jobRequest.request_status == themeService.settings.JOB_REQEUST_STATUS.enum.pending"
+                        class="add-btn" mat-raised-button>
+                            <mat-icon>add</mat-icon>
+                            إضافة مرشحين
+                        </button>
+                    </ng-container>
+                </div>
+                <app-table #table [settings]="settings" [apiFunc]="apiFunc"></app-table>
+            </mat-card-content>
+
+            <mat-card-actions class="actions mb-4">
+                <div class="d-flex align-items-center justify-content-end ps-4 pe-4">
+                    <button type="button" mat-button class="cancel" routerLink="/provider/job-requests/list">
+                        {{ 'Back' | translate }}
+                    </button>
+
+                    <ng-container *appPerm="'approve_job_request'">
+                        <button [disabled]="isSaving" *ngIf="jobRequest.can_be_approved " mat-button class="save" (click)="acceptRequest()">
+                            {{ 'إعتماد طلب التوظيف' | translate }}
+                        </button>
+                    </ng-container>
+                </div>
+            </mat-card-actions>
+        </mat-card>
+    </section>
+</ng-container>
+
+
+<ng-template #nominate let-data let-ref="dialogRef">
+    <app-nominate-employees [data]="jobRequest" [ref]="ref"></app-nominate-employees>
+</ng-template>
+
+<ng-template #acceptRejectNominate let-data let-ref="dialogRef">
+    <app-accept-reject-nominant [data]="data.data" [ref]="ref"></app-accept-reject-nominant>
+</ng-template>

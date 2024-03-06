@@ -1,0 +1,38 @@
+<section class="card-cont">
+    <h2>
+        الرسائل
+    </h2>
+    <mat-card>
+        <mat-card-header>
+            <div class="d-flex align-items-center justify-content-between">
+                <div></div>
+                <button class="add-btn" mat-raised-button (click)="openDialog(dialog)">
+                    إرسال رسالة
+                </button>
+            </div>
+
+            
+        </mat-card-header>
+        <mat-card-content>
+            <mat-tab-group mat-align-tabs="center">
+                <mat-tab label="المرسلة">
+                    <div class="mt-5"></div>
+                    <app-table #table1 paginationId="send" [settings]="settings_sent" [apiFunc]="apiFuncSend"></app-table>
+                </mat-tab>
+                <mat-tab label="الواردة">
+                    <div class="mt-5"></div>
+                    <app-table #table2 paginationId="inbox" [settings]="settings_inbox" [apiFunc]="apiFuncInbox"></app-table>
+                </mat-tab>
+            </mat-tab-group>
+        </mat-card-content>
+    </mat-card>
+</section>
+
+<ng-template #dialog let-ref="dialogRef" let-data>
+    <app-create [ref]="ref" [data]="data.data"></app-create>
+</ng-template>
+
+
+<ng-template #viewMsg let-ref="dialogRef" let-data>
+    <app-view-msg [ref]="ref" [data]="data.data" [view_type]="data.view_type"></app-view-msg>
+</ng-template>

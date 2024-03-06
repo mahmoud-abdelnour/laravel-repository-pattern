@@ -1,0 +1,54 @@
+app-table-status, .status {
+    mat-chip.mat-chip {
+        width: 100%;
+        justify-content: center;
+        &.approved, &.accepted, &.active {
+            background: #D4EDDA;
+            color: #155724;
+        }
+        &.rejected, &.refused, &.banned {
+            background: #F8D7DA;
+            color: #721C24;
+        }
+        &.pending {
+            background: #FFF3CD;
+            color: #856404;
+            border: 1px solid #ffe69b;
+        }
+    }
+}
+
+
+angular2-smart-table {
+    thead {
+        // background-color: var(--main-color);
+        tr {
+           
+            a {
+                color: #fff !important;
+                font-size: 16px;
+                &.sort.asc:after, &.sort.desc:after {
+                    border-bottom-color: #fff !important;
+                }
+            }
+
+            .angular2-smart-filter input-filter {
+                input {
+                    border-radius: 50px;
+                    outline: none;
+                    border: 1px solid #e6e9f5;
+                    // padding-left: 20px;
+                    // padding-right: 20px;
+                    padding: 0.15em 0.75em !important;
+                }
+            }
+        }
+    }
+    tbody {
+        td[colspan="5"] {
+            height: 50px;
+            font-size: 16px;
+            color: var(--main-color);
+        }
+    }
+}

@@ -1,0 +1,308 @@
+
+mat-drawer-container.mat-drawer-container {
+    background-color: var(--light-blue);
+  
+    &.drawer-opened {
+        nav {
+            // .menu-toggle {
+            //     margin-right: 45px;
+            //     margin-left: 45px;
+            // }
+            &.fixed {
+                .menu-toggle {
+                    // margin-right: 80px;
+                    // margin-left: 80px;
+                    margin-right: 180px;
+                    margin-left: 180px;
+                }
+            }
+        }
+    }
+}
+
+span.name {
+    max-width: 150px;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+    display: inline-block;
+}
+mat-drawer {
+    position: fixed;
+    overflow: visible;
+    img {
+        width: 145px;
+        display: block;
+        margin: auto;
+        background: #ffffff url('../../../assets/imgs/login-bg.png') right 60% ;
+        background-blend-mode: multiply;
+        padding-top: 24px;
+        padding-bottom: 24px;
+        padding-left: 14px;
+        padding-right: 14px;
+
+    }
+    mat-nav-list {
+        height: calc(100% - 194px);
+        overflow: auto;
+        width: 145px;
+        padding-top: 24px;
+        padding-bottom: 54px;
+        mat-list-item {
+            width: 55px;
+            height: 55px;
+            margin: auto;
+            border: 1px solid #F0F0F1;
+            text-align: center;
+            border-radius: 15px;
+            transition: background .3s ease-in-out, border .3s ease-in-out;
+            margin-bottom: 32px;
+            &.active {
+                background: var(--main-color);
+                border-color: var(--main-color);
+                mat-icon {
+                    color: #fff;
+                }
+            }
+            ::ng-deep .mat-list-item-content {
+                width: 100%;
+                padding: 0;
+                justify-content: center;
+                align-items: center;
+                height: 100%;
+                .mat-list-item-ripple {
+                    border-radius: 15px;
+                }
+                mat-icon {
+                    padding: 0;
+                    font-size: 28px;
+                    // width: 28px;
+                    // height: 28px;
+                    width: 32px;
+                    height: 32px;
+                    color: #555555;
+                }
+            }
+        }
+    }
+}
+
+div.bg-header {
+    height: 176px;
+    position: absolute;
+    z-index: 0;
+    top: 0;
+    left: 0;
+    right: 0;
+    &::after {
+        content: "";
+        background: #2f3571 url('../../../assets/imgs/bg-1.png') bottom center ;
+        background-blend-mode: multiply;
+        background-size: cover;
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        z-index: 1;
+    }
+}
+
+@keyframes slide-down {
+    0% {
+        display: block;
+        opacity: .5;
+        transform: translateY(-100%);
+    } 
+    100% {
+        opacity: 0.9;
+        transform: translateY(0);
+    } 
+}
+
+@keyframes first-phase {
+    0% {
+        opacity: 0;
+        height: 74px;
+    } 
+    100% {
+        opacity: 0.9;
+        height: 194px;
+    } 
+}
+
+header {
+    nav {
+        color: #fff;
+        position: relative;
+        z-index: 4;
+        // animation: first-phase .75s;
+        height: 194px;
+        padding: 1rem;
+        &::after {
+            content: "";
+            background: #2f3571 url('../../../assets/imgs/login-bg.png') center 60% ;
+            background-blend-mode: multiply;
+            background-size: cover;
+            position: absolute;
+            background-repeat: no-repeat;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            z-index: -1;
+        }
+    
+        &.add-bg {
+            &::after {
+                content: "";
+                background: #2f3571 url('../../../assets/imgs/bg-1.png') center center ;
+                background-blend-mode: multiply;
+                background-size: cover;
+                position: absolute;
+                top: 0;
+                left: 0;
+                right: 0;
+                bottom: 0;
+                z-index: 1;
+            }
+        }
+        .container {
+            // padding-top: 2rem;
+            // padding-bottom: 8rem;
+            padding-top: 1rem;
+            padding-bottom: 1rem;
+            position: relative;
+            z-index: 2;
+        }
+        
+        .menu-toggle {
+            transition: margin ease-in-out .2s;
+        }
+    
+        .left-buttons {
+            button {
+                border-radius: 50px;
+                padding-top: 3px;
+                padding-bottom: 3px;
+                mat-icon {
+                    border: 1px solid #fff;
+                    font-size: 30px;
+                    width: 30px;
+                    height: 30px;
+                    line-height: 36px;
+                    border-radius: 50px;
+                    margin-top: -4px;
+                    margin-right: 4px;
+                    margin-right: 4px;
+                    &.notifications {
+                        border: none;
+                        width: 22px;
+                        height: 22px;
+                        line-height: 22px;
+                        margin: auto;
+                        border-radius: 0;
+                        font-size: 22px;
+                    }
+                }
+
+            }
+            span.pipe {
+                margin-left: 10px;
+                margin-right: 24px;
+                width: 1px;
+                display: inline-block;
+                height: 14px;
+                background: #fff;
+                opacity: .4;
+            }
+            button.lang {
+                width: 35px;
+                height: 35px;
+                min-width: 35px;
+                padding: 0;
+                line-height: 35px;
+                font-weight: bold;
+                border: 1px solid #fff;
+            }
+        }
+    }
+    nav:last-of-type{
+        display: none;
+    }
+    &.fixed nav:last-of-type {
+        display: block !important;
+        position: fixed;
+        left: 0;
+        right: 0;
+        top: 0;
+        z-index: 6;
+        height: 74px;
+        animation:slide-down 0.65s;
+        &::before {
+            content: "";
+            position: absolute;
+            left: 0;
+            right: 0;
+            bottom: -3px;
+            z-index: 1;
+            height: 5px;
+            background:url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAHBAMAAADzDtBxAAAAD1BMVEUAAAAAAAAAAAAAAAAAAABPDueNAAAABXRSTlMUCS0gBIh/TXEAAAAaSURBVAjXYxCEAgY4UIICBmMogMsgFLtAAQCNSwXZKOdPxgAAAABJRU5ErkJggg==');
+        }
+    }
+}
+
+
+.user-menu {
+    margin-top: 16px;
+}
+
+
+
+section.main {
+    position: relative;
+    z-index: 2;
+    // margin-top: 6rem;
+    padding-top: 0;
+    // min-height: calc(86vh - 29px);
+    min-height: calc(86vh - 16px);
+    // transition: margin-top .1s ease-in-out;
+
+
+    margin-top: -100px;
+    z-index: 5;
+    padding-left: 2rem;
+    padding-right: 2rem;
+}
+
+.mat-badge-content{
+    color: #fff;
+    background: #e02241;
+    min-width: 20px;
+    min-height: 20px;
+    line-height: 16px;
+    padding-top: 3px;
+}
+
+.unread_notfication{
+    background-color: #dce4ed!important;
+}
+
+.account_alert_badge{
+    color: #ff666f;
+    background: #ffdddd;
+    padding: 0 35px;
+    border-radius: 11px;
+    margin: 0 51px;
+}
+
+// :host{
+//     mat-drawer-container ::ng-deep mat-drawer-content.mat-drawer-content {
+//         display: flex;
+//         flex-direction: column;
+//         height: 100vh;
+//         section.main {
+//             flex: 1;
+//         }
+//     }
+// }

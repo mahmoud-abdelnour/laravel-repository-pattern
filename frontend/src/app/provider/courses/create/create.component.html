@@ -1,0 +1,58 @@
+<form [formGroup]="form" (ngSubmit)="save()">
+    <h2 mat-dialog-title>
+        {{ mode | translate }}
+        {{ 'Course' | translate }}
+    </h2>
+    <mat-dialog-content class="mat-typography">
+        <div class="row">
+            <div class="col-md-12 form-group mb-4">
+                <label for="course_title">
+                    اسم الدورة
+                </label>
+                <input id="course_title" type="text" formControlName="course_title">
+            </div>   
+            <div class="col-md-6 form-group mb-4">
+                <label for="period">
+                    مدة الدورة بالأيام
+                </label>
+                <input id="period" type="number" formControlName="period">
+            </div>   
+            <div class="col-md-6 form-group mb-4">
+                <label for="price">
+                    سعر الدورة
+                </label>
+                <input id="price" type="number" formControlName="price">
+            </div>   
+            <div class="col-md-12 form-group mb-4">
+                <label for="course_contract">
+                    عقد الدورة
+                </label>
+                <textarea name="course_contract" formControlName="course_contract"></textarea>
+                <div style="color:#b35200">
+                    <b>متغيرات العقد</b>
+                    <br>
+                    اسم الموظف = {{ "{{emp_name}}" }}
+                    <br>
+                    مدة الدورة = {{ "{{course_period}}" }}
+                    <br>
+                    سعر الدورة =  {{ "{{course_price}}" }}
+                    <br>
+                </div>
+            </div>   
+            <div class="col-md-12 form-group">
+                <label for="course_description">
+                    وصف الدورة
+                </label>
+                <textarea name="course_description" formControlName="course_description"></textarea>
+            </div>   
+        </div>
+    </mat-dialog-content>
+    <mat-dialog-actions align="end" class="actions">
+        <button type="button" mat-button mat-dialog-close class="cancel">
+            {{ 'Back' | translate }}
+        </button>
+        <button [disabled]="isSaving" mat-button cdkFocusInitial class="save" *ngIf="!form.disabled" >
+           حفظ
+        </button>
+    </mat-dialog-actions>
+</form>

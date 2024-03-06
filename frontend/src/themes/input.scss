@@ -1,0 +1,81 @@
+.form-group {
+    label {
+        color: var(--label-color);
+        font-size: 16px;
+        margin-bottom: 10px;
+        display: block;
+    }
+    input, textarea {
+        border-radius: 100px;
+        border: 1px solid #E6E9F5;
+        padding: 0.5rem 1rem;
+        background-color:transparent;
+        font-size: 16px;
+        color: var(--input-color);
+        width: 100%;
+        display: block;
+        outline: none;
+        font-family: "Jannat", Roboto, "Helvetica Neue", sans-serif;
+        transition: all .25s ease-in-out;
+        &:focus {
+            background-color: #fff;
+            border:1px solid  #36f;
+        }
+        &.ng-touched.ng-invalid{
+            border: 1px solid var(--icon-color);
+            color: var(--icon-color);
+        }
+    }
+
+    textarea {
+        min-height: 155px;
+        border-radius: 30px;
+    }
+    
+}
+
+.invalid-feedback {
+    font-size: 13px;
+    font-weight: bold;
+    color:var(--invalid-color);
+    padding: 0 20px;
+}
+
+
+.as-input {
+    border-radius: 0.25rem;
+    padding: 0.5rem 1rem;
+    background-color: transparent;
+    border: 1px solid #E6E9F5;
+    font-size: 16px;
+    font-weight: normal;
+    color: var(--input-color);
+    width: 100%;
+    display: block;
+    outline: none;
+    font-family: "Jannat", Roboto, "Helvetica Neue", sans-serif;
+    transition: all .25s ease-in-out;
+}
+
+.ng-select.ng-select-single {
+    .ng-select-container {
+        background-color: transparent;
+        border-radius: 100px !important;
+        border: 1px solid #E6E9F5;
+        height: 48px;
+        color: var(--input-color);
+        font-weight: bold;
+        font-size: 16px;
+    }
+}
+
+
+mat-spinner.mat-progress-spinner {
+    width: 36px;
+    height: 36px;
+    margin-left: 16px;
+    margin-right: 16px;
+    circle {
+        stroke: var(--main-color);
+    }
+}

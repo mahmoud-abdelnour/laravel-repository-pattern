@@ -1,0 +1,94 @@
+
+<h2 class="page_title">
+    التقارير
+</h2>
+<div style="margin-top:60px">
+
+    <form [formGroup]="form" (ngSubmit)="filter()">
+        <div class="row">
+
+            <div class="col-md-4 form-group mb-4"  [class.col-md-6]="form.value.report_type == 'employee' || form.value.report_type == 'course' " >
+                <label for="employee_select">
+                    الموظفين
+                </label>
+                <ng-select  formControlName="emp_id"  appendTo="body">
+                    <ng-option value="all">اختر موظف</ng-option>
+                    <ng-option *ngFor="let emp of filter_data?.employees" [value]="emp.id">
+                        {{ emp.name_ar }}
+                    </ng-option>
+                </ng-select>
+            </div>  
+
+        </div>  
+
+        <button mat-raised-button type="submit" class="save" [disabled]="isSending">
+            فرز
+        </button>
+    </form>
+
+
+    <div class="row">
+
+        <!-- employees -->
+        <ng-container  *ngIf="filters?.employees"   >
+            <h3 class="mt-5" >الموظفين</h3>
+            <table>
+                <tr>
+                    <th>#</th>
+                    <th>الموظف</th>
+                    <th>تاريخ التعاقد</th>
+                    <th>عدد المهام</th>
+                </tr>
+                <tr *ngFor="let employee of filters?.employees;let i = index" >
+                    <td>{{i+1}}</td>
+                    <td>{{employee.name_ar}}</td>
+                    <td>{{employee?.pivot?.work_start_date | date:'yyyy/MM/dd' }}</td>
+                    <td>{{employee.tasks.length}}</td>
+                </tr>
+            </table>     
+        </ng-container>
+
+        <ng-container  *ngIf="filters?.employee"   >
+            <h3 class="mt-5" >{{filters?.employee.name_ar}}</h3>
+            <div  *ngIf="filters?.employee.tasks"   >
+                <h4 class="mt-5" >المهام</h4>
+                <table>
+                    <tr>
+                        <th>#</th>
+                        <th>المهمة</th>
+                        <th>تاريخ الاسناد</th>
+                    </tr>
+                    <tr *ngFor="let task of filters?.employee.tasks;let i = index" >
+                        <td>{{i+1}}</td>
+                        <td>{{task?.task?.task_title}}</td>
+                        <td>{{task.created_at | date:'yyyy/MM/dd' }}</td>
+                    </tr>
+                </table> 
+            </div>
+
+
+
+            <div  *ngIf="filters?.employee.attendances"   >
+                <h4 class="mt-5" >الحضور والانصراف</h4>
+                <table>
+                    <tr>
+                        <th>#</th>
+                        <th>دخول</th>
+                        <th>خروج</th>
+                    </tr>
+                    <tr *ngFor="let attendance of filters?.employee.attendances;let i = index" >
+                        <td>{{i+1}}</td>
+                        <td>{{attendance.check_in}}</td>
+                        <td>{{attendance.check_out}}</td>
+                    </tr>
+                </table> 
+                <!-- <pagination-controls></pagination-controls> -->
+            </div>
+        
+
+
+        </ng-container>
+
+    </div>  
+
+</div>  

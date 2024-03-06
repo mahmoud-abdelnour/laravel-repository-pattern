@@ -1,0 +1,79 @@
+<angular2-smart-table class="d-none d-md-block" #smartTable id="table" [settings]="settings" [source]="source"> </angular2-smart-table>
+
+<section class="view-in-mobile d-md-none">
+  <form [formGroup]="filterForm" *ngIf="hasfilters">
+    <div class="row">
+      <div *ngFor="let item of filterForm.controls | keyvalue" class="col-12 form-group mb-4">
+        <label [for]="item.key">
+          {{ settings.columns[item.key].title }}
+        </label>
+        <input type="text" [id]="item.key" [formControl]="$any(item.value)">
+      </div>
+      <div class="d-flex justify-content-end btns-cont mb-3">
+        <button mat-button color="warn" (click)="applyFilters(true)">
+          إعادة تعيين
+        </button>
+        <span style="width: 30px;"></span>
+        <button mat-raised-button color="primary" (click)="applyFilters()">
+          تطبيق
+        </button>
+      </div>
+    </div>
+  </form>
+
+
+  <mat-card *ngFor="let data of dataSrc">
+    <mat-card-content>
+      <ng-container *ngFor="let item of data.settings.columns | keyvalue">
+        <div *ngIf="item.key !== 'actions'">
+          <h3>
+            {{ $any(item.value).title }}
+          </h3>
+  
+          <ng-template [ngIf]="$any(item.value).type == IColumnType.Text">
+            <p>
+              {{$any(item.value).value}}
+            </p>
+          </ng-template>
+  
+          <ng-template [ngIf]="$any(item.value).type == IColumnType.Html">
+            <div [innerHTML]="$any(item.value).value"></div>
+          </ng-template>
+  
+          <ng-template [ngIf]="$any(item.value).type == IColumnType.Custom">
+            <app-dynamic-cell [data]="$any(item.value)"></app-dynamic-cell>
+          </ng-template>
+        </div>
+      </ng-container>
+    </mat-card-content>
+    <mat-card-actions *ngIf="data.settings.columns.actions">
+      <app-dynamic-cell [data]="data.settings.columns.actions"></app-dynamic-cell>
+    </mat-card-actions>
+  </mat-card>
+
+  <h3 class="no-data" *ngIf="dataSrc && !dataSrc.length">
+    لا يوجد بيانات
+  </h3>
+
+</section>
+
+
+<div class="table-pagination-controls" *ngIf="showPagination">
+    <!-- <ng-select (change)="changePageSize($event)" [(ngModel)]="per_page" dropdownPosition="top" appearance="outline" appendTo="body" >
+      <ng-option [value]="number" *ngFor="let number of [10,20,30,40,50]" [disabled]="total < 10">{{number}}</ng-option>
+    </ng-select> -->
+  
+    <div *ngFor="let item of counter(total) | paginate: { itemsPerPage: per_page, currentPage: page, id: paginationId }; let i = index;">
+      <pagination-controls
+      [id]="paginationId"
+      *ngIf="i == 0"
+      [responsive]="true"
+      [previousLabel]="''"
+      [nextLabel]="''"
+      (pageChange)="pageChanged($event)"
+      class="text-center"
+      >
+      </pagination-controls>
+    </div>
+  </div>
+  

@@ -1,0 +1,28 @@
+<a target="_blank" mat-button [routerLink]="['/provider/job-requests', rowData.id]">
+    <mat-icon color="success">
+        visibility
+    </mat-icon>
+</a>
+
+<ng-container *ngIf="rowData.request_status == themeService.settings.JOB_REQEUST_STATUS.enum.pending">
+    <!-- <button mat-button (click)="parent.nominateEmplloyees(rowData)" *appPerm="'nominate_employee'">
+        <mat-icon color="secodary">
+            group
+        </mat-icon>
+    </button> -->
+    
+   <!--  <ng-container *appPerm="'approve_job_request'">
+        <button mat-button (click)="parent.popApprove(rowData)" *ngIf="rowData.can_be_approved">
+            <mat-icon color="primary">
+                rule
+            </mat-icon>
+        </button>
+    </ng-container> -->
+    
+    <button mat-button (click)="parent.popDelete(rowData)">
+        <mat-icon color="warn">
+            delete
+        </mat-icon>
+    </button>
+</ng-container>
+

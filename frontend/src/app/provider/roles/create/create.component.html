@@ -1,0 +1,22 @@
+<form [formGroup]="form" (ngSubmit)="save()">
+    <h2 mat-dialog-title>
+        {{ mode | translate }}
+        {{ 'Role' | translate }}
+    </h2>
+    <mat-dialog-content class="mat-typography">
+        <div class="mb-4 form-group">
+            <label for="name">
+                {{ 'RoleName' | translate }} 
+            </label>
+            <input id="name" formControlName="name" [placeholder]=" 'RoleName' | translate ">
+        </div>
+    </mat-dialog-content>
+    <mat-dialog-actions align="end" class="actions">
+        <button type="button" mat-button mat-dialog-close class="cancel">
+            {{ 'Cancel' | translate }}
+        </button>
+        <button mat-button cdkFocusInitial class="save">
+            {{ 'Save' | translate }}
+        </button>
+    </mat-dialog-actions>
+</form>

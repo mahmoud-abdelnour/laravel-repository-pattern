@@ -1,0 +1,251 @@
+<form [formGroup]="form" (ngSubmit)="save()" *ngIf="form">
+    <section class="card-cont">
+        <h2>
+            {{ 'Profile' | translate }}
+        </h2>
+        <mat-card>
+            <mat-card-content class="inner-cards-cont">
+                <mat-card>
+                    <mat-card-subtitle>
+                        {{ 'BasicInfo' | translate }}
+                    </mat-card-subtitle>
+
+                    <mat-card-content>
+                        <div class="row">
+                            <div class="col-md-6 mb-4 form-group" *ngIf="user.user_type == UserType.employee; else showCommercialRecord">
+                                <label for="tel">
+                                    {{ 'IDNumber' | translate }}
+                                    *
+                                </label>
+                                <input formControlName="national_id" id="tel" type="tel" [placeholder]=" 'IDNumber' | translate ">
+                            </div>
+                            <ng-template #showCommercialRecord>
+                                <div class="col-md-6 mb-4 form-group">
+                                    <label for="">
+                                        {{ 'CommercialRecord' | translate }}
+                                        *
+                                    </label>
+                                    <input formControlName="commercial_record" [placeholder]=" 'CommercialRecord' | translate ">
+                                </div>
+                            </ng-template>
+
+                            <div class="col-md-6 mb-4 form-group">
+                                <label for="email">
+                                    {{ 'Email' | translate }}
+                                    *
+                                </label>
+                                <input formControlName="email" id="email" type="email" [placeholder]=" 'Email' | translate ">
+                            </div>
+
+                            <div class="col-md-6 mb-4 form-group">
+                                <label for="nameAr">
+                                    {{ 'ArFullName' | translate }}
+                                    *
+                                </label>
+                                <input formControlName="name_ar" id="nameAr" [placeholder]=" 'ArFullName:Placeholder' | translate ">
+                            </div>
+                            <div class="col-md-6 mb-4 form-group">
+                                <label for="nameEn">
+                                    {{ 'EnFullName' | translate }}
+                                    *
+                                </label>
+                                <input formControlName="name_en" id="nameEn" [placeholder]=" 'EnFullName:Placeholder' | translate ">
+                            </div>
+                            <div class="col-md-6 mb-4 form-group">
+                                <label for="tel">
+                                   {{ 'Phone' | translate }}
+                                    *
+                                </label>
+                                <input formControlName="mobile" id="tel" type="tel" [placeholder]=" 'Phone' | translate ">
+                            </div>
+        
+                            <div class="col-md-6 mb-4 form-group">
+                                <label for="">
+                                    {{ 'NationalAddress' | translate }}
+                                    *
+                                </label>
+                                <input formControlName="national_address_extra" [placeholder]=" 'NationalAddress' | translate ">
+                            </div>
+        
+                            <div class="col-md-6 mb-4 form-group">
+                                <label for="">
+                                    {{ 'BuildingNumber' | translate }}
+                                    *
+                                </label>
+                                <input formControlName="national_address_building_no" [placeholder]=" 'BuildingNumber' | translate ">
+                            </div>
+                            <div class="col-md-6 mb-4 form-group">
+                                <label for="">
+                                    {{ 'PostalCode' | translate }}
+                                    *
+                                </label>
+                                <input formControlName="national_address_postal" [placeholder]="'PostalCode' | translate">
+                            </div>
+
+                            <ng-container *ngIf="form.controls['gender']; else showCompnay">
+                              <!--   <div class="col-md-6 mb-4 form-group">
+                                    <label>
+                                        {{ 'Job' | translate }}
+                                        *
+                                    </label>
+                                    <ng-select formControlName="job_id" [placeholder]=" 'Job' | translate ">
+                                        <ng-option *ngFor="let job of jobs" [value]="job.id"> {{ job.job_title }} </ng-option>
+                                    </ng-select>
+                                </div> -->
+        
+                                <div class="col-md-6 mb-4 form-group">
+                                    <label>
+                                        {{ 'Gender' | translate }}
+                                        *
+                                    </label>
+                                    <ng-select formControlName="gender" [placeholder]=" 'Gender' | translate ">
+                                        <ng-option *ngFor="let gender of themeService.settings?.GENDER?.arr" [value]="gender.value">
+                                            {{ gender.title | translate }}
+                                        </ng-option>
+                                    </ng-select>
+                                </div>
+                
+                                <div class="col-md-6 mb-4 form-group">
+                                    <label>
+                                        {{ 'MaritalStatus' | translate }}
+                                        *
+                                    </label>
+        
+                                    <ng-select formControlName="martial_status" [placeholder]=" 'MaritalStatus' | translate ">
+                                        <ng-option *ngFor="let gender of themeService.settings?.MARTIAL_STATUS?.arr" [value]="gender.value">
+                                            {{ gender.title | translate }}
+                                        </ng-option>
+                                    </ng-select>
+                                </div>
+                
+                                <div class="col-md-6 mb-4 form-group">
+                                    <label>
+                                        {{ 'Qualification' | translate }}
+                                        *
+                                    </label>
+                                    <ng-select formControlName="qualification" [placeholder]="'Qualification' | translate">
+                                        <ng-option *ngFor="let gender of themeService.settings?.QUALIFICATIONS?.arr" [value]="gender.value">
+                                            {{ gender.title | translate }}
+                                        </ng-option>
+                                    </ng-select>
+                                </div>
+        
+                                <div class="col-md-6 mb-4 form-group">
+                                    <label for="">
+                                        {{ 'BankName' | translate }} 
+                                        *
+                                    </label>
+                                    <ng-select formControlName="bank_name" [placeholder]=" 'BankName' | translate ">
+                                        <ng-option *ngFor="let bank of banks" [value]="bank.bank_name">
+                                            {{ bank.bank_name }}
+                                        </ng-option>
+                                    </ng-select>
+                                </div>
+                                <div class="col-md-6 mb-4 form-group">
+                                    <label for="">
+                                        {{ 'IBANnumber' | translate }}
+                                        *
+                                    </label>
+                                    <input formControlName="bank_ipan" [placeholder]=" 'IBANnumber' | translate ">
+                                </div>
+        
+                            </ng-container>
+                                                    
+                            <ng-template #showCompnay>
+                                <div class="col-md-6 mb-4 form-group">
+                                    <label for="">
+                                        {{ 'LaborOfficeCompanyId' | translate }}
+                                    </label>
+                                    <input formControlName="labor_office_company_id" [placeholder]=" 'LaborOfficeCompanyId' | translate ">
+                                </div>
+                                <div class="col-md-6 mb-4 form-group">
+                                    <label for="">
+                                        {{ 'InsuranceOfficeCompanyId' | translate }}
+                                    </label>
+                                    <input formControlName="insurance_office_company_id" [placeholder]=" 'InsuranceOfficeCompanyId' | translate ">
+                                </div>
+                            </ng-template>
+
+                          
+
+
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-6 mb-4 form-group">
+                                <label for="tel">
+                                {{ 'Password' | translate }}
+                                    
+                                </label>
+                                <input formControlName="password" id="password" [placeholder]=" 'Password' | translate ">
+                            </div>
+
+
+                            <div class="col-md-6 mb-4 form-group">
+                                <label for="tel">
+                                {{ 'Password Confirmation' | translate }}
+                                    
+                                </label>
+                                <input formControlName="password_confirmation" id="password_confirmation" [placeholder]=" 'Password Confirmation' | translate ">
+                            </div>
+                        </div>
+                    </mat-card-content>
+                </mat-card>
+
+                <mat-card>
+                    <mat-card-subtitle>
+                        {{ 'Attachments' | translate }}
+                    </mat-card-subtitle>
+
+                    <mat-card-content>
+                        <div *ngFor="let file of files; index as i" class="mb-4 file-item">
+                            <h4>
+                                {{ file | translate }}
+                            </h4>
+
+                            <app-file-input [control]="form.controls[file]"></app-file-input>
+
+
+                            <!-- <div class="data" [class.has-file]="file.file || file.oldVal ">
+                                <div class="input-cont">
+                                    <input [id]="i" type="file" #input accept="image/*" (change)="fileChanged(i, $event)">
+                                    <mat-icon class="d-block">
+                                        cloud_upload
+                                    </mat-icon>
+                                    <label [for]="i">
+                                        {{ 'StartUploadingFile' | translate }}
+                                    </label>
+                                </div>
+                                <div class="file-info d-flex align-items-center justify-content-between" *ngIf="file.file || file.oldVal">
+                                    <span>
+                                        {{ (file.file || file.oldVal).name}}
+                                    </span>
+                                    <span>
+                                        {{ file['fileSize'] || '  '}} MB
+                                    </span>
+                                    <div>
+                                        <a mat-button [href]="file.oldVal.value" target="_blank" type="button" download *ngIf="file.oldVal">
+                                            <mat-icon>download</mat-icon>
+                                        </a>
+                                      
+                                        <button type="button" class="delete-btn" mat-button (click)="deleteFile(i, input)">
+                                            <mat-icon>delete</mat-icon>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div> -->
+                        </div>
+                    </mat-card-content>
+                </mat-card>
+            </mat-card-content>
+            <mat-card-footer>
+                <mat-card-actions align="end" class="actions">
+                    <button mat-raised-button type="submit" class="save" [disabled]="isSending">
+                        {{ 'Save' | translate }}
+                    </button>
+                </mat-card-actions>
+            </mat-card-footer>
+        </mat-card>
+    </section>
+
+</form>

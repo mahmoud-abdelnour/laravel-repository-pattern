@@ -1,0 +1,95 @@
+<form [formGroup]="form" (ngSubmit)="save()">
+    <h2 mat-dialog-title *ngIf="!firstTime; else showFirstTime">
+        {{ mode | translate }}
+        مدفوعات
+    </h2>
+    <ng-template #showFirstTime>
+        <h2 mat-dialog-title>
+          اشتراك عضوية
+        </h2>
+    </ng-template>
+    
+    <mat-dialog-content class="mat-typography">
+        <div class="row">
+          <!--   <div class="col-md-12 mb-4 form-group" >
+                <label for="">
+                    الإشتراك
+                </label>
+                <mat-radio-group formControlName="subscription_type" color="primary" class="d-flex" (change)="changeType($event)">
+                    <mat-radio-button class="me-4" [value]="themeService.settings.SUBSCRIPTION_TYPE.enum.courses">
+                        اشتراك الدورات
+                    </mat-radio-button>
+                    <mat-radio-button [value]="themeService.settings.SUBSCRIPTION_TYPE.enum.membership" >
+                        اشتراك العضوية
+                    </mat-radio-button>
+                </mat-radio-group>
+            </div> -->
+            <div class="col-md-8 mb-4 form-group">
+                <label for="amount">
+                    {{ 'المبلغ' | translate }} 
+                </label>
+                <input type="number" id="amount" formControlName="payment_amount" [placeholder]=" 'المبلغ' | translate ">
+            </div>
+            
+
+            <div class="col-md-6 mb-4 form-group" *ngIf="form.controls['subscription_type'].value == 'courses'">
+                <label for="">
+                    الشهر
+                </label>
+                <ng-select appendTo="body" formControlName="month">
+                    <ng-option *ngFor="let month of months" [value]="month.id">
+                        {{ month.name }}
+                    </ng-option>
+                </ng-select>
+            </div>
+           
+            <div class="col-md-12 mb-4 form-group">
+                <label for="notes">
+                    {{ 'Notes' | translate }} 
+                </label>
+               <textarea name="notes" id="notes" cols="4" formControlName="notes" [placeholder]=" 'Notes' | translate "></textarea>
+            </div>
+
+            <div class="mb-4 file-item">
+                <h4>
+                    {{ 'إيصال الدفعة' | translate }}
+                </h4>
+                <div class="data form-group" [class.has-file]="!!form.controls['payment_file'].value">
+                    <div class="input-cont">
+                        <input  id="file" type="file" #input accept="image/*" (change)="fileChanged($event)">
+                        <mat-icon class="d-block">
+                            cloud_upload
+                        </mat-icon>
+                        <label for="file">
+                            {{ 'StartUploadingFile' | translate }}
+                        </label>
+                        <input type="hidden" name="fileHidden" formControlName="payment_file"/>
+                    </div>
+                    <div class="file-info d-flex align-items-center justify-content-between" *ngIf="file || form.controls['payment_file'].value">
+                        <span>
+                            {{file?.name || fileName}}
+                        </span>
+                        <span>
+                            {{ fileSize }} MB
+                        </span>
+                        <button mat-button (click)="deleteFile(input)" *ngIf="mode !== FormMode.View">
+                            <mat-icon>delete</mat-icon>
+                        </button>
+                    </div>
+
+                </div>
+               
+                <!-- registered_in_remote_work_platform -->
+            </div>
+
+        </div>        
+    </mat-dialog-content>
+    <mat-dialog-actions align="end" class="actions">
+        <button type="button" mat-button mat-dialog-close class="cancel">
+            رجوع
+        </button>
+        <button *ngIf="!form.disabled" [disabled]="isSaving" mat-button cdkFocusInitial class="save">
+            {{ mode == FormMode.Create ? 'سداد' : 'حفظ' }}
+        </button>
+    </mat-dialog-actions>
+</form>

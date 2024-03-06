@@ -1,0 +1,39 @@
+<section class="card-cont">
+    <h2>
+        {{ 'Companies' | translate }}
+    </h2>
+    <mat-card>
+        <mat-card-header *appPerm="'create_course'">
+            <div class="d-flex align-items-center justify-content-end">
+                <button class="add-btn mr-5" mat-raised-button  (click)="openDialog('')">
+                    <mat-icon>assignment_ind</mat-icon>
+                    توظيف جديد
+                </button>
+
+                <div></div>
+                <button class="add-btn" mat-raised-button [routerLink]="'/provider/companies/create'">
+                    <mat-icon>add</mat-icon>
+                    إضافة
+                </button>
+            </div>
+        </mat-card-header>
+        <mat-tab-group mat-align-tabs="center">
+            <mat-tab label="الشركات المفعلة">
+                <app-list paginationId="list1" [apiFunc]="activeApiFunc" [lists]="[list2, list3]" #list1></app-list>
+            </mat-tab>
+            <mat-tab label="الشركات قيد التفعيل">
+                <app-list paginationId="list2" [apiFunc]="pendingApiFunc" [lists]="[list1, list3]" #list2></app-list>
+            </mat-tab>
+            <mat-tab label="الشركات المحظورة">
+                <app-list paginationId="list3" [apiFunc]="banApiFunc" [lists]="[list1, list2]" #list3></app-list>
+            </mat-tab>
+        </mat-tab-group>
+    </mat-card>
+
+
+    
+    <ng-template #dialog let-ref="dialogRef" let-data>
+        <app-assign-candidate app-create [ref]="ref" [data]="data" ></app-assign-candidate>
+    </ng-template>
+
+</section>

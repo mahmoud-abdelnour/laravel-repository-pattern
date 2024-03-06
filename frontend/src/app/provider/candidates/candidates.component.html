@@ -1,0 +1,29 @@
+<section class="card-cont">
+        <h2>
+            {{ 'Candidates' | translate }}
+        </h2>
+     
+    <mat-card *ngIf="allDone">
+        <mat-card-header *appPerm="'create_course'">
+            <div class="d-flex align-items-center justify-content-between">
+                <div></div>
+                <button class="add-btn" mat-raised-button [routerLink]="'/provider/candidates/create'">
+                    <mat-icon>add</mat-icon>
+                    إضافة
+                </button>
+            </div>
+        </mat-card-header>
+        
+        <mat-tab-group mat-align-tabs="center">
+            <mat-tab label="المرشحون">
+                <app-list paginationId="list1" [jobs]="jobs" [apiFunc]="activeApiFunc" [lists]="[list2, list3]" #list1></app-list>
+            </mat-tab>
+            <mat-tab label="المرشحون تحت الإجراء">
+                <app-list paginationId="list2" [jobs]="jobs" [apiFunc]="pendingApiFunc" [lists]="[list1, list3]" #list2></app-list>
+            </mat-tab>
+            <mat-tab label="المرشحون المحظورون">
+                <app-list paginationId="list3" [jobs]="jobs" [apiFunc]="banApiFunc" [lists]="[list1, list2]" #list3></app-list>
+            </mat-tab>
+        </mat-tab-group>
+    </mat-card>
+</section>

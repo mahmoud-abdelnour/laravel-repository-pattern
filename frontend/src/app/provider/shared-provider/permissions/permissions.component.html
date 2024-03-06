@@ -1,0 +1,37 @@
+<form [formGroup]="form" (ngSubmit)="save()">
+    <h2 mat-dialog-title>
+        {{ 'Update' | translate }}
+        {{ 'Permissions' | translate }}
+    </h2>
+    <mat-dialog-content class="mat-typography">
+
+        <mat-accordion *ngFor="let group of form.controls['permissions']['controls']">
+            <mat-expansion-panel expanded="true" class="mb-4">
+                <mat-expansion-panel-header>
+                    <mat-panel-title>
+                        <div>
+                            <mat-checkbox color="primary" (click)="$event.stopPropagation()" (change)="changeAll(group, $event)" [indeterminate]="group.controls.indeterminate.value" [formControl]="group.controls.isGranted">
+                                {{group.controls.title_ar.value}}
+                            </mat-checkbox>
+                        </div>
+                    </mat-panel-title>
+                </mat-expansion-panel-header>
+                <section>
+                    <mat-checkbox color="primary" class="d-block" *ngFor="let permission of group.controls['permissions']['controls']; index as i" [formControl]="permission.controls.isGranted">
+                        {{ i == 0 ? ('View' | translate) : '' }}
+                        {{permission.controls.title_ar.value}}
+                    </mat-checkbox>
+                </section>
+            </mat-expansion-panel>
+        </mat-accordion>
+
+    </mat-dialog-content>
+    <mat-dialog-actions align="end" class="actions">
+        <button type="button" mat-button mat-dialog-close class="cancel">
+            {{ 'Cancel' | translate }}
+        </button>
+        <button mat-button cdkFocusInitial class="save">
+            {{ 'Save' | translate }}
+        </button>
+    </mat-dialog-actions>
+</form>

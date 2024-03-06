@@ -1,0 +1,23 @@
+.page_title{
+    color:#fff;
+}
+
+
+.date-input-cont {
+    position: relative;
+    mat-datepicker-toggle {
+        position: absolute;
+        left: 8px;
+        top: 2px;
+    }
+}
+
+
+table{
+    width:100%;
+}
+
+
+th{
+    text-align:right;
+}

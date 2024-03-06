@@ -1,0 +1,45 @@
+<form [formGroup]="form" (ngSubmit)="save()">
+    <h2 mat-dialog-title>
+        {{ mode | translate }}
+        {{ '_Job' | translate }}
+    </h2>
+    <mat-dialog-content class="mat-typography">
+        <div class="row">
+            <div class="col-md-12 form-group mb-4">
+                <label for="job_title">
+                    اسم الوظيفة
+                </label>
+                <input id="job_title" type="text" formControlName="job_title">
+            </div>
+
+            <div class="col-md-12 form-group mb-4">
+                <label for="job_description">
+                    حالة الوظيفة
+                </label>
+                <ng-select appendTo="body" formControlName="status" >
+                    <ng-option [value]="statusEnum.active">
+                        {{'active' | translate }}
+                    </ng-option>
+                    <ng-option [value]="statusEnum.inActive">
+                        {{'inActive' | translate }}
+                    </ng-option>
+                </ng-select>
+            </div>   
+
+            <div class="col-md-12 form-group">
+                <label for="job_description">
+                    وصف الوظيفة
+                </label>
+                <textarea name="job_description" formControlName="job_description"></textarea>
+            </div>   
+        </div>
+    </mat-dialog-content>
+    <mat-dialog-actions align="end" class="actions">
+        <button type="button" mat-button mat-dialog-close class="cancel">
+            {{ 'Back' | translate }}
+        </button>
+        <button [disabled]="isSaving" mat-button cdkFocusInitial class="save" *ngIf="!form.disabled" >
+           حفظ
+        </button>
+    </mat-dialog-actions>
+</form>

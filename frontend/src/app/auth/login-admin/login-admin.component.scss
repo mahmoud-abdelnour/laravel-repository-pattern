@@ -1,0 +1,117 @@
+@import "../../../themes/mixins";
+
+
+div.cont {
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    background: linear-gradient(225deg, #154398 0%,#143F94,  #208BE1,  #208be1 100%), url('../../../assets/imgs/login-bg.png') center center;
+    background-blend-mode: multiply;
+    background-size: cover;
+    // background-image: linear-gradient(to left bottom, #154398, #154297, #154197, #144196, #144095, #14469b, #154ba2, #1551a8, #165fb7, #186ec5, #1b7cd3, #208be1);
+}
+
+.info {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    img {
+        width: 206px;
+    }
+    h1 {
+        color: #fff;
+        margin-top: 32px;
+        font-size: 32px;
+    }
+    p {
+        margin: 0;
+        font-size: 18px;
+        margin-top: -22px;
+        color: #fff;
+    }
+}
+
+@media (min-width:576px) and (max-width: 1199px) {
+    .container {
+        max-width: 100% !important;
+        padding-right: 1rem;
+        padding-left: 1rem;
+    }
+}
+
+@media (max-width:767px) {
+    mat-card.mat-card {
+        border-radius: 16px;
+        padding-top: 3rem;
+        padding-bottom: 3rem;
+        margin-top: 2rem;
+    }
+}
+
+:host {
+    mat-card {
+        @include nb-ltr(){
+            border-radius : 60px 0 0 0;
+        }
+    }
+
+    mat-tab-group ::ng-deep{
+        mat-tab-header {
+            border-bottom: none;
+            .mat-tab-labels {
+                justify-content: center;
+                .mat-tab-label {
+                    font-size: 16px;
+                    opacity: 1;
+                }
+            }
+        }
+    }
+}
+mat-card {
+    padding: 80px 60px;
+    border-radius: 0 60px 0 0;
+    box-shadow: none;
+    h2 {
+        color: #208BE1;
+        font-size: 30px;
+        margin-bottom: 12px;
+    }
+    p {
+        margin-top: 0;
+        margin-bottom: -10px;
+        font-size: 16px;
+    }
+    input {
+        background-color: #F3F6F9;
+        border-color:#fff;
+    }
+    a {
+        color: #208BE1;
+        text-decoration: none;
+        font-size: 14px;
+    }
+    .actions {
+        button {
+            width: 100%;
+            display: block;
+            border-radius: 100px;
+            height: 46px;
+            font-size: 16px;
+            box-shadow: none;
+            &.primary {
+                background-color: #0069BD;
+                color: #fff;
+                margin-bottom: 16px;
+                margin-top: 32px;
+            }
+            &.secondary {
+                color: #0069BD;
+                border: 1px solid #0069BD;
+            }
+        }
+    }
+}

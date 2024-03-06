@@ -1,0 +1,205 @@
+<mat-drawer-container autosize [class.drawer-opened]="drawer.opened">
+  <mat-drawer #drawer [mode]="innerWidth > 768 ? 'side' : 'over' ">
+    <img src="assets/imgs/menu-logo3.png" alt="">
+   
+    <mat-nav-list>
+      <ng-container *ngIf="userService.userData.user_type !== UserType.provider; else showProvider">
+        <ng-container *ngFor="let route of Routes[userService.userData.user_type]" >
+          <mat-list-item
+          matTooltipClass="menu-tooltip"
+          matTooltipPosition="before"
+          *ability="route.ability"
+          [matTooltip]="route.title | translate"
+          [routerLink]="[route.path]"
+          routerLinkActive="active" >
+            <mat-icon mat-list-icon>
+              {{route.icon}}
+            </mat-icon>
+          </mat-list-item>
+        </ng-container>
+      </ng-container>
+      
+
+      <ng-template #showProvider>
+        <ng-container *ngFor="let route of Routes[userService.userData.user_type]" >
+          <mat-list-item
+          matTooltipClass="menu-tooltip"
+          matTooltipPosition="before"
+          *appPerm="route.permission"
+          [matTooltip]="route.title | translate"
+          [routerLink]="[route.path]"
+          routerLinkActive="active" >
+            <mat-icon mat-list-icon>
+              {{route.icon}}
+            </mat-icon>
+          </mat-list-item>
+        </ng-container>
+      </ng-template>
+      
+
+      <!-- <ng-container *ngFor="let route of Routes[userService.userData.user_type]" >
+        <mat-list-item
+        matTooltipClass="menu-tooltip"
+        matTooltipPosition="before"
+        *ability="route.ability"
+        [matTooltip]="route.title | translate"
+        [routerLink]="[route.path]"
+        routerLinkActive="active" >
+          <mat-icon mat-list-icon>
+            {{route.icon}}
+          </mat-icon>
+        </mat-list-item>
+      </ng-container> -->
+      
+    
+    </mat-nav-list>
+  </mat-drawer>
+
+  <!-- <div class="bg-header">
+
+  </div> -->
+  <header #headerEle>
+    <nav>
+        <div class=" d-flex align-items-center justify-content-between">
+          <div>
+            <button class="menu-toggle" type="button" mat-button (click)="drawer.toggle()">
+              <mat-icon>menu</mat-icon>
+            </button>
+          </div>
+
+
+          <div class="d-flex align-items-center justify-content-between left-buttons">
+            
+            <div 
+            *ngIf="(userService?.userData?.user_type == 'company' &&  userService?.userData?.entity?.status == themeService?.settings?.COMPANY_STATUS?.enum?.pending) ||
+                   (userService?.userData?.user_type == 'employee' && userService?.userData?.entity?.status == themeService?.settings?.EMPLOYEE_STATUS?.enum?.pending )
+                  " 
+            class="account_alert_badge">حساب غير مفعل</div>
+            
+         
+
+
+            <button class="lang" mat-button  [matMenuTriggerFor]="menuNotifications" >
+              <mat-icon class="notifications">
+                notifications
+              </mat-icon>
+
+              <span class="mat-badge-content mat-badge-active" *ngIf=" userService.unread_Notifications > 0 ">{{userService.unread_Notifications}}</span>
+
+            </button>
+
+
+            <mat-menu #menuNotifications="matMenu" xPosition="before" class="notificationMenu" >
+              
+              <a mat-menu-item *ngFor="let notify of userService.userNotifications"  (click)="userService.readNotification(notify.id)" [ngClass]="{'unread_notfication': notify.read_at == null }">
+                ○
+               <!--  <mat-icon>notifications_active</mat-icon> -->
+
+                <span>{{ notify?.data?.heading }}</span>
+              </a>
+
+              <mat-divider></mat-divider>
+
+              <a mat-menu-item  routerLink="/notifications">
+
+                <mat-icon>circle_notifications</mat-icon>
+                <span>كل الإشعارات</span>
+                
+              </a>
+
+
+            </mat-menu>
+
+            <span class="pipe"></span>
+            <!-- <button class="lang" mat-button (click)="changeLang(defaultLang.value)">
+              {{defaultLang.title}}
+            </button> -->
+            <!-- <span class="pipe"></span> -->
+            <button mat-button [matMenuTriggerFor]="menu">
+              <span class="name">
+                {{userService.userData.name}}
+              </span>
+              <mat-icon>
+                person
+              </mat-icon>
+            </button>
+            <mat-menu #menu="matMenu" class="nav-user-menu">
+              <!-- <button mat-menu-item>Item 1</button> -->
+              <button mat-menu-item [routerLink]="[profileUrl]">
+                {{ 'Profile' | translate }}
+              </button>
+               <button mat-menu-item [routerLink]="[settingUrl]"  *ngIf="userService.userData.user_type == 'provider' ">
+                {{ 'Settings' | translate }}
+              </button>
+              <button mat-menu-item (click)="logout()">
+                {{ 'Logout' | translate }}
+              </button>
+            </mat-menu>
+          </div>
+        </div>
+    </nav>
+    <nav>
+      <div class=" d-flex align-items-center justify-content-between">
+        <div>
+          <button class="menu-toggle" type="button" mat-button (click)="drawer.toggle()">
+            <mat-icon>menu</mat-icon>
+          </button>
+          <img src="" alt="">
+        </div>
+        <div class="d-flex align-items-center justify-content-between left-buttons">
+          <!-- <button class="lang" mat-button (click)="changeLang(defaultLang.value)">
+            {{defaultLang.title}}
+          </button> -->
+          <!-- <span class="pipe"></span> -->
+
+          <button class="lang" mat-button routerLink="/notifications">
+            <mat-icon class="notifications">
+              notifications
+            </mat-icon>
+          </button>
+          <span class="pipe"></span>
+          
+          <button mat-button [matMenuTriggerFor]="menu">
+            <span class="name">
+              {{userService.userData.name}}
+            </span>
+            <mat-icon>
+              person
+            </mat-icon>
+          </button>
+          <mat-menu #menu="matMenu" class="nav-user-menu">
+            <!-- <button mat-menu-item>Item 1</button> -->
+            <button mat-menu-item [routerLink]="[profileUrl]">
+              {{ 'Profile' | translate }}
+            </button>
+            <button mat-menu-item (click)="logout()">
+              {{ 'Logout' | translate }}
+            </button>
+          </mat-menu>
+        </div>
+      </div>
+  </nav>
+  </header>
+  
+  <section #mainEle class="main">
+    <!-- <div class="container"> -->
+      <router-outlet></router-outlet>
+    <!-- </div> -->
+  </section>
+
+  <footer>
+    <div class="d-flex align-items-center justify-content-between">
+      <p>
+        جميع الحقوق محفوظة لدى أكتساب © 2023
+      </p>
+  
+
+      <div class="links">
+        <a href="/">اتصل بنا</a>
+        <a href="/pages/privacy">سياسة الخصوصية</a>
+        <a href="/pages/terms"> الشروط والأحكام </a>
+      </div>
+    </div>
+  </footer>
+</mat-drawer-container>
+

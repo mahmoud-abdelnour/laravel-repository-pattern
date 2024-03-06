@@ -1,0 +1,13 @@
+<button mat-button (click)="parent.openPermissions(rowData)" *appPerm=" 'edit_user' ">
+    <mat-icon class="permissions">manage_accounts</mat-icon>
+</button>
+
+<button mat-button (click)="parent.openDialog(FormMode.Update,rowData )"  *appPerm="'edit_user'">
+    <mat-icon color="primary">edit</mat-icon>
+</button>
+<button mat-button (click)="parent.popDelete(rowData)"  *appPerm="'delete_user'">
+    <mat-icon color="warn">delete</mat-icon>
+</button>
+<!-- <button mat-button (click)="action.emit({mode:FormMode.View, rowData:rowData})">
+    <mat-icon class="eye">visibility</mat-icon>
+</button> -->

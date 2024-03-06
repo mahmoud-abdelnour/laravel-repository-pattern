@@ -1,0 +1,19 @@
+<section class="card-cont">
+    <h2>
+        {{ 'Employees' | translate }}
+    </h2>
+    <mat-card *ngIf="settings">
+        <mat-card-content>
+            <app-table #table [settings]="settings" [apiFunc]="apiFunc"></app-table>
+        </mat-card-content>
+    </mat-card>
+</section>
+
+<ng-template #dialog let-ref="dialogRef" let-data>
+    <app-task-dialog [employeeId]="data.data.id" [ref]="ref" [mode]="FormMode.Create"></app-task-dialog>
+</ng-template>
+
+
+<ng-template #resignDialog let-ref="dialogRef" let-data>
+    <app-resign-dialog [employeeId]="data.data.id" [data]="data.data" [ref]="ref" [mode]="FormMode.Create"></app-resign-dialog>
+</ng-template>

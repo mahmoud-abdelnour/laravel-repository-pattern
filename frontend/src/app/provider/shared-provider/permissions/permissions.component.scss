@@ -1,0 +1,13 @@
+:host {
+    min-width: 70vw;
+    display: block;
+    mat-dialog-content {
+        background-color: var(--light-blue);
+        padding-top: 16px;
+        mat-checkbox {
+            line-height: 35px;
+        }
+    }
+}
+
+

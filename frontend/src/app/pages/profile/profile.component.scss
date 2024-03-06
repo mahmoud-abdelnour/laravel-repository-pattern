@@ -1,0 +1,108 @@
+.inner-cards-cont {
+    mat-card {
+        background: var(--light-blue);
+        margin-bottom: 2rem;
+        &:last-child {
+            margin-bottom: -24px;
+        }
+        mat-card-subtitle {
+            font-size: 18px;
+            color: var(--main-color);
+            font-weight: bold;
+        }
+        mat-card-content {
+            padding-top: 0;
+            padding-bottom: 0;
+        }
+    }
+}
+input {
+    background: #FFFFFF;
+}
+ng-select {
+    background: #fff;
+    border-radius: 50px;
+}
+
+mat-card-actions {
+    margin: 0;
+    border-top: 1px solid #edeff9;
+    padding: 20px 16px;
+}
+
+.delete-btn {
+    mat-icon {
+        color: #FF0000;
+    }
+}
+// .file-item {
+//     h4 {
+//         color: var(--label-color);
+//         font-size: 16px;
+//         font-weight: normal;
+//         margin-bottom: 14px;
+//     }
+//     .data {
+//         background-image: url("data:image/svg+xml,%3csvg width='100%25' height='100%25' xmlns='http://www.w3.org/2000/svg'%3e%3crect width='100%25' height='100%25' fill='none' stroke='rgba(26,113,183 ,.35)' stroke-width='2' stroke-dasharray='6%2c 14' stroke-dashoffset='2' stroke-linecap='square'/%3e%3c/svg%3e");
+//         background-color: #E6E9F5;
+//         display: flex;
+//         justify-content: center;
+//         align-items: center;
+//         padding: 12px;
+//         &.has-file {
+//             .input-cont {
+//                 display: none;
+//             }
+//         }
+//         .input-cont {
+//             position: relative;
+//             margin: auto;
+//             text-align: center;
+//             cursor: pointer;
+//             input {
+//                 position: absolute;
+//                 opacity: 0;
+//                 width: 100%;
+//                 height: 100%;
+//                 top: 0;
+//                 left: 0;
+//                 right: 0;
+//                 bottom: 0;
+//                 cursor: pointer;
+
+//             }
+//             mat-icon {
+//                 color: var(--icon-color);
+//                 width: 30px;
+//                 font-size: 28px;
+//                 height: 26px;
+//                 margin: auto;
+//             }
+//             label {
+//                 color: var(--label-color);
+//                 font-size: 14px;
+//                 opacity: .5;
+//             }
+//         }
+//         .file-info {
+//             width: 100%;
+//             span{
+//                 color: #AFAFAF;
+//                 flex: 1;
+//             }
+//             span:first-of-type {
+//                 color: #4B5696;
+//             }
+//             button {
+//                 color: #FF0000;
+//                 &.delete-btn {
+
+//                 }
+//             }
+
+//             .download {
+//                 color: var(--icon-color);
+//             }
+//         }
+//     }
+// }

@@ -1,0 +1,9 @@
+<button *appPerm="'edit_task'" mat-button (click)="parent.openDialog(FormMode.Update, rowData)">
+    <mat-icon color="primary">edit</mat-icon>
+</button>
+
+<button *appPerm="'delete_task'" mat-button (click)="parent.popDelete(rowData)">
+    <mat-icon color="warn">
+        delete
+    </mat-icon>
+</button>

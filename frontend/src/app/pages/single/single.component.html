@@ -1,0 +1,39 @@
+<nav>
+    <div class="container">
+      <div class="d-flex align-items-center justify-content-between">
+        <div class="d-flex align-items-center justify-content-between">
+           <span *ngIf="pageId == 'conditions' ">الشروط والأحكام</span>
+           <span *ngIf="pageId == 'privacy' "> سياسية الخصوصية </span>
+           <span *ngIf="pageId == 'terms' "> الشروط والاحكام</span>
+
+       
+
+
+
+        </div>
+        <img src="./assets/imgs/app-logo3.png" alt="" width="150">
+
+      </div>
+    </div>
+  </nav>
+  
+  <section class="main">
+    <div class="container">{{pageContent}}
+    </div>
+  </section>
+  
+  <footer>
+    <div class="container d-flex align-items-center justify-content-between">
+      <p>
+        {{ "FooterText" | translate }}
+      </p>
+      <div class="links">
+        <a href=""> {{ "ContactUs" | translate }} </a>
+        <a href="/pages/privacy"> {{ "PrivacyPolicies" | translate }} </a>
+        <a href="/pages/terms">
+          {{ "TermsAndConditions" | translate }}
+        </a>
+      </div>
+    </div>
+  </footer>
+  

@@ -1,0 +1,134 @@
+<form [formGroup]="form">
+    <mat-card>
+        <mat-card-subtitle>
+            {{ 'Register Company' | translate }}
+        </mat-card-subtitle>
+        <mat-card-content>
+          
+            <section>
+              
+    
+                <div class="row">
+                    <div class="col-md-6 mb-4 form-group">
+                        <label for="">
+                            {{ 'CommercialRecord' | translate }}
+                            *
+                        </label>
+                        <input formControlName="commercial_record" [placeholder]=" 'CommercialRecord' | translate ">
+                    </div>
+                    
+                    <div class="col-md-6 mb-4 form-group">
+                        <label for="email">
+                            {{ 'Email' | translate }}
+                            *
+                        </label>
+                        <input formControlName="email" id="email" type="email" [placeholder]=" 'Email' | translate ">
+                    </div>
+                    <div class="col-md-6 mb-4 form-group">
+                        <label for="password">
+                            {{ 'Password' | translate }}
+                            *
+                        </label>
+                        <input formControlName="password" type="password" id="password" [placeholder]=" 'Password:Placeholder' | translate ">
+                    </div>
+                    <div class="col-md-6 mb-4 form-group">
+                        <label for="confirmPassword">
+                            {{ 'ConfirmPassword' | translate }}
+                            *
+                        </label>
+                        <input formControlName="password_confirmation" type="password" id="confirmPassword" [placeholder]=" 'ConfirmPassword:Placeholder' | translate ">
+                    </div>
+
+                </div>
+               
+            </section>
+
+
+            <ng-container>
+                <div class="row">
+
+                    <div class="col-md-6 mb-4 form-group">
+                        <label for="nameAr">
+                            {{ 'ar_companyName'  | translate }}
+                            *
+                        </label>
+                        <input formControlName="name_ar" id="nameAr" [placeholder]=" ('ar_companyName' + ':Placeholder') | translate ">
+                    </div>
+                    <div class="col-md-6 mb-4 form-group">
+                        <label for="nameEn">
+                            {{ 'en_companyName' | translate }}
+                            *
+                        </label>
+                        <input formControlName="name_en" id="nameEn" [placeholder]=" ('en_companyName' + ':Placeholder') | translate ">
+                    </div>
+                    <div class="col-md-6 mb-4 form-group">
+                        <label for="tel">
+                           {{ 'Phone' | translate }}
+                            *
+                        </label>
+                        <input formControlName="mobile" id="tel" type="tel" [placeholder]=" 'Phone' | translate ">
+                    </div>
+
+                    <div class="col-md-6 mb-4 form-group">
+                        <label for="">
+                            {{ 'NationalAddress' | translate }}
+                            *
+                        </label>
+                        <input formControlName="national_address_extra" [placeholder]=" 'NationalAddress' | translate ">
+                    </div>
+
+                    <div class="col-md-6 mb-4 form-group">
+                        <label for="">
+                            {{ 'BuildingNumber' | translate }}
+                            *
+                        </label>
+                        <input  formControlName="national_address_building_no" [placeholder]=" 'BuildingNumber' | translate ">
+                    </div>
+                    <div class="col-md-6 mb-4 form-group">
+                        <label for="">
+                            {{ 'PostalCode' | translate }}
+                            *
+                        </label>
+                        <input formControlName="national_address_postal" [placeholder]="'PostalCode' | translate">
+                    </div>
+
+                    <div class="col-md-6 mb-4 form-group">
+                        <label for="">
+                            {{ 'LaborOfficeCompanyId' | translate }}
+                        </label>
+                        <input formControlName="labor_office_company_id" [placeholder]=" 'LaborOfficeCompanyId' | translate ">
+                    </div>
+                    <div class="col-md-6 mb-4 form-group">
+                        <label for="">
+                            {{ 'InsuranceOfficeCompanyId' | translate }}
+                        </label>
+                        <input formControlName="insurance_office_company_id" [placeholder]=" 'InsuranceOfficeCompanyId' | translate ">
+                    </div>
+                </div>
+                   
+
+
+
+                <div class="mb-4 file-item">
+                    <div *ngFor="let item of files.controls | keyvalue">
+                        <h4>
+                            {{ $any(item.key) | translate }}
+                            *
+                        </h4>
+                        <app-file-input  [control]="$any(item.value)"></app-file-input>
+                    </div>
+                </div>
+
+            </ng-container>
+
+        </mat-card-content>
+        <mat-card-actions class="d-flex align-items-center justify-content-between">
+            <button type="button" mat-button (click)="cancel()">
+                {{ 'Cancel' | translate }}
+            </button>
+            <button mat-button class="primary" (click)="save()">
+                {{ 'Save' | translate }}
+            </button>
+        </mat-card-actions>
+    </mat-card>
+</form>

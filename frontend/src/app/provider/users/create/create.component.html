@@ -1,0 +1,68 @@
+<form [formGroup]="form" (ngSubmit)="save()">
+    <h2 mat-dialog-title>
+        {{ mode | translate }}
+        {{ 'User' | translate }}
+    </h2>
+    <mat-dialog-content class="mat-typography">
+        <mat-tab-group mat-align-tabs="start" #tabs (selectedTabChange)="changeTab(tabs)">
+            <mat-tab [label]=" 'BasicInfo' | translate ">
+                <div class="row mt-4">
+                    <div class="col-md-6 mb-4 form-group">
+                        <label for="">
+                            اسم المستخدم 
+                        </label>
+                        <input formControlName="name" placeholder="اسم المستخدم">
+                    </div>
+                    <div class="col-md-6 mb-4 form-group">
+                        <label for="">
+                            البريد الالكترونى
+                        </label>
+                        <input formControlName="email" placeholder="البريد الالكترونى">
+                    </div>
+                    <div class="col-md-6 mb-4 form-group">
+                        <label for="">
+                            الهوية الوطنية 
+                        </label>
+                        <input formControlName="national_id" placeholder="الهوية الوطنية">
+                    </div>
+                    <div class="col-md-6 mb-4 form-group">
+                        <label for="">
+                            الجوال 
+                        </label>
+                        <input type="tel" formControlName="mobile" placeholder="الجوال">
+                    </div>
+    
+                    <ng-container *ngIf="mode == FormMode.Create">
+                        <div class="col-md-6 mb-4 form-group">
+                            <label for="">
+                                كلمة المرور 
+                            </label>
+                            <input type="password" formControlName="password" placeholder="كلمة المرور">
+                        </div>
+                        <div class="col-md-6 mb-4 form-group">
+                            <label for="">
+                                تأكيد كلمة المرور 
+                            </label>
+                            <input type="password" formControlName="password_confirmation" placeholder="تأكيد كلمة المرور">
+                        </div>
+                    </ng-container>
+                </div>
+            </mat-tab>
+            <mat-tab [label]=" 'Roles' | translate ">
+                <mat-selection-list class="mt-4" formControlName="roles">
+                    <mat-list-option color="primary" *ngFor="let role of roles" [value]="role.id">
+                      {{role.name}}
+                    </mat-list-option>
+                </mat-selection-list>
+            </mat-tab>
+        </mat-tab-group>
+          
+         
+    </mat-dialog-content>
+    <mat-dialog-actions align="end" class="actions">
+        <button type="button" mat-button mat-dialog-close class="cancel">إلغاء</button>
+        <button mat-button cdkFocusInitial class="save">
+            حفظ
+        </button>
+    </mat-dialog-actions>
+</form>

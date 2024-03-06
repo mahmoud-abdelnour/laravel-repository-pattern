@@ -1,0 +1,10 @@
+<button mat-button (click)="parent.openDialog(FormMode.Create, rowData)">
+    <mat-icon color="primary">
+        assignment_add
+    </mat-icon>
+</button>
+<button title="انهاء تعاقد" mat-button (click)="parent.openResignDialog(FormMode.Create, rowData)" *ngIf="rowData.current_resigns_count == 0">
+    <mat-icon color="primary">
+        switch_access_shortcut
+    </mat-icon>
+</button>

@@ -1,0 +1,35 @@
+<div class="data " [class.has-file]="!!control.value || control.disabled">
+    <div class="input-cont form-group">
+        <input  id="file" type="file" #input accept="image/*" (change)="fileChanged($event)">
+        <mat-icon class="d-block">
+            cloud_upload
+        </mat-icon>
+        <label for="file">
+            {{ 'StartUploadingFile' | translate }}
+        </label>
+        <!-- <div class="invalid-feedback d-block" *ngIf="control.touched && control.invalid">
+            {{ 'FileMustBeSelected' | translate }}
+        </div> -->
+        <input type="hidden" name="fileHidden" [formControl]="control"/>
+    </div>
+    <div class="file-info d-flex align-items-center justify-content-between" *ngIf="file || control.value || control.disabled">
+        <span class="file-name">
+            {{file?.name || fileName}}
+        </span>
+        <span class="file-size" *ngIf="file">
+            {{ fileSize }} MB
+        </span>
+
+        <div class="d-flex justify-content-center align-items-center">
+            <button mat-button (click)="deleteFile(input);" *ngIf="!control.disabled">
+                <mat-icon>delete</mat-icon>
+            </button>
+    
+            <!-- show button download if we dont have type -->
+            <a *ngIf="!file && control.value" mat-button [href]="control.value" target="_blank" type="button" download>
+                <mat-icon>download</mat-icon>
+            </a>
+        </div>
+        
+    </div>
+</div>

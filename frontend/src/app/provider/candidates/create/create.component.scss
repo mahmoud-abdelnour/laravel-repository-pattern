@@ -1,0 +1,169 @@
+mat-card {
+    padding: 10px 24px;
+    box-shadow: none !important;
+    
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    mat-card-content {
+        flex: 1;
+    }
+
+    mat-card-title {
+        color: var(--text-color);
+        font-weight: bold;
+        font-size: 24px;
+        margin-left: -16px;
+        margin-right: -16px;
+        margin-bottom: 0;
+    }
+    mat-card-subtitle {
+        font-size: 16px;
+        color: var(--main-color);
+        font-weight: bold;
+        margin-top: 1.5rem !important;
+    }
+    .account-type {
+        background-image: url("data:image/svg+xml,%3csvg width='100%25' height='100%25' xmlns='http://www.w3.org/2000/svg'%3e%3crect width='100%25' height='100%25' fill='none' rx='25' ry='25' stroke='%23B9CDD9' stroke-width='3' stroke-dasharray='4, 0,4' stroke-dashoffset='86' stroke-linecap='butt'/%3e%3c/svg%3e");
+        border-radius: 25px;
+        padding: 16px;
+        mat-card-subtitle {
+            margin-top: 0 !important;
+        }
+    }
+    .group-radio {
+        button {
+            border: 1px solid #EEEEEE;
+            border-radius: 8px;
+            width: 100%;
+            transition: background .2s linear;
+
+            &:hover {
+                border-color: var(--main-color);
+                h3 {
+                    color: var(--main-color);
+                }
+            }
+            h3 {
+                margin: 0;
+                font-size: 18px;
+                color: var(--text-color);
+            }
+            div.d-flex {
+                padding: 16px 0;
+                .icon-type {
+                    color: var(--main-color);
+                    // width: 35px;
+                    // height: 35px;
+                    // font-size: 35px;
+                    width: 45px;
+                    height: 45px;
+                    font-size: 45px;
+                    margin-left: 10px;
+                    margin-right: 10px;
+                }
+                padding: 16px 0;
+                label {
+                    flex: 1;
+                    text-align: start;
+                    padding-left: 10px;
+                    padding-right: 10px;
+                    cursor: pointer;
+                    // h3 {
+                    //     margin: 0;
+                    //     font-size: 18px;
+                    //     color: var(--text-color);
+                    // }
+                    p {
+                        margin: 0;
+                        color: var(--par-color);
+                        font-size: 16px;
+                        line-height: 16px;
+                        margin-bottom:10px;
+                    }
+                }
+                .circle {
+                    background-color: transparent;
+                    display: flex;
+                    width: 32px;
+                    height: 32px;
+                    align-items: center;
+                    justify-content: center;
+                    border-radius: 35px;
+                    mat-icon {
+                        opacity: 0;
+                        transition: opacity .5s linear;
+                    }
+                }
+            }
+            &.active {
+                background-color: var(--main-color);
+                border-color: var(--main-color);
+                mat-icon.icon-type,p,h3 {
+                    color: #fff !important;
+                }
+
+                .circle {
+                    background-color: var(--check-color) !important;
+                    mat-icon {
+                        color: #fff;
+                        opacity: 1 !important;                    
+                    }
+                }
+            }
+        }
+    }
+
+    mat-card-actions {
+        border-top: 1px solid #EEEEEE;
+        padding-top: 20px;
+        button {
+            padding: 4px 32px;
+            border: 1px solid var(--main-color);
+            font-size: 16px;
+            color: var(--main-color);
+            width: 150px;
+            border-radius: 100px;
+            &.primary {
+                color: #fff;
+                background: var(--main-color);
+            }
+        }
+
+    }
+}
+
+mat-checkbox{
+    a {
+        color: var(--main-color);
+        text-decoration: none
+    }
+}
+
+#iban_input_group{
+    position: relative;
+    span{
+        padding: 9px 15px;
+        background-color: var(--light-blue);
+        border-radius: 30px;
+        position: relative;
+        right: -50px;
+    }
+    input{
+        padding-left: 46px;
+    }
+    
+
+  
+}
+
+
+:host {
+    #iban_input_group ::ng-deep{
+        app-error{
+            position: absolute;
+            bottom: -30px;
+            right: 0;
+        }
+    }
+}

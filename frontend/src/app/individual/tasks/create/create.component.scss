@@ -1,0 +1,38 @@
+.col-md-4, .col-md-12 {
+    margin-bottom: 1rem;
+    h4 {
+        font-size: 18px;
+        margin-bottom: 10px;
+    }
+    p {
+        font-size: 16px;
+        color: var(--main-color);
+    }
+}
+.start_task{
+    background:rgb(148, 230, 148);
+    color:rgb(90, 148, 90);
+    border-color:rgb(90, 148, 90);
+}
+
+.finish_task{
+    background:rgb(226, 174, 105);
+    color:rgb(147, 100, 39);
+    border-color:rgb(147, 100, 39);
+}
+
+.addAttachBtn{
+    background: #dfdfdf;
+    margin-left:10px;
+}
+
+.saveAttachBtn{
+    background:rgb(90, 148, 90);;
+    color:rgb(255, 255, 255);
+    margin-left:10px;
+
+}
+
+h4.bold{
+    font-weight:bold;
+}

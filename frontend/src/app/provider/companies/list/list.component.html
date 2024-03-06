@@ -1,0 +1,15 @@
+<div class="mt-5 mb-5">
+    <app-table #table [paginationId]="paginationId" [settings]="settings" [apiFunc]="apiFunc"></app-table>
+</div>
+
+<!-- <ng-template #dialog let-ref="dialogRef" let-data>
+    <app-create [ref]="ref" [data]="data.data" [mode]="data.mode"></app-create>
+</ng-template>
+
+<ng-template #assignDialog let-ref="dialogRef" let-data>
+    <app-assign-task [data]="data.data" [ref]="ref"></app-assign-task>
+</ng-template> -->
+
+<ng-template #companyDialog let-ref="dialogRef" let-data>
+    <app-company-dialog [data]="data.data" [ref]="ref" [selectedIndex]="data.selectedIndex"></app-company-dialog>
+</ng-template>

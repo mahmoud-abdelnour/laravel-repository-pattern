@@ -1,0 +1,63 @@
+<section class="card-cont">
+    <h2>
+        طلبات انهاء التعاقد
+    </h2>
+    <mat-card>
+        <mat-card-content>
+            <app-table #table [settings]="settings" [apiFunc]="apiFunc"></app-table>
+        </mat-card-content>
+    </mat-card>
+</section>
+
+
+
+
+<ng-template #dialog let-ref="dialogRef" let-data>
+
+   <form [formGroup]="form" (ngSubmit)="save(data.rowData?.id)">
+    <h2 mat-dialog-title >
+        طلب انهاء تعاقد
+    </h2>
+ 
+    <mat-dialog-content class="mat-typography">
+        <div class="row">
+           
+            <div class="col-md-6 mb-4 form-group">
+                <label for="amount">
+                    {{ 'الوظيفة الحالية ' | translate }} 
+                </label>
+                
+                <div class="form-control">{{data.rowData?.employee?.job?.job_title}}</div>
+            </div>
+
+            <div class="col-md-6 mb-4 form-group">
+                <label for="amount">
+                    {{ ' الشركة ' | translate }} 
+                </label>
+                
+                <div class="form-control">{{data.rowData?.company?.name_ar}}</div>
+            </div>
+          
+           
+            <div class="col-md-12 mb-4 form-group">
+                <label for="notes">
+                    {{ 'Notes' | translate }} 
+                </label>
+               <div name="notes" id="notes" cols="15" rows="8" >{{data.rowData?.notes}}</div>
+            </div>
+
+
+        </div>        
+    </mat-dialog-content>
+    <mat-dialog-actions align="end" class="actions">
+        <button type="button" mat-button mat-dialog-close class="cancel">
+            رجوع
+        </button>
+        <button  [disabled]="isSaving" mat-button cdkFocusInitial class="save"  *ngIf=" data?.rowData.status == themeService.settings.RESIGN_STATUS.enum.pending ">
+        اعتماد
+        </button>
+    </mat-dialog-actions>
+</form>
+
+
+</ng-template>

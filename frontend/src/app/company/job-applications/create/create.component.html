@@ -1,0 +1,40 @@
+<form [formGroup]="form" (ngSubmit)="save()">
+    <h2 mat-dialog-title>
+        {{ mode | translate }}
+        طلب
+    </h2>
+    <mat-dialog-content class="mat-typography">
+        <div class="row">
+            <div class="col-md-6 mb-4 form-group">
+                <label>
+                    {{ 'Job' | translate }}
+                </label>
+                <ng-select formControlName="job_id" [placeholder]=" 'Job' | translate ">
+                    <ng-option *ngFor="let job of jobs" [value]="job.id"> {{ job.job_title }} </ng-option>
+                </ng-select>
+            </div>
+            
+
+            <div class="col-md-6 mb-4 form-group">
+                <label for="count">
+                    العدد المطلوب
+                </label>
+                <input formControlName="count" id="count" type="number" placeholder="ادخل العدد المطلوب">
+            </div>
+            <div class="col-12 mb-4 form-group">
+                <label for="desc">
+                    الوصف
+                </label>
+                <textarea formControlName="notes" id="desc" placeholder="ادخل وصف الوظيفة"></textarea>
+            </div>
+        </div>
+    </mat-dialog-content>
+    <mat-dialog-actions align="end" class="actions">
+        <button type="button" mat-button mat-dialog-close class="cancel">
+            {{ 'Back' | translate }}
+        </button>
+        <button *ngIf="mode !== FormMode.View" mat-button cdkFocusInitial class="save">
+            {{ 'Save' | translate }}
+        </button>
+    </mat-dialog-actions>
+</form>

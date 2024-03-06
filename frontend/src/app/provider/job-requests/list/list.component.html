@@ -1,0 +1,14 @@
+<section class="card-cont" *ngIf="settings">
+    <h2>
+        {{ 'JobRequests' | translate }}
+    </h2>
+    <mat-card>
+        <mat-card-content>
+            <app-table #table [settings]="settings" [apiFunc]="apiFunc"></app-table>
+        </mat-card-content>
+    </mat-card>
+</section>
+
+<ng-template #nominate let-data let-ref="dialogRef">
+    <app-nominate-employees [data]="data.data" [ref]="ref"></app-nominate-employees>
+</ng-template>

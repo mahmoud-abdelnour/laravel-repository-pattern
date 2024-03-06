@@ -1,0 +1,24 @@
+<section class="card-cont">
+    <h2>
+        {{ 'Tasks' | translate }}
+    </h2>
+    <mat-card>
+        <mat-card-header *appPerm="'create_task'">
+            <div class="d-flex align-items-center justify-content-between">
+                <div></div>
+                <button class="add-btn" mat-raised-button (click)="openDialog()">
+                    <mat-icon>add</mat-icon>
+                    {{ 'Create' | translate }}
+                    {{ 'Task' | translate }}
+                </button>
+            </div>
+        </mat-card-header>
+        <mat-card-content>
+            <app-table #table [settings]="settings" [apiFunc]="apiFunc"></app-table>
+        </mat-card-content>
+    </mat-card>
+</section>
+
+<ng-template #dialog let-ref="dialogRef" let-data>
+    <app-create [ref]="ref" [data]="data.data" [mode]="data.mode" [table]="table"></app-create>
+</ng-template>

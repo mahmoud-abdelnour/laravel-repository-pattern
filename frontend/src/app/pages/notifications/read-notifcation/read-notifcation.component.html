@@ -1,0 +1,3 @@
+<a class="anchor" (click)="parent.readNotification(rowData.id)" [ngClass]="{'unread_notfication_row':rowData.read_at == null } "   target="_blank"> 
+    {{ rowData.data.heading }} 
+</a>

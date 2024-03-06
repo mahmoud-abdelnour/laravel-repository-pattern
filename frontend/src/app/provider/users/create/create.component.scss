@@ -1,0 +1,25 @@
+mat-selection-list {
+    display: flex;
+    flex-wrap: wrap;
+    ::ng-deep {
+        mat-list-option {
+            width: 50% !important;
+            min-width: 175px;
+            .mat-list-item-content {
+                flex-direction: row !important;
+                mat-pseudo-checkbox {
+                    margin-left: 8px;
+                    margin-right: 8px;
+                }
+            }
+        }
+    }
+}
+
+mat-dialog-content {
+    padding-top: 0;
+}
+
+mat-tab-body {
+    padding: 16px 0 0 0;
+}

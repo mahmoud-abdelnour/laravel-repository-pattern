@@ -1,0 +1,60 @@
+<form [formGroup]="form">
+        <mat-card-subtitle>
+            <h2 class="m-0">توظيف مرشح بشركة</h2>
+        </mat-card-subtitle>
+        <mat-card-content>
+        <section>
+            
+            <div class="row">
+
+                <div class="col-md-6 form-group mb-4">
+                    <div>المرشح</div>
+                    <ng-select #select2 (search)="select2.open();OnSearchCandidate($event)"
+                        (blur)="selectCandidate.close()"
+                        formControlName="candidate_id">
+                        <ng-option *ngFor="let candidate of candidates" [value]="candidate.id">
+                            {{candidate.name_ar}}
+                        </ng-option>
+                    </ng-select>
+                </div>  
+                
+                <div class="col-md-6 form-group mb-4">
+                    <div>الشركة</div>
+                    <ng-select #select (search)="select.open();OnSearchCompany($event)"
+                        (blur)="selectComp.close()"
+                        formControlName="company_id">
+                        <ng-option *ngFor="let company of companies" [value]="company.id">
+                            {{company.name_ar}}
+                        </ng-option>
+                    </ng-select>
+                </div> 
+
+                  
+                <div class="col-md-12 form-group mb-4">
+                    <div>الوظيفة</div>
+                    <ng-select #select3 (search)="select.open();OnSearchJob($event)"
+                        (blur)="selectJob.close()"
+                        formControlName="job_id">
+                        <ng-option *ngFor="let job of jobs" [value]="job.id">
+                            {{job.job_title}}
+                        </ng-option>
+                    </ng-select>
+                </div> 
+                
+
+            </div> 
+
+        </section>
+
+        </mat-card-content>
+        <mat-card-actions class="d-flex align-items-center justify-content-betweens">
+            
+            <button type="button"  mat-raised-button  mat-dialog-close class="cancel">
+                {{ 'Cancel' | translate }}
+            </button>
+         
+            <button mat-button color="primary" mat-raised-button class="SaveBtn" (click)="save()">
+                {{ 'Save' | translate }}
+            </button>
+        </mat-card-actions>
+</form>

@@ -1,0 +1,208 @@
+<form [formGroup]="form" (ngSubmit)="save()">
+    <h2 mat-dialog-title>
+        {{ mode | translate }}
+        المهمة
+    </h2>
+    <mat-dialog-content class="mat-typography">
+        <div class="row">
+           <!-- <div class="col-md-4">
+                <h4>
+                    اسم المهمة
+                </h4>
+                <p>
+                  {{ data.task.task_title }}
+                </p>
+            </div>
+            <div class="col-md-4">
+                <h4>
+                    مدة المهمة
+                </h4>
+                <p>
+                    {{ data.task.task_period }}
+                </p>
+            </div>
+            <div class="col-md-4">
+                <h4>
+                    الشركة
+                </h4>
+                <p>
+                    {{ data.task.task_period }}
+                </p>
+            </div>
+    
+            <div class="col-md-4">
+                <h4>
+                    تاريخ الاسناد
+                </h4>
+                <p>
+                    {{ data.task.created_at | date:'yyyy/MM/dd' }}
+                </p>
+            </div>
+            <div class="col-md-4">
+                <h4>
+                    تاريخ الاستحقاق
+                </h4>
+                <p>
+                    2023-9-4
+                </p>
+            </div>
+    
+            <div class="col-md-12">
+                <h4>
+                    تفاصيل المهمة
+                </h4>
+                <p>
+                    {{ data.task.task_description }}
+                </p>
+            </div> -->
+
+            <div class="col-md-4 form-group mb-4" *ngIf="!employeeId">
+                <label>
+                    الموظف
+                </label>
+                <ng-select appendTo="body" formControlName="emp_id" (change)="getTasks($event)">
+                    <ng-option *ngFor="let employee of employees" [value]="employee.id">
+                        {{ employee.name_ar }}
+                    </ng-option>
+                </ng-select>
+            </div>
+
+            <div class="col-md-4 form-group mb-4" [class.col-md-6]="employeeId">
+                <label>
+                    المهمة
+                </label>
+                <ng-select appendTo="body" formControlName="task_id" (change)="this.activeTask = this.tasksObj[$event]">
+                    <ng-option *ngFor="let task of tasks" [value]="task.id">
+                        {{ task.task_title }}
+                    </ng-option>
+                </ng-select>
+            </div>
+
+            <div class="col-md-4 mb-3 form-group" [class.col-md-6]="employeeId">
+                <label for="due_date">
+                  تاريخ الإستحقاق
+                </label>
+                <div class="date-input-cont">
+                    <input matInput [matDatepicker]="startDatepicker" formControlName="due_date" id="due_date">
+                    <mat-datepicker-toggle matIconSuffix [for]="startDatepicker"></mat-datepicker-toggle>
+                    <mat-datepicker #startDatepicker></mat-datepicker>
+                </div>
+            </div>
+
+
+            
+            <!-- <div class="col-md-12 form-group mb-4">
+                <label for="notes">
+                    ملاحظات
+                </label>
+               <textarea id="notes" cols="30" formControlName="notes"></textarea>
+            </div> -->
+
+
+            <ng-container *ngIf="activeTask">
+                <div class="col-12">
+                    <h3 class="mt-4">
+                        بيانات المهمة
+                    </h3>
+                </div>
+                <div class="col-md-4">
+                    <h4>
+                        اسم المهمة
+                    </h4>
+                    <p>
+                      {{ activeTask.task_title }}
+                    </p>
+                </div>
+                <div class="col-md-4">
+                    <h4>
+                        مدة المهمة
+                    </h4>
+                    <p>
+                        {{ activeTask.task_period }}
+                    </p>
+                </div>
+        
+                <div class="col-md-4">
+                    <h4>
+                        تاريخ الاسناد
+                    </h4>
+                    <p>
+                        {{ activeTask.created_at | date:'yyyy/MM/dd' }}
+                    </p>
+                </div>
+
+                <div class="col-md-12">
+                    <h4>
+                        تفاصيل المهمة
+                    </h4>
+                    <p>
+                        {{ activeTask.task_description }}
+                    </p>
+                </div>
+                <div class="col-md-12">
+                    <div class="col-md-12" *ngIf="task_files.controls">
+                        <h4 class="bold mt-5">مرفقات المهمة</h4>
+                        <div class="mb-4 file-item ">
+                            <div *ngFor="let item of task_files.controls | keyvalue; let i = index; " class="mb-4">
+                                <app-file-input  [control]="$any(item.value)" (deleteEvent)="deleteAttachment(item)"></app-file-input>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-12">
+                  
+                        <h4 class="bold mt-2">مرفقات الشركة</h4>
+                        <div class="mb-4 file-item ">
+                            <div *ngFor="let item of files.controls | keyvalue; let i = index; " class="mb-4">
+                             <!--    <h4>
+                                    {{i+1}} - {{ 'Attachment' | translate }} 
+                                </h4> -->
+                                <app-file-input  [control]="$any(item.value)" (deleteEvent)="deleteAttachment(item)"></app-file-input>
+                            </div>
+                        </div>
+        
+                        <a mat-button class="addAttachBtn mr-2" color="success"  (click)="addAttach()" >
+                          اضافة مرفق
+                        </a>
+        
+                      <!--   <button mat-button class="saveAttachBtn mr-2" color="success"  (click)="add_task_attachments(activeTask.id)" >
+                           حفظ المرفقات
+                        </button> -->
+        
+                </div>
+
+
+                <div class="col-md-12" *ngIf="emp_files.controls">
+                    <h4 class="bold mt-5">مرفقات الموظف</h4>
+
+                    <div class="mb-4 file-item ">
+                        <div *ngFor="let item of emp_files.controls | keyvalue; let i = index; " class="mb-4">
+                            <app-file-input  [control]="$any(item.value)" (deleteEvent)="deleteAttachment(item)"></app-file-input>
+                        </div>
+                    </div>
+                </div>
+
+
+                
+
+                
+            </ng-container>
+            
+    
+    
+        </div>
+    </mat-dialog-content>
+    <mat-dialog-actions align="end" class="actions">
+        <button type="button" mat-button mat-dialog-close class="cancel" cdkFocusInitial>
+            إغلاق
+        </button>
+        <ng-container *ngIf="mode !== FormMode.View">
+            <span style="width:32px"></span>
+            <button [disabled]="isSaving" type="submit" mat-button class="save" cdkFocusInitial>
+                {{ 'Save' | translate }}
+            </button>
+        </ng-container>
+        
+    </mat-dialog-actions>
+</form>

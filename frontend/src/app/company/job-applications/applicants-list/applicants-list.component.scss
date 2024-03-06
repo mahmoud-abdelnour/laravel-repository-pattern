@@ -1,0 +1,16 @@
+mat-card {
+    app-table-status {
+        width: 125px;
+    }
+    h2 {
+        color: var(--h-color);
+        font-family: arial;
+    }
+    h4 {
+        margin: 0;
+    }
+    p {
+        margin-bottom: 0;
+        margin-top: 5px;
+    }
+}

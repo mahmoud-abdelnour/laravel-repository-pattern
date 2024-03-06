@@ -1,0 +1,53 @@
+.col-md-4, .col-md-12 {
+    margin-bottom: 1rem;
+    h4 {
+        font-size: 18px;
+        margin-bottom: 10px;
+    }
+    p {
+        font-size: 16px;
+        color: var(--main-color);
+    }
+}
+
+.date-input-cont {
+    position: relative;
+    mat-datepicker-toggle {
+        position: absolute;
+        left: 8px;
+        top: 2px;
+    }
+}
+:host {
+    min-width: 50vw;
+    display: block;
+}
+
+h3 {
+    font-weight: bold;
+    color: #0C195F;
+    font-size: 17px;
+}
+
+textarea {
+    min-height: 100px;
+}
+
+
+
+
+.addAttachBtn{
+    background: #dfdfdf;
+    margin-left:10px;
+}
+
+.saveAttachBtn{
+    background:rgb(90, 148, 90);;
+    color:rgb(255, 255, 255);
+    margin-left:10px;
+
+}
+
+h4.bold{
+    font-weight:bold;
+}

@@ -1,0 +1,122 @@
+<form [formGroup]="form">
+    <mat-card>
+        <mat-card-content>
+            <!-- <section class="account-type">
+                <mat-card-subtitle>
+                    {{ 'AccountType' | translate }}
+                </mat-card-subtitle>
+                <div class="row group-radio">
+                    <div class="col-md-6 mb-3">
+                        <button  mat-button type="button" (click)="changeType(UserType.employee)" [class.active]="form.controls['user_type'].value == UserType.employee">
+                            <div class="d-flex align-items-center">
+                                <mat-icon class="icon-type">
+                                    person
+                                </mat-icon>
+                                <label for="" class="flex-1">
+                                    <h3>
+                                        {{ 'IndividualsAccount' | translate }}
+                                    </h3>
+                                    <p>
+                                        وصف الحساب هنا
+                                    </p>
+                                </label>
+                                <span class="circle">
+                                    <mat-icon>
+                                        check
+                                    </mat-icon>
+                                </span>
+                            </div>
+                        </button>
+                    </div>
+                    <div class="col-md-6 mb-3">
+                        <button mat-button type="button" (click)="changeType(UserType.company)" [class.active]="form.controls['user_type'].value == UserType.company">
+                            <div class="d-flex align-items-center">
+                                <mat-icon class="icon-type">
+                                    apartment
+                                </mat-icon>
+                                <label for="" class="flex-1">
+                                    <h3>
+                                       {{ 'CorporateAccount' | translate }}
+                                    </h3>
+                                    <p>
+                                        وصف الحساب هنا
+                                    </p>
+                                </label>
+                                <span class="circle">
+                                    <mat-icon>
+                                        check
+                                    </mat-icon>
+                                </span>
+                            </div>
+                        </button>
+                    </div>
+                </div>
+            </section>
+            <br> -->
+            <section>
+                <mat-card-subtitle>
+                    {{ 'AccountInfo' | translate }}
+                </mat-card-subtitle>
+    
+                <div class="row">
+                    <div class="col-md-6 mb-4 form-group" *ngIf="form.controls['user_type'].value == UserType.employee; else showCommercialRecord">
+                        <label for="tel">
+                            {{ 'IDNumber' | translate }}
+                            *
+                        </label>
+                        <input formControlName="national_id" id="tel" type="tel" [placeholder]=" 'IDNumber' | translate ">
+                    </div>
+                    <ng-template #showCommercialRecord>
+                        <div class="col-md-6 mb-4 form-group">
+                            <label for="">
+                                {{ 'CommercialRecord' | translate }}
+                                *
+                            </label>
+                            <input formControlName="commercial_record" [placeholder]=" 'CommercialRecord' | translate ">
+                        </div>
+                    </ng-template>
+                    
+                    <div class="col-md-6 mb-4 form-group">
+                        <label for="email">
+                            {{ 'Email' | translate }}
+                            *
+                        </label>
+                        <input formControlName="email" id="email" type="email" [placeholder]=" 'Email' | translate ">
+                    </div>
+                    <div class="col-md-6 mb-4 form-group">
+                        <label for="password">
+                            {{ 'Password' | translate }}
+                            *
+                        </label>
+                        <input formControlName="password" type="password" id="password" [placeholder]=" 'Password:Placeholder' | translate ">
+                    </div>
+                    <div class="col-md-6 mb-4 form-group">
+                        <label for="confirmPassword">
+                            {{ 'ConfirmPassword' | translate }}
+                            *
+                        </label>
+                        <input formControlName="password_confirmation" type="password" id="confirmPassword" [placeholder]=" 'ConfirmPassword:Placeholder' | translate ">
+                    </div>
+
+                    <div class="col-md-12 form-group">
+                        <mat-checkbox color="primary" formControlName="acceptTerms">
+                            {{ 'AcceptToThe' | translate }}
+                            <a routerLink="/pages/terms" target="_blank">
+                                {{ 'TermsAndConditions' | translate }}
+                            </a>
+                        </mat-checkbox>
+                    </div>
+                </div>
+               
+            </section>
+        </mat-card-content>
+        <mat-card-actions class="d-flex align-items-center justify-content-between">
+            <button type="button" mat-button (click)="cancel()">
+                {{ 'Cancel' | translate }}
+            </button>
+            <button mat-button class="primary" (click)="save()">
+                {{ 'Next' | translate }}
+            </button>
+        </mat-card-actions>
+    </mat-card>
+</form>

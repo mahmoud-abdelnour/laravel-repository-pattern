@@ -1,0 +1,25 @@
+<ng-container *appPerm="'ban_company'">
+    <button mat-button (click)="parent.banCompany(rowData)" *ngIf="rowData.status !== themeService.settings.COMPANY_STATUS.enum.banned">
+        <mat-icon class="ban">
+            hide_source
+        </mat-icon>
+    </button>
+</ng-container>
+
+<button mat-button (click)="parent.openCompany(rowData, 2)" *appPerm="'admit_company'">
+    <mat-icon class="payments">
+        payments
+    </mat-icon>
+</button>
+
+<button mat-button (click)="parent.openCompany(rowData)" *appPerm="'admit_company'">
+    <mat-icon color="primary">
+        verified
+    </mat-icon>
+</button>
+
+<button mat-button (click)="parent.popDelete(rowData)" *appPerm="'delete_company'">
+    <mat-icon color="warn">
+        delete
+    </mat-icon>
+</button>

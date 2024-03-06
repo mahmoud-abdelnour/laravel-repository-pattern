@@ -1,0 +1,18 @@
+<section class="card-cont">
+    <h2 >
+       الحضور والانصراف
+    </h2>
+    <mat-card>
+       
+        <h3 class="m-0">{{emp_name}}</h3>
+
+        <mat-card-content>
+
+            <app-table #table [settings]="settings" [apiFunc]="apiFunc"></app-table>
+          <!--   *ngIf="!id" -->
+          <!--   <app-table #table [settings]="settings" [apiFunc]="apiFunc2" *ngIf="id"></app-table> -->
+
+        </mat-card-content>
+    </mat-card>
+</section>
+

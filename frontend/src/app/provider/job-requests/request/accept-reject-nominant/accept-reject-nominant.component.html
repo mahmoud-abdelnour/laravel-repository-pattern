@@ -1,0 +1,27 @@
+<form [formGroup]="form">
+    <h2 mat-dialog-title>
+        إعتماد التأمينات
+    </h2>
+    <mat-dialog-content class="mat-typography">
+        <div class="mt-4 mb-4 file-item">
+            <h4>
+                ملف تأمين الشركة 
+            </h4>
+            <app-file-input [control]="form.controls['company_file']"></app-file-input>
+        </div>
+        <div class="mt-4 mb-4 file-item">
+            <h4>
+                ملف تأمين الموظف 
+            </h4>
+            <app-file-input [control]="form.controls['emp_file']"></app-file-input>
+        </div>
+    </mat-dialog-content>
+    <mat-dialog-actions align="end" class="actions">
+        <button type="button" mat-button mat-dialog-close class="cancel">
+            {{ 'Back' | translate }}
+        </button>
+        <button [disabled]="isSaving" mat-button cdkFocusInitial class="save" (click)="save()">
+           إعتماد
+        </button>
+    </mat-dialog-actions>
+</form>

@@ -1,0 +1,179 @@
+<form [formGroup]="form">
+    <mat-card>
+        <mat-card-subtitle>
+            {{ 'Register Candidate' | translate }}
+        </mat-card-subtitle>
+        <mat-card-content>
+          
+            <section>
+              
+    
+                <div class="row">
+                    <div class="col-md-6 mb-4 form-group">
+                        <label for="tel">
+                            {{ 'IDNumber' | translate }}
+                            *
+                        </label>
+                        <input formControlName="national_id" id="tel" type="tel" [placeholder]=" 'IDNumber' | translate ">
+                    </div>
+                    
+                    <div class="col-md-6 mb-4 form-group">
+                        <label for="email">
+                            {{ 'Email' | translate }}
+                            *
+                        </label>
+                        <input formControlName="email" id="email" type="email" [placeholder]=" 'Email' | translate ">
+                    </div>
+                    <div class="col-md-6 mb-4 form-group">
+                        <label for="password">
+                            {{ 'Password' | translate }}
+                            *
+                        </label>
+                        <input formControlName="password" type="password" id="password" [placeholder]=" 'Password:Placeholder' | translate ">
+                    </div>
+                    <div class="col-md-6 mb-4 form-group">
+                        <label for="confirmPassword">
+                            {{ 'ConfirmPassword' | translate }}
+                            *
+                        </label>
+                        <input formControlName="password_confirmation" type="password" id="confirmPassword" [placeholder]=" 'ConfirmPassword:Placeholder' | translate ">
+                    </div>
+
+                </div>
+               
+            </section>
+
+
+            <ng-container>
+                <div class="row">
+
+                   
+
+                    <div class="col-md-6 mb-4 form-group">
+                        <label for="nameAr">
+                            {{ 'ar_employeeName'  | translate }}
+                            *
+                        </label>
+                        <input formControlName="name_ar" id="nameAr" [placeholder]=" ('ar_employeeName:Placeholder') | translate ">
+                    </div>
+                    <div class="col-md-6 mb-4 form-group">
+                        <label for="nameEn">
+                            {{ 'en_employeeName' | translate }}
+                            *
+                        </label>
+                        <input formControlName="name_en" id="nameEn" [placeholder]=" ('en_employeeName:Placeholder') | translate ">
+                    </div>
+                    <div class="col-md-6 mb-4 form-group">
+                        <label for="tel">
+                           {{ 'Phone' | translate }}
+                            *
+                        </label>
+                        <input formControlName="mobile" id="tel" type="tel" [placeholder]=" 'Phone' | translate ">
+                    </div>
+
+                    <div class="col-md-6 mb-4 form-group">
+                        <label for="">
+                            {{ 'NationalAddress' | translate }}
+                            *
+                        </label>
+                        <input formControlName="national_address_extra" [placeholder]=" 'NationalAddress' | translate ">
+                    </div>
+
+                    <div class="col-md-6 mb-4 form-group">
+                        <label for="">
+                            {{ 'BuildingNumber' | translate }}
+                            *
+                        </label>
+                        <input  formControlName="national_address_building_no" [placeholder]=" 'BuildingNumber' | translate ">
+                    </div>
+                    <div class="col-md-6 mb-4 form-group">
+                        <label for="">
+                            {{ 'PostalCode' | translate }}
+                            *
+                        </label>
+                        <input formControlName="national_address_postal" [placeholder]="'PostalCode' | translate">
+                    </div>
+
+
+                    <div class="col-md-6 mb-4 form-group">
+                        <label>
+                            {{ 'Gender' | translate }}
+                            *
+                        </label>
+                        <ng-select formControlName="gender" [placeholder]=" 'Gender' | translate ">
+                            <ng-option *ngFor="let gender of themeService.settings?.GENDER?.arr" [value]="gender.value"> {{ gender.title | translate }} </ng-option>
+                        </ng-select>
+                    </div>
+    
+                    <div class="col-md-6 mb-4 form-group">
+                        <label>
+                            {{ 'MaritalStatus' | translate }}
+                            *
+                        </label>
+
+                        <ng-select formControlName="martial_status" [placeholder]=" 'MaritalStatus' | translate ">
+                            <ng-option *ngFor="let gender of themeService.settings?.MARTIAL_STATUS?.arr" [value]="gender.value">
+                                {{ gender.title | translate }}
+                            </ng-option>
+                        </ng-select>
+                    </div>
+    
+                    <div class="col-md-6 mb-4 form-group">
+                        <label>
+                            {{ 'Qualification' | translate }}
+                            *
+                        </label>
+                        <ng-select formControlName="qualification" [placeholder]="'Qualification' | translate">
+                            <ng-option *ngFor="let gender of themeService.settings?.QUALIFICATIONS?.arr" [value]="gender.value">
+                                {{ gender.title | translate }}
+                            </ng-option>
+                        </ng-select>
+                    </div>
+
+                    <div class="col-md-6 mb-4 form-group">
+                        <label for="">
+                            {{ 'BankName' | translate }} 
+                            *
+                        </label>
+                        <ng-select formControlName="bank_name" [placeholder]=" 'BankName' | translate ">
+                            <ng-option *ngFor="let bank of banks" [value]="bank.bank_name">
+                                {{ bank.bank_name }}
+                            </ng-option>
+                        </ng-select>
+                    </div>
+                    <div class="col-md-6 mb-4 form-group">
+                        <label for="">
+                            {{ 'IBANnumber' | translate }}
+                            *
+                        </label>
+                        <div class="d-flex  align-items-center justify-content-between" id="iban_input_group">
+                            <input formControlName="bank_ipan" [placeholder]=" 'IBANnumber' | translate ">
+                            <span>SA</span>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="mb-4 file-item">
+                    <div *ngFor="let item of files.controls | keyvalue">
+                        <h4>
+                            {{ $any(item.key) | translate }}
+                            *
+                        </h4>
+                        <app-file-input  [control]="$any(item.value)"></app-file-input>
+                    </div>
+                </div>
+
+            </ng-container>
+
+        </mat-card-content>
+        <mat-card-actions class="d-flex align-items-center justify-content-between">
+            <button type="button" mat-button (click)="cancel()">
+                {{ 'Cancel' | translate }}
+            </button>
+            <button mat-button class="primary" (click)="save()">
+                {{ 'Save' | translate }}
+            </button>
+        </mat-card-actions>
+    </mat-card>
+</form>

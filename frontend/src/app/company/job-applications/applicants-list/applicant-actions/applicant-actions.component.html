@@ -1,0 +1,161 @@
+<button mat-button (click)="openDialog(dialog)" *ngIf="rowData.can_approve_candidate">
+    <mat-icon color="primary">
+        rule
+    </mat-icon>
+</button>
+
+<button mat-button (click)="openDialog(dialog2)" *ngIf="rowData.can_attach_insurance">
+    <mat-icon color="primary">
+        file_present
+    </mat-icon>
+</button>
+
+<ng-template #dialog>
+    <form [formGroup]="form" (ngSubmit)="save()">
+        <h2 matDialogTitle>
+            اتخاذ القرار
+        </h2>
+        <mat-dialog-content>
+            <section>
+                <h3>بيانات الموظف </h3>
+                <div class="row">
+                    <div class="col-md-4 mt-3">
+                        <h5>
+                            الاسم باللغة العربية 
+                        </h5>
+                        <p>
+                            {{rowData.name_ar}}
+                        </p>
+                    </div>
+                    <div class="col-md-4 mt-3">
+                        <h5>
+                            الاسم باللغة الإنجليزية 
+                        </h5>
+                        <p>
+                            {{rowData.name_en}}
+                        </p>
+                    </div>
+                    <div class="col-md-4 mt-3">
+                        <h5>
+                            البريد الإلكتروني
+                        </h5>
+                        <p>
+                            {{rowData.email}}
+                        </p>
+                    </div>
+                    <div class="col-md-4 mt-3">
+                        <h5>
+                            رقم الهوية
+                        </h5>
+                        <p>
+                            {{rowData.national_id}}
+                        </p>
+                    </div>
+                    <div class="col-md-4 mt-3">
+                        <h5>
+                            رقم الهاتف
+                        </h5>
+                        <p>
+                            {{rowData.mobile}}
+                        </p>
+                    </div>
+                    <div class="col-md-4 mt-3">
+                        <h5>
+                            المؤهل العلمى
+                        </h5>
+                        <p>
+                            {{ themeService.settings.QUALIFICATIONS.enum[rowData.qualification] | translate }}
+                        </p>
+                    </div>
+                    <div class="col-md-4 mt-3">
+                        <h5>
+                            الجنس
+                        </h5>
+                        <p>
+                            {{ themeService.settings.GENDER.enum[rowData.gender] | translate }}
+                        </p>
+                    </div>
+                    <div class="col-md-4 mt-3">
+                        <h5>
+                            الحالة الاجماعية
+                        </h5>
+                        <p>
+                            {{ themeService.settings.MARTIAL_STATUS.enum[rowData.martial_status] | translate }}
+                        </p>
+                    </div>
+                </div>
+            </section>
+            
+            <section class="mt-5">
+                <h3> اتخاذ القرار </h3>
+                <div class="row">
+                    <mat-radio-group
+                    formControlName="response"
+                    color="primary"
+                    class="d-flex align-items-center mt-4 mb-4"
+                    (change)="changeValue($event.value)">
+                        <mat-radio-button [value]="status.accepted">
+                            {{ 'accept' | translate }}
+                        </mat-radio-button>
+                        <span style="width:50px"></span>
+                        <mat-radio-button [value]="status.rejected">
+                            {{ 'reject' | translate }}
+                        </mat-radio-button>
+                    </mat-radio-group>
+
+                    <div class="form-group mb-4" *ngIf="form.controls['rejection_reason']">
+                        <label for="rejection_reason">
+                            {{ 'RejectionReason' | translate }}
+                            *
+                        </label>
+                        <textarea id="rejection_reason" rows="4" formControlName="rejection_reason"></textarea>
+                    </div>
+                </div>
+            </section>
+
+        </mat-dialog-content>
+        <mat-dialog-actions align="end" class="actions">
+          <button mat-button matDialogClose type="button" (click)="form.reset()">
+            {{ 'Back' | translate }}
+          </button>
+          <span style="width: 40px;"></span>
+          <button [disabled]="isSaving" type="submit" mat-raised-button color="primary">
+            {{ 'Save' | translate }}
+          </button>
+        </mat-dialog-actions>
+    </form>
+</ng-template>
+
+
+<ng-template #dialog2>
+    <form [formGroup]="attachForm" (ngSubmit)="saveFile()">
+        <h2 matDialogTitle>
+            شهادة التأمينات
+        </h2>
+        <mat-dialog-content>
+            <div class="mb-4 file-item">
+                <div>
+                    <h5>
+                        ملف التأمينات
+                        *
+                    </h5>
+                    <app-file-input [control]="attachForm.controls['company_file']"></app-file-input>
+                </div>
+            </div>
+        </mat-dialog-content>
+        <mat-dialog-actions align="end" class="actions">
+            <button mat-button matDialogClose type="button" (click)="attachForm.reset()">
+                {{ 'Back' | translate }}
+            </button>
+            <ng-container  *ngIf="!attachForm.controls['company_file'].disabled">
+                <span style="width: 40px;"></span>
+                <div class="d-flex align-items-center ">
+                    <mat-spinner *ngIf="isSaving" diameter="36" strokeWidth="3"></mat-spinner>
+                    <button mat-button type="submit" class="primary" [disabled]="isSaving">
+                        {{ isSaving ? (progress + '%') : ('Save' | translate) }}
+                    </button>
+                </div>
+            </ng-container>
+        </mat-dialog-actions>
+    </form>
+</ng-template>

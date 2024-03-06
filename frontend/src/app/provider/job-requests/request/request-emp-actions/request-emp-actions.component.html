@@ -1,0 +1,13 @@
+<button mat-button (click)="parent.openEmployeeDialog(rowData)">
+    <mat-icon color="primary">
+        visibility
+    </mat-icon>
+</button>
+
+<ng-container *appPerm="'approve_job_request'">
+    <button mat-button (click)="parent.openAcceptRejectDialog(rowData)" *ngIf="showInsuranceButton" >
+        <mat-icon class="verified">
+            verified
+        </mat-icon>
+    </button>
+</ng-container>

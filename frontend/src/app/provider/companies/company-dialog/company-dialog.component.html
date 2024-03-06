@@ -1,0 +1,101 @@
+<form [formGroup]="form">
+    <h2 mat-dialog-title>
+        تفاصيل الشركة
+    </h2>
+    <mat-dialog-content class="mat-typography">
+        <mat-tab-group mat-stretch-tabs="false" mat-align-tabs="center" [selectedIndex]="selectedIndex">
+            <mat-tab label="بيانات الشركة">
+                <section>
+                    <div class="row">
+                        <div class="col-md-4">
+                            <h3>
+                                الاسم باللغة العربية 
+                            </h3>
+                            <p>
+                                {{data.name_ar}}
+                            </p>
+                        </div>
+                        <div class="col-md-4">
+                            <h3>
+                                الاسم باللغة الإنجليزية 
+                            </h3>
+                            <p>
+                                {{data.name_en}}
+                            </p>
+                        </div>
+                        <div class="col-md-4">
+                            <h3>
+                                البريد الإلكتروني
+                            </h3>
+                            <p>
+                                {{data.email}}
+                            </p>
+                        </div>
+                        <div class="col-md-4">
+                            <h3>
+                                رقم السجل التجارى
+                            </h3>
+                            <p>
+                                {{data.commercial_record}}
+                            </p>
+                        </div>
+                        <div class="col-md-4">
+                            <h3>
+                                رقم المنشأة
+                            </h3>
+                            <p>
+                                {{data.national_address_building_no}}
+                            </p>
+                        </div>
+                        <div class="col-md-4">
+                            <h3>
+                                رقم الهاتف
+                            </h3>
+                            <p>
+                                {{data.mobile}}
+                            </p>
+                        </div>
+                        <div class="col-md-4">
+                            <h3>
+                              العنوان الوطنى
+                            </h3>
+                            <p>
+                                {{data.national_address_extra}}
+                            </p>
+                        </div>
+                        <div class="col-md-4">
+                            <h3>
+                                حالة الشركة
+                            </h3>
+                            <app-table-status [value]="data.status"></app-table-status>
+                        </div>
+                    </div>
+                </section>
+            </mat-tab>
+            <mat-tab label="المرفقات">
+                <div *ngFor="let file of files; index as i" class="mt-4 mb-4 file-item">
+                    <h4>
+                        {{ file | translate }}
+                    </h4>
+                    <app-file-input [control]="form.controls[file]"></app-file-input>
+                </div>
+            </mat-tab>
+            <mat-tab label="الدفعات">
+                <div class="mt-4 mb-4">
+                    <app-table #paymentTable [settings]="settings" [apiFunc]="apiFunc"></app-table>
+                </div>
+            </mat-tab>
+        </mat-tab-group>
+    </mat-dialog-content>
+    <mat-dialog-actions align="end" class="actions">
+        <button type="button" mat-button mat-dialog-close class="cancel">
+            {{ 'Back' | translate }}
+        </button>
+        <ng-container *appPerm="'admit_company'">
+            <button *ngIf="data.status !== themeService.settings.COMPANY_STATUS.enum.active" [disabled]="isSaving" mat-button cdkFocusInitial class="save" (click)="save()" >
+                تفعيل الشركة
+            </button>
+        </ng-container>
+    </mat-dialog-actions>
+    
+</form>

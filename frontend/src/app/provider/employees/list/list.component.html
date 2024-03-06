@@ -1,0 +1,7 @@
+<div class="mt-5 mb-5">
+    <app-table *ngIf="settings" [paginationId]="paginationId" #table [settings]="settings" [apiFunc]="apiFunc"></app-table>
+</div>
+
+<ng-template #dialog let-ref="dialogRef" let-data>
+    <app-suggest-courses [data]="data.data" [ref]="ref"></app-suggest-courses>
+</ng-template>

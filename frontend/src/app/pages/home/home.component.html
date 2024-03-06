@@ -1,0 +1,303 @@
+    
+   
+
+<section class="card-cont">
+    
+    <div class="d-flex align-items-center justify-content-between">
+        <h2>
+            الرئيسية
+        </h2>
+
+        
+        <!-- *ngIf="rowData.status !== themeService.settings.EMPLOYEE_STATUS.enum.active" -->
+
+        <div  *appPerm="'send_telework_reports'">
+            <a   mat-button class="openDialogBtn mr-2" color="success"  (click)="openDialog()"  *ngIf="userService.userData.user_type == UserType.provider && (settings.send_telework_report == 'on' )" >
+                ارسال التقرير      
+            </a>
+        </div>
+
+    </div>
+
+   <!--  <div class="button-groups">
+        <button (click)="RandomDataset()" nz-button nzType="default">Random Dataset</button>
+      </div>
+    <div style="margin-top: 80px;">
+        <div  echarts [options]="options" [merge]="mergeOptions"  class="demo-chart"></div>
+    </div> -->
+
+
+    
+
+    <ng-template #dialog let-ref="dialogRef" let-data >
+        <div class="row">
+            <div class="col-md-12">
+                <form [formGroup]="form" (ngSubmit)="SendReport()">
+                    <h2 mat-dialog-title>
+                        <!--  {{ mode | translate }} -->
+                        ارسال تقرير
+                        <span *ngIf="last_TeleworkReport?.created_at">اخر تقرير بتاريخ : {{last_TeleworkReport['created_at']  | date:'yyyy/MM/dd' }}</span>
+                    </h2>
+                    <mat-dialog-content class="mat-typography">
+                        <div class="row">
+                            <div class="col-md-12" *ngFor="let item of remote_work_reports">
+
+                                    <h2>{{item?.emp_name}}</h2>
+                                    
+                                    <h4>
+                                        <b>Assigned Tasks : </b> 
+                                        <span> {{item['AssignedTasks']}} </span>
+                                    </h4>
+
+                                    <h4>
+                                        <b>CompletedTasks : </b> 
+                                        <span> {{item['CompletedTasks']}} </span>
+                                    </h4>
+
+                                    <h4>
+                                        <b>Total Work Time : </b> 
+                                        <span> {{item['TotalWorkTime']}} Hour</span>
+                                    </h4>
+
+                                    <h4>
+                                        <b>Login Count: </b> 
+                                        <span> {{item['LoginCount']}} </span>
+                                    </h4>
+
+                                    <h4>
+                                        <b>Logout Count: </b> 
+                                        <span> {{item['LogoutCount']}} </span>
+                                    </h4>
+
+                                    <h4>
+                                        <b>ActivityLevel : </b> 
+                                        <span> {{item['ActivityLevel']}} </span>
+                                    </h4>
+
+                                    <br><br>
+                            </div>
+                        </div>
+                    </mat-dialog-content> 
+
+                    <mat-dialog-actions align="end" class="actions">
+                        <button type="button" mat-button mat-dialog-close class="cancel" cdkFocusInitial>
+                            إغلاق
+                        </button>
+                        <button [disabled]="isSaving || (diffInDays <= 7 && diffInDays != -1)" type="submit" mat-button class="save" cdkFocusInitial>
+                            ارسال
+                        </button>
+                    </mat-dialog-actions>
+
+                </form>
+            </div>
+        </div>
+    </ng-template>
+
+
+
+    <mat-card>
+        <mat-card-content *ngIf="userService.userData && userService.userData.entity">
+            <div class="row" *ngIf="userService.userData.entity.counters">
+                <ng-container *ngIf="userService.userData.user_type == UserType.company">
+                    <div class="col-md-3 anchor" [routerLink]="'/company/tasks/list'" >
+                        <div class="d-card red">
+                            <div class="icon-cont">
+                                <mat-icon>
+                                    task
+                                </mat-icon>
+                            </div>
+                            <h3>
+                                {{ userService.userData.entity.counters.tasks }}
+                            </h3>
+                            <p>
+                                عدد المهام
+                            </p>
+                        </div>
+                    </div>
+                    <div class="col-md-3 anchor" [routerLink]="'/company/employees/list'">
+                        <div class="d-card">
+                            <div class="icon-cont">
+                                <mat-icon>
+                                    person
+                                </mat-icon>
+                            </div>
+                            <h3>
+                                {{ userService.userData.entity.counters.employees }}
+                            </h3>
+                            <p>
+                                عدد الموظفين
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- old_delete -->
+                    <div class="col-md-3 anchor" [routerLink]="'/company/employees/list'">
+                        <div class="d-card red">
+                            <div class="icon-cont">
+                                <mat-icon>
+                                    group
+                                </mat-icon>
+                            </div>
+                            <h3>
+                                {{ userService.userData.entity.counters.candidates }}
+                            </h3>
+                            <p>
+                                عدد المرشحين
+                            </p>
+                        </div>
+                    </div>
+                </ng-container>
+                
+                
+
+                <ng-container  *ngIf="userService.userData.user_type === UserType.employee && userService.userData.entity.is_working == 1" >
+                   
+                    <div class="col-md-3 anchor" [routerLink]="'/individual/tasks/list'" >
+                        <div class="d-card red">
+                            <div class="icon-cont">
+                                <mat-icon>
+                                    task
+                                </mat-icon>
+                            </div>
+                            <h3>
+                                {{ userService.userData.entity.counters.tasks }}
+                            </h3>
+                            <p>
+                                عدد المهام
+                            </p>
+                        </div>
+                    </div>
+
+
+                    <!-- old_delete -->
+                    <div class="col-md-3 anchor" [routerLink]="'/individual/courses'">
+                        <div class="d-card">
+                            <div class="icon-cont green">
+                                <mat-icon>
+                                    auto_stories
+                                </mat-icon>
+                            </div>
+                            <h3>
+                                {{ userService.userData.entity.counters.courses }}
+                            </h3>
+                            <p>
+                                عدد الدورات
+                            </p>
+                        </div>
+                    </div>
+    
+                    <div class="col-md-3  anchor" [routerLink]="'/individual/job-nominations/'">
+                        <div class="d-card">
+                            <div class="icon-cont">
+                                <mat-icon>
+                                    work
+                                </mat-icon>
+                            </div>
+                            <h3>
+                                {{ userService.userData.entity.counters.nominations }}
+                            </h3>
+                            <p>
+                                عدد الترشيحات
+                            </p>
+                        </div>
+                    </div>
+                </ng-container>
+                
+            </div>
+        </mat-card-content>
+
+
+
+        <mat-card-content *ngIf="userService.userData.user_type === UserType.provider">
+            <div class="row">
+                <ng-container  >
+                    <!-- old_delete -->
+                    <div class="col-md-3  anchor" [routerLink]="'/provider/courses/list'">
+                        <div class="d-card">
+                            <div class="icon-cont ">
+                                <mat-icon>
+                                    auto_stories
+                                </mat-icon>
+                            </div>
+                            <h3>
+                                {{card_data?.courses}}
+                            </h3>
+                            <p>
+                                عدد الدورات
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="col-md-3   anchor" [routerLink]="'/provider/companies/list'">
+                        <div class="d-card">
+                            <div class="icon-cont">
+                                <mat-icon>
+                                    apartment
+                                </mat-icon>
+                            </div>
+                            <h3>
+                                {{card_data?.companies}}
+                            </h3>
+                            <p>
+                                عدد الشركات
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="col-md-3  anchor" [routerLink]="'/provider/employees/list'">
+                        <div class="d-card">
+                            <div class="icon-cont">
+                                <mat-icon>
+                                    person_pin
+                                </mat-icon>
+                            </div>
+                            <h3>
+                                {{card_data?.employees}}
+                            </h3>
+                            <p>
+                                عدد الموظفين
+                            </p>
+                        </div>
+                    </div>
+
+
+                    <div class="col-md-3 anchor" [routerLink]="'/provider/jobs/list'">
+                        <div class="d-card">
+                            <div class="icon-cont">
+                                <mat-icon>
+                                    card_travel
+                                </mat-icon>
+                            </div>
+                            <h3>
+                                {{card_data?.jobs}}
+                            </h3>
+                            <p>
+                                عدد الوظائف
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- old_delete -->
+                    <div class="col-md-3 anchor" [routerLink]="'/provider/candidates/list'">
+                        <div class="d-card">
+                            <div class="icon-cont">
+                                <mat-icon>
+                                    people
+                                </mat-icon>
+                            </div>
+                            <h3>
+                                {{card_data?.candidates}}
+                            </h3>
+                            <p>
+                                عدد الترشيحات
+                            </p>
+                        </div>
+                    </div>
+
+                </ng-container>
+            </div>
+        </mat-card-content>
+
+        
+    </mat-card>
+</section>

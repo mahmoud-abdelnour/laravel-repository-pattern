@@ -1,0 +1,79 @@
+<form [formGroup]="form" (ngSubmit)="save()">
+    <section class="card-cont">
+        <h2>
+            {{ 'Profile' | translate }}
+        </h2>
+        <mat-card>
+            <mat-card-content class="inner-cards-cont">
+                <mat-card>
+                    <mat-card-subtitle>
+                        {{ 'BasicInfo' | translate }}
+                    </mat-card-subtitle>
+
+                    <mat-card-content>
+                        <div class="row">
+                            <div class="col-md-6 mb-4 form-group">
+                                <label for="tel">
+                                    {{ 'IDNumber' | translate }}
+                                    *
+                                </label>
+                                <input formControlName="national_id" id="tel" type="tel" [placeholder]=" 'IDNumber' | translate ">
+                            </div>
+
+                            <div class="col-md-6 mb-4 form-group">
+                                <label for="email">
+                                    {{ 'Email' | translate }}
+                                    *
+                                </label>
+                                <input formControlName="email" id="email" type="email" [placeholder]=" 'Email' | translate ">
+                            </div>
+
+                            <div class="col-md-6 mb-4 form-group">
+                                <label for="FullName">
+                                    {{ 'FullName' | translate }}
+                                    *
+                                </label>
+                                <input formControlName="name" id="FullName" [placeholder]=" 'FullName:Placeholder' | translate ">
+                            </div>
+                           
+                            <div class="col-md-6 mb-4 form-group">
+                                <label for="tel">
+                                   {{ 'Phone' | translate }}
+                                    *
+                                </label>
+                                <input formControlName="mobile" id="tel" type="tel" [placeholder]=" 'Phone' | translate ">
+                            </div>
+
+                             
+                            <div class="col-md-6 mb-4 form-group">
+                                <label for="tel">
+                                   {{ 'Password' | translate }}
+                                    
+                                </label>
+                                <input formControlName="password" id="password" [placeholder]=" 'Password' | translate ">
+                            </div>
+
+
+                            <div class="col-md-6 mb-4 form-group">
+                                <label for="tel">
+                                   {{ 'Password Confirmation' | translate }}
+                                    
+                                </label>
+                                <input formControlName="password_confirmation" id="password_confirmation" [placeholder]=" 'Password Confirmation' | translate ">
+                            </div>
+        
+                        </div>
+                    </mat-card-content>
+                </mat-card>
+            </mat-card-content>
+            <mat-card-footer>
+                <mat-card-actions align="end" class="actions">
+                    <button mat-raised-button type="submit" class="save" [disabled]="isSending">
+                        {{ 'Save' | translate }}
+                    </button>
+                </mat-card-actions>
+            </mat-card-footer>
+        </mat-card>
+    </section>
+
+</form>

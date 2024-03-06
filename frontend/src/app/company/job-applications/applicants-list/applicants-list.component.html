@@ -1,0 +1,62 @@
+<section class="card-cont">
+    <h2>
+        ترشيحات الموظفين
+    </h2>
+    <mat-card *ngIf="settings">
+        <mat-card-header>
+            <div class="d-flex align-items-center justify-content-between">
+                <h3 class="m-0">
+                    طلب وظيفة
+                </h3>
+                <app-table-status [value]="JOB_REQEUST_STATUS[jobRequest.request_status]"> </app-table-status>
+            </div>
+        </mat-card-header>
+
+        <mat-card-content>
+            <div class="row">
+                <div class="col-md-4 mb-4">
+                    <h4>
+                        الوظيفة
+                    </h4>
+                    <p>
+                        {{jobRequest.job.job_title}}
+                    </p>
+                </div>
+
+                <div class="col-md-4 mb-4">
+                    <h4>
+                        العدد المطلوب
+                    </h4>
+                    <p>
+                        {{jobRequest.count}}
+                    </p>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <h4>
+                        تاريخ إضافة الطلب
+                    </h4>
+                    <p>
+                        {{jobRequest.created_at | date:'yyyy/MM/dd'}}
+                    </p>
+                </div>
+
+
+
+                <div class="col-md-6 mb-4">
+                    <h4>
+                       ملاحظات الطلب
+                    </h4>
+                    <p>
+                        {{jobRequest.notes}}
+                    </p>
+                </div>
+
+            </div>
+            <app-table  #table [settings]="settings" [apiFunc]="apiFunc"></app-table>
+        </mat-card-content>
+    </mat-card>
+</section>
+
+<ng-template #dialog let-ref="dialogRef" let-data>
+    <app-create [ref]="ref" [data]="data.data" [mode]="data.mode" [jobs]="data.jobs"></app-create>
+</ng-template>

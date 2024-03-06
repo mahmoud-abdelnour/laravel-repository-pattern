@@ -1,0 +1,85 @@
+<div class="cont">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6 col-xl-5 info">
+                <img src="./assets/imgs/app-logo3.png" alt="">
+                <h1>
+                    {{ 'loginTitle1' | translate }}
+                </h1>
+                <p>
+                   {{ 'loginTitle2' | translate }}
+                </p>
+            </div>
+            <div class="col-xl-2 d-none d-xl-block "></div>
+            <div class="col-md-6 col-xl-5">
+                <form [formGroup]="form" (ngSubmit)="login()">
+                    <mat-card>
+                        <mat-card-content>
+                            <h4> 
+                                {{ 'Login' | translate }}
+                            </h4>
+                            <p>
+                               {{ 'InsertLogin' | translate }}
+                            </p>
+                            
+                            <ng-container *ngIf="userType == UserType.employee; else showComp">
+                                <div class="form-group mb-4 mt-4">
+                                    <input validate-onblur type="text" [placeholder]=" 'IDNumber' | translate " formControlName="national_id">
+                                </div>
+                            </ng-container>
+
+                            <ng-template #showComp>
+                                <div class="form-group mb-4 mt-4">
+                                    <input validate-onblur type="text" [placeholder]=" 'CommercialRecord' | translate " formControlName="commercial_record">
+                                </div>
+                            </ng-template>
+                            
+                            <div class="form-group mb-4">
+                                <input validate-onblur type="text" [placeholder]=" 'Password' | translate  " type="password" formControlName="password">
+                            </div>
+
+                            <!-- <mat-tab-group mat-align-tabs="start" (selectedIndexChange)="changeTab($event)">
+                                <mat-tab label="فرد">
+                                    <div class="form-group mb-4 mt-4">
+                                        <input validate-onblur type="text" [placeholder]=" 'IDNumber' | translate " formControlName="national_id">
+                                    </div>
+                                    <div class="form-group mb-4">
+                                        <input validate-onblur type="text" [placeholder]=" 'Password' | translate  " type="password" formControlName="password">
+                                    </div>
+                                </mat-tab>
+                                <mat-tab label="شركة">
+                                    <div class="form-group mb-4 mt-4">
+                                        <input validate-onblur type="text" [placeholder]=" 'CommercialRecord' | translate " formControlName="commercial_record">
+                                    </div>
+                                    <div class="form-group mb-4">
+                                        <input validate-onblur type="text" [placeholder]=" 'Password' | translate  " type="password" formControlName="password">
+                                    </div>
+                                </mat-tab>
+                            </mat-tab-group> -->
+                           
+    
+                            <div class="d-flex justify-content-between">
+                                <a [routerLink]="loginOptions[userType].url">
+                                    {{ loginOptions[userType].title | translate }}
+                                </a>
+
+                                <a [routerLink]="'/auth/forget-password'">
+                                    {{ 'ForgetPassword' | translate }}
+                                </a>
+                            </div>
+    
+                            <div class="actions">
+                                <button mat-raised-button class="primary" [disabled]="isSending"> 
+                                    {{ 'Login' | translate }}
+                                </button>
+                                <button mat-raised-button type="button" class="secondary" [routerLink]="[loginOptions[userType].registerUrl]" [queryParams]="{ userType }">
+                                   {{ 'RegisterNew' | translate }}
+                                </button>
+                            </div>
+                        </mat-card-content>
+                    </mat-card>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

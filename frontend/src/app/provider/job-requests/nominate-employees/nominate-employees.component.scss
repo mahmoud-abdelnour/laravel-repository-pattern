@@ -1,0 +1,21 @@
+mat-dialog-content {
+    min-width: 50vw;
+    min-height: 200px;
+    overflow: visible;
+    h3 {
+        color: var(--h-color);
+        font-size: 16px;
+    }
+    mat-list-item{
+        margin-bottom: 8px;
+        h4 {
+            margin-bottom: 0;
+            font-size: 16px;
+            color: var(--text-color);
+        }
+        span {
+            color: var(--par-color);
+        }
+    }
+    
+}

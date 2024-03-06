@@ -1,0 +1,13 @@
+<button mat-button (click)="parent.assignTask(rowData)" >
+    <mat-icon class="assign">assignment</mat-icon>
+</button>
+
+<button mat-button (click)="parent.openDialog(FormMode.Update, rowData)" *appPerm="'edit_job'">
+    <mat-icon color="primary">edit</mat-icon>
+</button>
+
+<button mat-button (click)="parent.popDelete(rowData)" *appPerm="'delete_job'">
+    <mat-icon color="warn">
+        delete
+    </mat-icon>
+</button>
